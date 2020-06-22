@@ -1,7 +1,6 @@
 <%= simple_form_for @item do |f| %>
   <%= f.input :name %>
   <%= f.input :price %>
-  <%= f.input :picture %>
   <%= f.input :description %>
   <%= f.input :category_id, collection: Item::[Accessories, Ceramics, Decoration, Lighting, Carpets]  %>
   <%= f.submit "Add", class: "btn btn-primary" %>
