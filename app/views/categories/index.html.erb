@@ -2,7 +2,11 @@
 <div class="banner" style="background-image: url('<%= image_path 'banner-image.jpg' %>');">
   <div class="container">
     <h1 style="margin-bottom: 10px">Find the most beautiful crafts around the world!</h1>
-    <%= link_to "Sign up", "#", class: "btn btn-flat" %>
+    <% if user_signed_in? %>
+      <%= link_to "Special Offers", "#", class: "btn btn-flat" %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-flat" %>
+    <% end %>
   </div>
 </div>
 
