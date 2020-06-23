@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    resources :items 
+  end
+
   resources :categories do
     resources :items, only: [:index, :show] do
       resources :orders, only: [:create, :destroy]
