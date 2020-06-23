@@ -5,20 +5,22 @@
   </div>
 </div>
 
-<div>
+<div class="container">
   <% @categories.each do |category| %>
     <div class="bd-example" style="width: 400px; heigth: 400px">
-      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleCaptions<%= category.id %>" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="2"></li>
         </ol>
+
+        <h3 style="margin-top: 20px"><%= category.name %></h3>
 
         <div class="carousel-inner">
           <% category.top_three_items.each do |item| %>
             <div class="carousel-item <%= "active" if item == category.top_three_items[0] %>">
-              <img src="https://source.unsplash.com/random" class="d-block w-100" alt="...">
+              <img src="https://source.unsplash.com/random/400x400" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5><%= item.name %></h5>
                 <p><%= item.description %></p>
@@ -28,12 +30,12 @@
           <% end %>
         </div>
 
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleCaptions<%= category.id %>" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
 
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleCaptions<%= category.id %>" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
