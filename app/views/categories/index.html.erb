@@ -8,7 +8,9 @@
 
 <div class="container">
   <% @categories.each do |category| %>
-    <h3 style="margin-top: 20px"><%= category.name %></h3>
+    <%= link_to category_items_path(category) do %>
+      <h2 style="margin: 20px 0 10px 5px; color: black"><%= category.name %></h3>
+    <% end %>
 
     <div class="bd-example" style="width: 400px; heigth: 400px">
       <div id="carouselExampleCaptions<%= category.id %>" class="carousel slide" data-ride="carousel">
@@ -45,4 +47,3 @@
     </div>
   <% end %>
 </div>
-
