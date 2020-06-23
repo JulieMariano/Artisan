@@ -1,4 +1,22 @@
-<h2><%= @item.name %></h2>
-<p><%= @item.category.name %></p>
-<p><%= @item.description %></p>
-<p><%= @item.price %></p>
+
+<div class="container">
+
+    <%= image_tag "WALLDEC1.jpg" %>
+
+  <div class="information">
+    <div class="details">
+      <h2><b><%= @item.name %></b></h2>
+      <p><%= @item.category.name %></p>
+      <p><%= @item.description %></p>
+      <p><%= '%.2f' % @item.price %>€ </p>
+    </div>
+
+    <div class="button">
+      <button id="button-out">Add to Cart</button>
+    </div>
+  </div>
+
+</div>
+
+
+
