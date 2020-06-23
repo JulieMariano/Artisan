@@ -7,6 +7,8 @@
 
 <div class="container">
   <% @categories.each do |category| %>
+    <h3 style="margin-top: 20px"><%= category.name %></h3>
+
     <div class="bd-example" style="width: 400px; heigth: 400px">
       <div id="carouselExampleCaptions<%= category.id %>" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -15,17 +17,16 @@
           <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="2"></li>
         </ol>
 
-        <h3 style="margin-top: 20px"><%= category.name %></h3>
-
         <div class="carousel-inner">
           <% category.top_three_items.each do |item| %>
-            <div class="carousel-item <%= "active" if item == category.top_three_items[0] %>">
-              <img src="https://source.unsplash.com/random/400x400" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h5><%= item.name %></h5>
-                <p><%= item.description %></p>
-                <p><%= item.price %></p>
-              </div>
+            <div class="carousel-item <%= "active" if item == category.top_three_items[0] %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/400x400); width: 400px; height: 400px">
+              <%= link_to '#' do %>
+                  <div class="carousel-caption d-md-block" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
+                    <h5><%= item.name %></h5>
+                    <p><%= item.description %></p>
+                    <p><%= '%.2f' % item.price %>€</p>
+                  </div>
+              <% end %>
             </div>
           <% end %>
         </div>
