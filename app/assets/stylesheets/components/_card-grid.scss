@@ -1,0 +1,41 @@
+.container-cards {
+  margin: 20px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+  justify-content: space-around;
+  text-justify: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.card > a {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 1px rgba(0,0,0,0.4);
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.1s ease;
+}
+
+.card > a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.card > p {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 1px rgba(0,0,0,0.4);
+  font-size: 20px;
+  font-weight: bold;
+}
