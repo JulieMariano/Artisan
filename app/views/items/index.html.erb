@@ -1,6 +1,15 @@
-<ul>
-  <% @items.each do |item| %>
-    <li><%= item.name %></li>
-    <li><%= item.price %></li>
-  <% end %>
-</ul>
+<h1 style="margin: 15px 0 20px 25px"><%= @category.name %></h1>
+
+<div class="container-cards">
+  <div class="cards">
+    <% @items.each do |item| %>
+      <%= link_to categories_path do %>
+        <div class="card" data-aos="fade-zoom-in" data-aos-duration="500" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://source.unsplash.com/random/400x400); min-height: 200px; min-width: 200px">
+          <h5><%= item.name %></h5>
+          <p><%= item.description %></p>
+          <p><%= '%.2f' % item.price %>€</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
