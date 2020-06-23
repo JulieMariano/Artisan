@@ -56,5 +56,3 @@
         new_item.category = accessories
     end
   
-
-
