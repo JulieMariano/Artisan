@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  
   devise_for :users
 
   root to: 'categories#index'
   
   namespace :admin do
+    resources :categories
     resources :items do
       resources :orders
     end
