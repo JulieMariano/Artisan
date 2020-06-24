@@ -7,7 +7,7 @@
         <div class="card" data-aos="fade-zoom-in" data-aos-duration="500" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path item.picture.key, height: 250, width: 250, crop: :fill %>')">
           <h5><%= item.name %></h5>
           <p><%= item.description %></p>
-          <p><%= '%.2f' % item.price %>€</p>
+          <p><%= item.price.round %> €</p>
         </div>
       <% end %>
     <% end %>
