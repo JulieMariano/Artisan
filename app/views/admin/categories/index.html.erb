@@ -1,0 +1,10 @@
+<ul>
+  <% @categories.each do |category|%>
+    <li>
+      <%= link_to category.name, admin_category_items_path(category)%> (<%=category.items.count %>)
+      <%= link_to 'Edit',  edit_admin_category_path(category)%>
+      <%= link_to 'Delete',  admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}%>
+    </li>
+  <%end%>
+</ul>
+<%= link_to 'Create a new category',  new_admin_category_path %>
