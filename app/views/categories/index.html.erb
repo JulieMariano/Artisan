@@ -2,11 +2,15 @@
 <div class="banner" style="background-image: url('<%= image_path 'banner-image.jpg' %>');">
   <div class="container">
     <h1 style="margin-bottom: 10px">Find the most beautiful crafts around the world!</h1>
-    <%= link_to "Sign up", "#", class: "btn btn-flat" %>
+    <% if user_signed_in? %>
+      <%= link_to "Special Offers", "#", class: "btn btn-flat" %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-flat" %>
+    <% end %>
   </div>
 </div>
 
-<div class="container">
+<div class="container" style="margin-bottom: 40px">
   <% @categories.each do |category| %>
     <%= link_to category_items_path(category) do %>
       <h2 style="margin: 20px 0 10px 5px; color: black"><%= category.name %></h3>
@@ -24,7 +28,7 @@
           <% category.top_three_items.each do |item| %>
             <div class="carousel-item <%= "active" if item == category.top_three_items[0] %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/400x400); width: 400px; height: 400px">
               <%= link_to category_item_path(category, item) do %>
-                  <div class="carousel-caption d-md-block" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
+                  <div class="carousel-caption" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
                     <h5><%= item.name %></h5>
                     <p><%= item.description %></p>
                     <p><%= '%.2f' % item.price %>€</p>
