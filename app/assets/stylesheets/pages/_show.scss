@@ -5,14 +5,16 @@
   img {
     width: 40%;
   }
+}
 
   .information{
     width: 60%;
     background: #ded3b8;
     margin-left: 20px;
     padding: 20px;
+    padding-bottom: 15px;
   }
-  }
+
 
 
   .details{
@@ -25,8 +27,9 @@
     border-radius: 10px;
     transition: .5s all;
     &:hover {
-    background-color: blue;
-    }
+    background-color: $nav-red;
+    color: white;
+        }
   }
 
   .button{
@@ -34,3 +37,18 @@
     align-item: flex-end;
   }
 
+  #price-tag{
+    color: black;
+    font-size: 25px;
+  }
+
+p{
+  color: black;
+}
+
+hr{
+  height: 15px;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+}
