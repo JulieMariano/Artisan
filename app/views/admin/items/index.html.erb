@@ -1,1 +1,10 @@
-Hello from the index items of the admin
+<ul>
+  <% @items.each do |item|%>
+    <li>
+      <%= item.name%>
+      <%= link_to 'Edit',  edit_admin_category_item_path(item.category, item)%>
+      <%= link_to 'Delete',  edit_admin_category_item_path(item.category, item), method: :delete, data: {confirm: "Are you sure?"}%>
+    </li>
+  <%end%>
+</ul>
+<%= link_to 'Create a new item', new_admin_category_item_path%>

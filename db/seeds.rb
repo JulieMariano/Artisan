@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# 0 .Clean DB
+Item.destroy_all
+Category.destroy_all
+User.destroy_all
+
 # 1. CATEGORIES
 carpets = Category.create(name: "Carpets")
 manta = Category.create(name: "Manta")
@@ -71,3 +76,6 @@ accessories = Category.create(name: "Accessories")
       new_item.save
       puts "Created new acessory named #{name}."
   end
+
+  # 3. USERS
+  laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)

@@ -1,2 +1,1 @@
-<h1>Admin::Categories#show</h1>
-<p>Find me in app/views/admin/categories/show.html.erb</p>
+<%= link_to "Delete #{@category.name}", category_path(@category), method: :delete, data: {"Are you sure?"}%>

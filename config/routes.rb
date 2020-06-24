@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   root to: 'categories#index'
   
   namespace :admin do
-    resources :categories
-    resources :items do
-      resources :orders
+    resources :categories do
+      resources :items do
+        resources :orders
+      end
     end
   end
 
