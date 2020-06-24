@@ -12,18 +12,15 @@
   </head>
 
   <body>
+    <div class="page-container" style="min-height: 100%; position: relative">
+      <%= render 'shared/flashes' %>
+      <%= render 'shared/navbar' %>
 
-    <div>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+      <div class="content" style="padding: 65px 0 50px">
+        <%= yield %>
+      </div>
+
+      <%= render 'shared/footer' %>
     </div>
-
-    <div class="content">
-      <%= yield %>
-    </div>
-
-
-    <%= render 'shared/footer' %>
-
   </body>
 </html>

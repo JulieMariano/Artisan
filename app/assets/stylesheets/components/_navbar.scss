@@ -1,10 +1,11 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: $nav-green;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
+
+  justify-content: space-between;
+  background: $nav-green;
 
   h1 {
     font-family: Karla;
