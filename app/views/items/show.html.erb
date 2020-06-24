@@ -6,17 +6,15 @@
     <div class="details">
       <h2><b><%= @item.name %></b></h2>
       <hr>
-      <p><b><%= @item.category.name %></b></p>
-      <p><%= @item.description %></p>
+      <p class="show-text"><b><%= @item.category.name %></b></p>
+      <p class="show-text"><%= @item.description %></p>
     </div>
 
     <div>
-      <p id="price-tag"><b><%= '%.2f' % @item.price %>€ </b></p>
+      <p id="price-tag" class="show-text"><b><%= '%.2f' % @item.price %>€ </b></p>
       <div class="button">
         <button id="button-out">Add to Cart</button>
       </div>
     </div>
   </div>
-
 </div>
-
