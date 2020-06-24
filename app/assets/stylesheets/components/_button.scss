@@ -2,11 +2,11 @@
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: linear-gradient(0deg, rgb(28, 121, 25) 5%, rgb(21, 199, 66) 95%);
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #1BCB7F;
+  background: linear-gradient(0deg, rgb(16, 88, 33) 5%, rgb(27, 179, 21) 95%);
   color: white;
 }
