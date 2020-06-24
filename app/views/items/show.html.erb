@@ -1,7 +1,7 @@
 <div class="container-show">
 
-<div style="background-image: url('<%= cl_image_path @item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">>
-</div>
+  <div style="background-image: url('<%= cl_image_path @item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">>
+  </div>
 
   <div class="information">
     <div class="details">
@@ -19,3 +19,9 @@
     </div>
   </div>
 </div>
+
+<%= simple_form_for [@category, @item, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>

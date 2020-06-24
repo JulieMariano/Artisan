@@ -7,8 +7,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
+    @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
+    @review = Review.new
   end
 end
-
-
