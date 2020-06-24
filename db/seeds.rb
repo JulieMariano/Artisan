@@ -9,12 +9,12 @@
 require "open-uri"
 require "faker"
 
-# Clean DB
+# 1. Clean DB
 Item.destroy_all
 Category.destroy_all
 User.destroy_all
 
-# Categories
+# 2. Categories
 carpets = Category.create(name: "Carpets")
 mantas = Category.create(name: "Manta")
 lighting = Category.create(name: "Lighting")
@@ -23,7 +23,7 @@ accessories = Category.create(name: "Accessories")
 walls_decoration = Category.create(name: "Decoration for walls")
 kids_decoration = Category.create(name: "Decoration for kids")
 
-# Items
+# 3. Items
 
 # Carpets
 num = 375560
@@ -149,7 +149,6 @@ end
   puts "Created new kids decoration's item named #{name}."
 end
 
-# 3. USERS
+# 4. Users
 laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
 edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
-

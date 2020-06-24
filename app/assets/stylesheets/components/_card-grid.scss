@@ -4,16 +4,16 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 10px;
   justify-items: center;
 }
 
 .card {
-  height: 200px;
-  min-height: 200px;
-  max-width: 300px;
-  min-width: 200px;
+  height: 220px;
+  min-height: 220px;
+  max-width: 220px;
+  min-width: 220px;
 
   background-size: cover;
   background-position: center;
@@ -22,24 +22,24 @@
   justify-content: space-around;
   text-align: center;
   padding: 10px;
-  opacity: 0.8;
   transition: 0.2s ease;
+}
+
+.text-item-index {
+  opacity: 0;
+  text-shadow: 0 0 2px rgba(0,0,0, 1);
 }
 
 a:hover {
   text-decoration: none;
 
-  .card {
+  .card > h5, p {
     opacity: 1;
-
-    h5, p {
-      color: rgba(255, 255, 255, 1);
-    }
   }
 }
 
 .card > h5, p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 1);
   text-shadow: 0 0 1px rgba(0,0,0,0.6);
   font-size: 20px;
   font-weight: bold;

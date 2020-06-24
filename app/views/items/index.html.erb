@@ -4,10 +4,10 @@
   <div class="cards">
     <% @items.each do |item| %>
       <%= link_to category_item_path(@category, item) do %>
-        <div class="card" data-aos="fade-zoom-in" data-aos-duration="500" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path item.picture.key, height: 250, width: 250, crop: :fill %>')">
-          <h5><%= item.name %></h5>
-          <p><%= item.description %></p>
-          <p><%= '%.2f' % item.price %>€</p>
+        <div class="card" data-aos="fade-zoom-in" data-aos-duration="500" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= cl_image_path item.picture.key, height: 220, width: 220, crop: :fill %>')">
+          <h5 class="text-item-index"><%= item.name %></h5>
+          <p class="text-item-index"><%= item.description %></p>
+          <p class="text-item-index"><%= item.price.round %> €</p>
         </div>
       <% end %>
     <% end %>
