@@ -1,6 +1,7 @@
 <div class="container-show">
 
-  <%= image_tag "WALLDEC1.jpg" %>
+<div style="background-image: url('<%= cl_image_path @item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">>
+</div>
 
   <div class="information">
     <div class="details">
