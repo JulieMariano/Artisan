@@ -48,6 +48,7 @@ end
 'https://www.yogadirect.com/assets/images/Deluxe%20Mex%20Blankets_Red_Orange.jpg',
 'https://www.ynmblanket.ca/wp-content/uploads/2018/12/ynm-cooling-blanket.jpg'].each do |url|
   name = Faker::JapaneseMedia::DragonBall.character
+  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price:rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -66,6 +67,7 @@ end
 'https://www.reginaandrew.com/SSP%20Applications/NetSuite%20Inc.%20-%20SCA%20Mont%20Blanc/Development/assets/img/13-1369_1.jpg?resizeid=2&resizeh=500&resizew=0',
 'https://www.lightingcompany.co.uk/images/bankers-lamp-traditional-desk-light-green-shade-p23-4178_zoom.jpg'].each do |url|
   name = Faker::JapaneseMedia::SwordArtOnline.game_name
+  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -83,6 +85,7 @@ end
 'https://www.culinaris.eu/WebRoot/Store17/Shops/61562434/5D25/CE68/FC70/8363/B13C/0A0C/6D06/D792/5ksm2cb5tml_3.jpg',
 'https://i.pinimg.com/originals/13/66/ed/1366ed6fbb841c81d0f8d234f8346cb2.jpg'].each do |url|
   name = Faker::JapaneseMedia::SwordArtOnline.item
+  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..300))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -101,6 +104,7 @@ end
 'https://cdn.shopify.com/s/files/1/1212/1924/products/royal_clipped_rev_1_1024x.jpeg?v=1587762526',
 'https://www.dhresource.com/0x0/f2/albu/g2/M01/20/EB/rBVaGlZFjuOALmGRAANDRQat4Ko361.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.akuma_no_mi
+  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -119,6 +123,7 @@ end
 'https://ctl.s6img.com/society6/img/_VbKuZs1FZmavkvHbPXab6_gySU/w_700/wall-clocks/front/natural-frame/white-hands/~artwork,fw_3500,fh_3500,iw_3500,ih_3500/s6-0059/a/24986683_15577680/~~/bamboo-b0i-wall-clocks.jpg',
 'https://www.contemporaryheaven.co.uk/gfx/uploads/roman-big-vintage-bronze-skeleton-wall-clock-120cm-diameter-bronze-6991-zoom.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.island
+  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..300))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -135,7 +140,8 @@ end
 'https://img.staticbg.com/thumb/large/oaupload/banggood/images/E6/2B/2aa8e4b3-ffdc-4bd8-af24-34ccf8a3ac93.jpg',
 'https://www.lushome.com/wp-content/uploads/2012/01/desk-lamp-ideas-for-kids-rooms.jpg',
 'https://images-na.ssl-images-amazon.com/images/I/61N%2B4r6T-OL._AC_SX522_.jpg'].each do |url|
-  name = Faker::DcComics.hero
+  name = Faker::DcComics.hero 
+  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
