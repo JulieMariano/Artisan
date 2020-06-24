@@ -27,26 +27,6 @@
   transition: 0.2s ease;
 }
 
-a:hover {
-  text-decoration: none;
-
-  .img-card {
-    opacity: 0.35;
-  }
-
-  h5, p {
-    opacity: 1;
-  }
-}
-
-.text-holder > h5, p {
-  color: white;
-  text-shadow: 0 0 1px rgba(0,0,0,0.6);
-  font-size: 20px;
-  font-weight: bold;
-  opacity: 0;
-}
-
 .img-card {
   width: 220px;
   height: 220px;
@@ -59,4 +39,29 @@ a:hover {
 .text-holder {
   position: absolute;
   padding: 10px;
+
+  h5, p {
+    color: white;
+    text-shadow: 0 0 1px rgba(0,0,0,0.6);
+    font-size: 16px;
+    opacity: 0;
+  }
+
+  h5 {
+    font-weight: bold;
+    font-size: 20px;
+
+  }
+}
+
+a:hover {
+  text-decoration: none;
+
+  .img-card {
+    opacity: 0.35;
+  }
+
+  h5, p {
+    opacity: 1;
+  }
 }

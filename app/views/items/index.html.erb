@@ -7,9 +7,9 @@
         <div class="card" data-aos="fade-zoom-in" data-aos-duration="500">
           <div class="img-card" style="background-image: url('<%= cl_image_path item.picture.key, height: 220, width: 220, crop: :fill %>')"></div>
           <div class="text-holder">
-            <h5 class="text-item-index"><%= item.name %></h5>
-            <p class="text-item-index"><%= item.description %></p>
-            <p class="text-item-index"><%= item.price.round %> €</p>
+            <h5><%= item.name %></h5>
+            <p><%= item.description %></p>
+            <p><%= item.price.round %> €</p>
           </div>        
         </div>
       <% end %>
