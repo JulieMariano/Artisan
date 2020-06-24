@@ -76,7 +76,6 @@ end
 
 # Ceramics
 ['https://66.media.tumblr.com/24690446a2ed8e174a0d2592f2d3832c/tumblr_inline_pk09qf2FNa1qecfdw_500.jpg',
-'https://lh3.googleusercontent.com/proxy/TEOIJNlsRKWji_MPlbQWgd2ZQcA4Pdb92iPP8obuYLO5-h7QhX4y0VpG8Gw8GE17k35MLTK8-1e3zvuczDmqSmZLKM4EOXE4sydMA_G6-uCQtpqbhZnPVIOMPnVxcT5sxsZiO8pohKQ3QPYe0kKBF_7kcYs',
 'https://cdn.shopify.com/s/files/1/0119/2122/7876/files/01fe07a62802dfd5c93710f00c7e0115defc8126dc_480x480.jpg?v=1546392101',
 'https://static.rcwilley.com/products/111451167/Blue-and-White-Abstract-Ceramic-Sculpture-rcwilley-image1~800.jpg',
 'https://www.crikarsmarshall.com/uploads/4/5/4/6/4546722/818854_orig.jpg',
