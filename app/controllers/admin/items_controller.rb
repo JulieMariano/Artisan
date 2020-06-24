@@ -36,14 +36,14 @@ class Admin::ItemsController < ApplicationController
     @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to admin_category_item_path(@category, @item)
+    redirect_to admin_category_items_path(@category)
   end
 
-  def delete
+  def destroy
     @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to admin_category_items_path(@category)
   end
 
   private
