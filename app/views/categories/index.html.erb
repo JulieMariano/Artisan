@@ -26,7 +26,7 @@
 
         <div class="carousel-inner">
           <% category.top_three_items.each do |item| %>
-            <div class="carousel-item <%= "active" if item == category.top_three_items[0] %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random/400x400); width: 400px; height: 400px">
+            <div class="carousel-item <%= "active" if item == category.top_three_items[0] %>" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">
               <%= link_to category_item_path(category, item) do %>
                   <div class="carousel-caption" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
                     <h5><%= item.name %></h5>
