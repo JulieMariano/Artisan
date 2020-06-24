@@ -137,7 +137,6 @@ end
 'https://i.etsystatic.com/14593655/r/il/041632/1439373434/il_570xN.1439373434_mxcn.jpg',
 'https://i.pinimg.com/originals/9e/e8/fd/9ee8fdf0de0c047739c060dd3f4cf056.jpg',
 'https://www.dhresource.com/0x0/f2/albu/g6/M00/15/F0/rBVaSFteik6AWWy0AAF1br9My_U696.jpg',
-'https://img.staticbg.com/thumb/large/oaupload/banggood/images/E6/2B/2aa8e4b3-ffdc-4bd8-af24-34ccf8a3ac93.jpg',
 'https://www.lushome.com/wp-content/uploads/2012/01/desk-lamp-ideas-for-kids-rooms.jpg',
 'https://images-na.ssl-images-amazon.com/images/I/61N%2B4r6T-OL._AC_SX522_.jpg'].each do |url|
   name = Faker::DcComics.hero 
