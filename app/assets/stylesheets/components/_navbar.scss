@@ -1,6 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $nav-green;
+  h1{
+    font-family: Karla;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -25,5 +28,10 @@
   padding-left: 10px;
 }
 
-
+.logo-name{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  font-family: Pangolin;
+}
 
