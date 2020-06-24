@@ -134,8 +134,7 @@ end
 'https://www.dhresource.com/0x0/f2/albu/g6/M00/15/F0/rBVaSFteik6AWWy0AAF1br9My_U696.jpg',
 'https://img.staticbg.com/thumb/large/oaupload/banggood/images/E6/2B/2aa8e4b3-ffdc-4bd8-af24-34ccf8a3ac93.jpg',
 'https://www.lushome.com/wp-content/uploads/2012/01/desk-lamp-ideas-for-kids-rooms.jpg',
-'https://images-na.ssl-images-amazon.com/images/I/61N%2B4r6T-OL._AC_SX522_.jpg',
-'https://lh3.googleusercontent.com/proxy/-1JZOsIGHPt5Cg9weBGLAa0khVd_hHM7s4vo4nG-MhJS9k7QrUBBHSgYEl-j1bMnjZvS10dXpjkOis6yLsgrNJCawv1ZmwJKt-ph'].each do |url|
+'https://images-na.ssl-images-amazon.com/images/I/61N%2B4r6T-OL._AC_SX522_.jpg'].each do |url|
   name = Faker::DcComics.hero
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
