@@ -9,6 +9,11 @@
 require "open-uri"
 require "faker"
 
+# Clean DB
+Item.destroy_all
+Category.destroy_all
+User.destroy_all
+
 # Categories
 carpets = Category.create(name: "Carpets")
 mantas = Category.create(name: "Manta")
@@ -140,3 +145,8 @@ end
   new_item.save
   puts "Created new kids decoration's item named #{name}."
 end
+
+# 3. USERS
+laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
+edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
+
