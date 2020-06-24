@@ -1,7 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $nav-green;
-  h1{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  h1 {
     font-family: Karla;
   }
 }
@@ -24,14 +29,13 @@
   color: #9d2503;
 }
 
-.fas{
+.fas {
   padding-left: 10px;
 }
 
-.logo-name{
+.logo-name {
   display: flex;
   flex-direction: row;
   align-items: baseline;
   font-family: Pangolin;
 }
-
