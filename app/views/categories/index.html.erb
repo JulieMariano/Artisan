@@ -10,44 +10,51 @@
 </div>
 
 <div class="container" style="margin-bottom: 40px">
-  <% @categories.each do |category| %>
-    <%= link_to category_items_path(category) do %>
-      <h2 style="margin: 20px 0 10px 5px; color: black"><%= category.name %></h3>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <div class="categories">
 
-    <div class="bd-example" style="width: 400px; heigth: 400px">
-      <div id="carouselExampleCaptions<%= category.id %>" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="1"></li>
-          <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="2"></li>
-        </ol>
-
-        <div class="carousel-inner">
-          <% category.ordered_by_relevante_array[0..2].each do |item| %>
-
-            <div class="carousel-item <%= "active" if item == category.ordered_by_relevante_array[0] %>" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('<%= cl_image_path item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">
-              <%= link_to category_item_path(category, item) do %>
-                  <div class="carousel-caption" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
-                    <h5><%= item.name %></h5>
-                    <p><%= item.description %></p>
-                    <p><%= item.price.round %> €</p>
-                  </div>
-              <% end %>
-            </div>
+        <% @categories.each do |category| %>
+          <%= link_to category_items_path(category) do %>
+            <h2 class="background" style="margin: 20px 0 10px 5px; color: black"><span class="h2-span"><%= category.name %></span></h2>
           <% end %>
-        </div>
 
-        <a class="carousel-control-prev" href="#carouselExampleCaptions<%= category.id %>" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
+          <div class="bd-example category-carousel" style="width: 400px; heigth: 400px">
+            <div id="carouselExampleCaptions<%= category.id %>" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions<%= category.id %>" data-slide-to="2"></li>
+              </ol>
 
-        <a class="carousel-control-next" href="#carouselExampleCaptions<%= category.id %>" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
+              <div class="carousel-inner">
+                <% category.ordered_by_relevante_array[0..2].each do |item| %>
+
+                  <div class="carousel-item <%= "active" if item == category.ordered_by_relevante_array[0] %>" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('<%= cl_image_path item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">
+                    <%= link_to category_item_path(category, item) do %>
+                        <div class="carousel-caption" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
+                          <h5><%= item.name %></h5>
+                          <p><%= item.description %></p>
+                          <p><%= item.price.round %> €</p>
+                        </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+
+              <a class="carousel-control-prev" href="#carouselExampleCaptions<%= category.id %>" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+
+              <a class="carousel-control-next" href="#carouselExampleCaptions<%= category.id %>" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      
     </div>
-  <% end %>
+  </div>
 </div>
