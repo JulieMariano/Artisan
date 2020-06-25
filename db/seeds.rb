@@ -9,14 +9,41 @@
 require "open-uri"
 require "faker"
 
+
 # 1. Clean DB (from the more specific to the more general)
+
 Review.destroy_all
 Order.destroy_all
 Item.destroy_all
 Category.destroy_all
 User.destroy_all
 
-# 2. Categories
+
+# 2. Create reviews array
+
+reviews = ["Worst thing ever!", "Barelly usefull", "Meh...", "Kinda cool", "Cool", "Best purchase of my life!"]
+
+reviews_arr = []
+
+reviews.each_with_index do |review, index|
+  (index + 1).times { reviews_arr.push(review) }
+end
+
+
+# 3. Create users
+
+laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
+edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456")
+thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: "123456", is_admin: false)
+julie = User.create(name: "julie", email: "julie@gmail.com", password: "123456", is_admin: false)
+nuno = User.create(name: "nuno", email: "nuno@gmail.com", password: "123456")
+ana = User.create(name: "ana", email: "ana@gmail.com", password: "123456")
+
+users_arr = [laure, edgar, thomas, julie, nuno, ana]
+
+
+# 4. Categories
+
 carpets = Category.create(name: "Carpets")
 mantas = Category.create(name: "Manta")
 lighting = Category.create(name: "Lighting")
@@ -25,7 +52,8 @@ accessories = Category.create(name: "Accessories")
 walls_decoration = Category.create(name: "Decoration for walls")
 kids_decoration = Category.create(name: "Decoration for kids")
 
-# 3. Items
+
+# 5. Items
 
 # Carpets
 ['https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1585223058511-REPXSNHSQXJJHLTGKV2E/ke17ZwdGBToddI8pDm48kBv_UPqonc0QkjVp7lmusaZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdNiEGXG47E3xSiX-ojSoZKb8mEd0hsLap4_Sxpb3yWLeWxRHzm0xMjpe8EpHYJrIw/IMG_5867.jpg?format=500w',
@@ -43,6 +71,13 @@ kids_decoration = Category.create(name: "Decoration for kids")
   new_item.category = carpets
   new_item.save
   puts "Created new carpet named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
 
 # Mantas
@@ -55,13 +90,19 @@ end
 'https://3.bp.blogspot.com/-Xt0-Ejzrm1A/WJO5ufu6e4I/AAAAAAAACRk/5sFh7xqWOSkbrH-ZLGLHx_JzF3NH6BrpgCEw/s1600/Mizette_pic3.jpg',
 'https://3.bp.blogspot.com/-ELe7gro6xP0/WJO5pjs2GKI/AAAAAAAACRk/vQN3wqotXIgCNtY3A3-j4o8g9338YvLlACEw/s1600/Manta%2BAlentejana-7.jpg'].each do |url|
   name = Faker::JapaneseMedia::DragonBall.character
-  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price:rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = mantas
   new_item.save
   puts "Created new manta named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
 
 #Lighting items
@@ -74,13 +115,19 @@ end
 'https://www.vogue.pt/media/gallery/medium/TexMB%20D61-5160-@Sebasti%C3%A3o%20Correia%20de%20Campos.jpg',
 'https://www.vogue.pt/media/gallery/medium/paperfurniture_ambiente.jpg'].each do |url|
   name = Faker::JapaneseMedia::SwordArtOnline.game_name
-  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = lighting
   new_item.save
   puts "Created new lighting item named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
 
 # Ceramics
@@ -92,13 +139,19 @@ end
 'http://www.margaridamf.com/files/gimgs/53_53_mm.jpg',
 'http://www.margaridamf.com/files/gimgs/53_53_jr.jpg'].each do |url|
   name = Faker::JapaneseMedia::SwordArtOnline.item
-  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..300))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = ceramics
   new_item.save
   puts "Created new ceramic item named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
 
 # Acessories
@@ -111,13 +164,19 @@ end
 'http://cutestationeries.net/wp-content/uploads/2018/11/A-stylish-cover-with-a-cover-that-shines-in-the-business-scene-21-en.jpg',
 'http://mjoaoarnaud.com/portfolio/wp-content/uploads/2014/01/moleskine-021.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.akuma_no_mi
-  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = accessories
   new_item.save
   puts "Created new acessory item named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
 
 # Wall decorations
@@ -129,13 +188,19 @@ end
 'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-16_1000.jpg',
 'https://payload.cargocollective.com/1/1/37038/13751167/CORETOS_1000.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.island
-  puts url
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..300))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = walls_decoration
   new_item.save
   puts "Created new wall decoration's item named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
 
 # Kids decorations
@@ -144,18 +209,18 @@ end
 'https://res.cloudinary.com/streethub/image/upload/w_690,f_auto,q_auto:eco,dpr_auto,c_pad,b_white/v1549290784/brand/5c4b54fe222bc20003664d9c/c71c9037-436f-4b53-9588-336e9ad08b31.jpg',
 'https://res.cloudinary.com/streethub/image/upload/w_690,f_auto,q_auto:eco,dpr_auto,c_pad,b_white/v1549290784/brand/5c4b54fe222bc20003664d9c/1c8e92bd-722e-4a6f-84fa-b2835cd34239.jpg',
 'https://www.objectsmag.it/wp-content/uploads/2018/11/peluche-artigianali-di-mauvais-marie-1.jpg'].each do |url|
-  name = Faker::DcComics.hero 
-  puts url
+  name = Faker::DcComics.hero
   file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = kids_decoration
   new_item.save
   puts "Created new kids decoration's item named #{name}."
+  4.times do
+    review_content = reviews_arr[rand(0..20)]
+    review = Review.new(rating: reviews.index(review_content), content: review_content)
+    review.item = new_item
+    review.user = users_arr[rand(0..5)]
+    review.save
+  end
 end
-
-# 4. Users
-laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
-edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
-thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: "123456", is_admin: false)
-puts "Users created: #{User.all.count}."
