@@ -127,7 +127,7 @@ end
 'https://payload.cargocollective.com/1/1/37038/13751167/TRAJES_1000.jpg',
 'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-12_1000.jpg',
 'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-16_1000.jpg',
-'https://payload.cargocollective.com/1/1/37038/13751167/CORETOS_1000.jpgg'].each do |url|
+'https://payload.cargocollective.com/1/1/37038/13751167/CORETOS_1000.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.island
   puts url
   file = URI.open(url)
@@ -139,11 +139,11 @@ end
 end
 
 # Kids decorations
-['https://assets.bigcartel.com/product_images/245545121/rattle-kitten.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/251911364/baby-rattle-fox-giveaway-natal2-_1_.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/245545127/rattle-wolf.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/251911517/name.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/266396459/mm_gato-preto.jpg?auto=format&fit=max&w=1200'].each do |url|
+['https://res.cloudinary.com/streethub/image/upload/w_690,f_auto,q_auto:eco,dpr_auto,c_pad,b_white/v1549290784/brand/5c4b54fe222bc20003664d9c/036eb148-5b45-42e0-b722-4ed226688e2b.jpg',
+'https://res.cloudinary.com/streethub/image/upload/w_690,f_auto,q_auto:eco,dpr_auto,c_pad,b_white/v1549290785/brand/5c4b54fe222bc20003664d9c/d5bcd3c9-3049-4320-9c5d-091eab19c2e1.jpg',
+'https://res.cloudinary.com/streethub/image/upload/w_690,f_auto,q_auto:eco,dpr_auto,c_pad,b_white/v1549290784/brand/5c4b54fe222bc20003664d9c/c71c9037-436f-4b53-9588-336e9ad08b31.jpg',
+'https://res.cloudinary.com/streethub/image/upload/w_690,f_auto,q_auto:eco,dpr_auto,c_pad,b_white/v1549290784/brand/5c4b54fe222bc20003664d9c/1c8e92bd-722e-4a6f-84fa-b2835cd34239.jpg',
+'https://www.objectsmag.it/wp-content/uploads/2018/11/peluche-artigianali-di-mauvais-marie-1.jpg'].each do |url|
   name = Faker::DcComics.hero 
   puts url
   file = URI.open(url)
@@ -157,5 +157,5 @@ end
 # 4. Users
 laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
 edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
-thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: 123456, is_admin: false)
+thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: "123456", is_admin: false)
 puts "users created #{User.all.count}"
