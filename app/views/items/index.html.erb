@@ -2,7 +2,7 @@
 
 <div class="container-cards">
   <div class="cards">
-    <% @items.each do |item| %>
+    <% @category.ordered_by_relevante_array.each do |item| %>
       <%= link_to category_item_path(@category, item) do %>
         <div class="card" data-aos="fade-zoom-in" data-aos-duration="500">
           <div class="img-card" style="background-image: url('<%= cl_image_path item.picture.key, height: 220, width: 220, crop: :fill %>')"></div>
