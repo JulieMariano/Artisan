@@ -11,5 +11,6 @@ class ItemsController < ApplicationController
     @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     @review = Review.new
+    @order = Order.new
   end
 end

@@ -1,0 +1,29 @@
+<div style="margin: 10px">
+  <h1>My Cart</h1>
+
+  <div style="margin: 10px 20px 20px">
+    <ul style="padding: 10px 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px">
+      <% if @user.orders.length == 0 %>
+        <p class="show-text" style="margin-left: 10px">Your shopping cart is empty.</p>
+      <% else %>
+        <% @user.orders.each do |order| %>
+          <li style="list-style: none; align-items: center; padding: 10px 0; display: flex; box-shadow: 0 0 2px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; padding: 10px">
+            <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>'); width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 1px 0.5px rgba(0, 0, 0, 0.3); border-radius: 2px"></div>
+
+            <div style="margin: 10px">
+              <div style="display: flex">
+                <%= link_to order_path(order), method: :delete, data: {confirm: "Are you sure?"} do %>
+                  <i class="fas fa-trash-alt" style="font-size: 16px; color: black"></i>
+                <% end %>
+                <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
+              </div>
+              <p class="show-text" style="margin-left: 14px; margin: 5px 14px"><strong>Description: </strong><%= order.item.description %></p>
+              <p class="show-text" style="margin-left: 14px; margin: 5px 14px"><strong>Price: </strong><%= '%.2f' % order.item.price %> €</p>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+      <p>Total:</p> <%= @user.orders.map {|order| order.item.price}.sum %>
+    </ul>
+  </div>
+</div>
