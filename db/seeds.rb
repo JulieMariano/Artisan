@@ -45,8 +45,6 @@ kids_decoration = Category.create(name: "Decoration for kids")
   puts "Created new carpet named #{name}."
 end
 
-
-
 # Mantas
 ['https://www.noticiasmagazine.pt/files/2015/01/nm1184_mantas02.jpg',
 'https://margaridaferreira.pt/conteudos/uploads/2019/02/mantas-tear.jpg',
@@ -161,3 +159,4 @@ end
 # 4. Users
 laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
 edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
+thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: 123456, is_admin: false)

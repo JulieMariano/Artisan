@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     resources :items 
   end
 
+  resources :orders, only: [:index, :destroy]
+
   resources :categories do
     resources :items, only: [:index, :show] do
-      resources :orders, only: [:create, :destroy]
+      resources :orders, only: [:create]
       resources :reviews, only: [:create]
     end
   end
