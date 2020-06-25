@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     resources :items 
   end
 
-  resources :orders, only: [:index, :destroy]
+  resources :orders, only: [:index, :destroy] do
+    collection do
+      post "buy", to: "orders#buy"
+    end
+  end
 
   resources :categories do
     resources :items, only: [:index, :show] do

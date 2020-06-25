@@ -11,12 +11,13 @@
       <p class="show-text"><%= @item.description %></p>
     </div>
 
-    <div>
-      <div id="price-div">
-      <p id="price-tag" class="show-text"><b><%= '%.2f' % @item.price %> € </b></p>
-      <%= simple_form_for [@category, @item, @order] do |f| %>
-        <%= f.button :submit %>
-      <% end %>
+      <div>
+        <div id="price-div">
+        <p id="price-tag" class="show-text"><b><%= '%.2f' % @item.price %> € </b></p>
+        <%= simple_form_for [@category, @item, @order] do |f| %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
