@@ -1,7 +1,7 @@
 // Fonts
 
 h1 {
-  font-family: Karla;
+  font-family: $headers-font;
   font-size: 30px;
   font-style: normal;
   font-variant: normal;
@@ -10,7 +10,7 @@ h1 {
 }
 
 h2 {
-  font-family: Karla;
+  font-family: $headers-font;
   font-size: 26px;
   font-style: normal;
   font-variant: normal;
@@ -19,16 +19,16 @@ h2 {
 }
 
 h3 {
-  font-family: Karla;
+  font-family: $headers-font;
   font-size: 20px;
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
-  line-height: normal; 
+  line-height: normal;
 }
 
 h5 {
-  font-family: Inconsolata;
+  font-family: $body-font;
   font-size: 18px;
   font-style: normal;
   font-variant: normal;
@@ -37,7 +37,7 @@ h5 {
 }
 
 p {
-  font-family: Inconsolata;
+  font-family: $body-font;
   font-size: 16px;
   font-style: normal;
   font-variant: normal;
