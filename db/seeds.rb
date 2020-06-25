@@ -38,15 +38,17 @@ num = 375560
   puts "Created new carpet named #{name}."
 end
 
+
+
 # Mantas
-['https://images-na.ssl-images-amazon.com/images/I/71WSL5sN5PL._AC_SX522_.jpg',
-'https://cdn-mw.niceshops.com/upload/image/product/large/default/zoeppritz-blanket-soft-fleece-strawberry-763992-en.jpg',
-'https://images-na.ssl-images-amazon.com/images/I/81poyO0UlDL._AC_SX522_.jpg',
-'https://cdn-mw.niceshops.com/upload/image/product/large/default/zoeppritz-soft-fleece-blanket-baby-80x100-cm-762972-en.jpg',
-'https://images-na.ssl-images-amazon.com/images/I/81U1tji5z4L._AC_SL1500_.jpg',
-'https://cdn1.brandability.co.za/2017/11/19224735/Everest-Sherpa-Blanket-Red.jpg',
-'https://www.yogadirect.com/assets/images/Deluxe%20Mex%20Blankets_Red_Orange.jpg',
-'https://www.ynmblanket.ca/wp-content/uploads/2018/12/ynm-cooling-blanket.jpg'].each do |url|
+['https://www.noticiasmagazine.pt/files/2015/01/nm1184_mantas02.jpg',
+'https://margaridaferreira.pt/conteudos/uploads/2019/02/mantas-tear.jpg',
+'https://margaridaferreira.pt/conteudos/uploads/2019/02/mantas-capa-610x343.jpg',
+'https://margaridaferreira.pt/conteudos/uploads/2019/02/mantas-mizete.jpg',
+'https://margaridaferreira.pt/conteudos/uploads/2019/02/mantas-da-vida.jpg',
+'https://4.bp.blogspot.com/-eWlWzaP_13I/WJPJdcBzL9I/AAAAAAAACSE/HJNhZ9mXaA0F3B10e-gUUK6tziNC1SRMgCLcB/s1600/Manta%2BAlentejana-8.jpg',
+'https://3.bp.blogspot.com/-Xt0-Ejzrm1A/WJO5ufu6e4I/AAAAAAAACRk/5sFh7xqWOSkbrH-ZLGLHx_JzF3NH6BrpgCEw/s1600/Mizette_pic3.jpg',
+'https://3.bp.blogspot.com/-ELe7gro6xP0/WJO5pjs2GKI/AAAAAAAACRk/vQN3wqotXIgCNtY3A3-j4o8g9338YvLlACEw/s1600/Manta%2BAlentejana-7.jpg'].each do |url|
   name = Faker::JapaneseMedia::DragonBall.character
   puts url
   file = URI.open(url)
@@ -58,14 +60,14 @@ end
 end
 
 #Lighting items
-['https://www.deltalight.com/frontend/files/products/images/650x650/26011_936X_PF02.jpg',
-'https://www.deltalight.com/frontend/files/products/images/650x650/25822_0000_DET01.jpg',
-'https://img2.cgtrader.com/items/843005/7da88c57c8/intrigue-stand-lamp-3d-model-max-bip-obj-mtl-3ds-fbx.jpg',
-'https://i.etsystatic.com/16854380/r/il/65e572/1550991620/il_570xN.1550991620_3ptz.jpg',
-'https://i.pinimg.com/originals/fc/c3/f3/fcc3f3b158efca36ebc6f74742513707.jpg',
-'https://www.homesdirect365.co.uk/images/simple-white-table-lamp-p44533-41102_zoom.jpg',
-'https://www.reginaandrew.com/SSP%20Applications/NetSuite%20Inc.%20-%20SCA%20Mont%20Blanc/Development/assets/img/13-1369_1.jpg?resizeid=2&resizeh=500&resizew=0',
-'https://www.lightingcompany.co.uk/images/bankers-lamp-traditional-desk-light-green-shade-p23-4178_zoom.jpg'].each do |url|
+['https://cdn.shopify.com/s/files/1/0117/0309/1264/products/Paralelepipedo_madeira.jpg?v=1554127139',
+'https://jinjaritual.com/wp-content/uploads/2019/10/Entrelacados-lamp-at-Jinja-stand_MO19-768x944.jpg',
+'https://cdn.shopify.com/s/files/1/0117/0309/1264/products/Paralelepipedo_betao.jpg?v=1554127064',
+'https://mood.sapo.pt/wp-content/uploads/2029/09/Musgo-design.jpg',
+'https://mood.sapo.pt/wp-content/uploads/2029/09/Musgo-Design1.jpg',
+'https://www.vogue.pt/media/gallery/medium/Musgo%20Produto3.jpg',
+'https://www.vogue.pt/media/gallery/medium/TexMB%20D61-5160-@Sebasti%C3%A3o%20Correia%20de%20Campos.jpg',
+'https://www.vogue.pt/media/gallery/medium/paperfurniture_ambiente.jpg'].each do |url|
   name = Faker::JapaneseMedia::SwordArtOnline.game_name
   puts url
   file = URI.open(url)
@@ -77,13 +79,13 @@ end
 end
 
 # Ceramics
-['https://66.media.tumblr.com/24690446a2ed8e174a0d2592f2d3832c/tumblr_inline_pk09qf2FNa1qecfdw_500.jpg',
-'https://cdn.shopify.com/s/files/1/0119/2122/7876/files/01fe07a62802dfd5c93710f00c7e0115defc8126dc_480x480.jpg?v=1546392101',
-'https://static.rcwilley.com/products/111451167/Blue-and-White-Abstract-Ceramic-Sculpture-rcwilley-image1~800.jpg',
-'https://www.crikarsmarshall.com/uploads/4/5/4/6/4546722/818854_orig.jpg',
-'https://images-na.ssl-images-amazon.com/images/I/81bs4OVD8YL._SL1500_.jpg',
-'https://www.culinaris.eu/WebRoot/Store17/Shops/61562434/5D25/CE68/FC70/8363/B13C/0A0C/6D06/D792/5ksm2cb5tml_3.jpg',
-'https://i.pinimg.com/originals/13/66/ed/1366ed6fbb841c81d0f8d234f8346cb2.jpg'].each do |url|
+['https://www.vogue.pt/media/gallery/medium/Hibridae.jpg',
+'http://www.margaridamf.com/files/gimgs/39_39_spoon-cup.jpg',
+'http://www.margaridamf.com/files/gimgs/40_40_espresso2.jpg',
+'http://www.margaridamf.com/files/gimgs/1_home.jpg',
+'http://www.margaridamf.com/files/gimgs/53_53_monogramasas.jpg',
+'http://www.margaridamf.com/files/gimgs/53_53_mm.jpg',
+'http://www.margaridamf.com/files/gimgs/53_53_jr.jpg'].each do |url|
   name = Faker::JapaneseMedia::SwordArtOnline.item
   puts url
   file = URI.open(url)
@@ -95,14 +97,14 @@ end
 end
 
 # Acessories
-['https://i.pinimg.com/originals/f3/0a/ba/f30aba659d0ca9cf0d6cf14ac1e6b742.jpg',
-'https://p1.pxfuel.com/preview/132/215/578/jewelry-beads-bracelet-fashion.jpg',
-'https://cdn.shopify.com/s/files/1/3016/7980/products/34_1024x1024@2x.png?v=1571711578',
-'https://www.nicepng.com/png/detail/372-3720276_peacock-feather-pearl-pet-hair-clip-peacock-feather.png',
-'https://image.made-in-china.com/202f0j00EJmTuqbnAokU/Women-Accessories-Jewelry-Rose-Gold-Charm-Stainless-Steel-Pearl-Bracelet.jpg',
-'https://cdn.shopify.com/s/files/1/0864/0890/products/Untitled_design-86_1024x1024.png?v=1559171398',
-'https://cdn.shopify.com/s/files/1/1212/1924/products/royal_clipped_rev_1_1024x.jpeg?v=1587762526',
-'https://www.dhresource.com/0x0/f2/albu/g2/M01/20/EB/rBVaGlZFjuOALmGRAANDRQat4Ko361.jpg'].each do |url|
+['https://images.squarespace-cdn.com/content/v1/5c26b344fcf7fdb35ed3f946/1590006879185-1STN7FFKPEBAEOSOORNM/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/_MG_6011_web.jpg?format=1500w',
+'https://images.squarespace-cdn.com/content/v1/5c26b344fcf7fdb35ed3f946/1589980759116-Y47XZHDRH626J7QXEFIS/ke17ZwdGBToddI8pDm48kBqZKGEd5IotpaYmRYDAsV97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UUZVq6ZppKwiX6eDwUo8qraPuy3UhP68HLsKFmqmcZ6fP7cJNZlDXbgJNE9ef52e8w/Green_Front.png?format=1000w',
+'https://media.timeout.com/images/105517908/1024/576/image.jpg',
+'http://mjoaoarnaud.com/portfolio/wp-content/uploads/2015/11/livrofnac2@mja.jpg',
+'http://loja.publico.pt/product_images/x/735/caderno_vasco_01_400px__99741_zoom.jpg',
+'http://cutestationeries.net/wp-content/uploads/2018/11/A-stylish-cover-with-a-cover-that-shines-in-the-business-scene-20-en.jpg',
+'http://cutestationeries.net/wp-content/uploads/2018/11/A-stylish-cover-with-a-cover-that-shines-in-the-business-scene-21-en.jpg',
+'http://mjoaoarnaud.com/portfolio/wp-content/uploads/2014/01/moleskine-021.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.akuma_no_mi
   puts url
   file = URI.open(url)
@@ -114,14 +116,14 @@ end
 end
 
 # Wall decorations
-['https://cdn.shopify.com/s/files/1/0049/0314/1447/products/Iron-tree-wall-decor-item-unique-Design_3daac80d-26eb-4006-b813-0f7cd0f8ed8e_1200x1200.jpg?v=1571711006',
-'https://sc01.alicdn.com/kf/UTB8f70BCwQydeJk43PUq6AyQpXax/934022607/UTB8f70BCwQydeJk43PUq6AyQpXax.jpg_.webp',
-'https://i.pinimg.com/originals/15/dc/21/15dc217b666e9153d611fd0de23e506e.jpg',
-'https://www.dhoumm.co/cdn-k1/ho/wooden-home-decor-items-talentneeds_room-interior-and-decoration.jpg',
-'https://ae01.alicdn.com/kf/HTB14oAoOFXXXXbEaFXXq6xXFXXXw/Handmade-authentic-Continental-Iron-diamond-peacock-wall-clock-clock-watch-silent-living-room-wall-clock-American.jpg',
-'https://ae01.alicdn.com/kf/H131558a31d554370b94b4a1b6d36a8407/Wall-clock-home-decoration-quartz-clock-painting-clock-design-modern-bird-unique-gift-art-era-popular.jpg',
-'https://ctl.s6img.com/society6/img/_VbKuZs1FZmavkvHbPXab6_gySU/w_700/wall-clocks/front/natural-frame/white-hands/~artwork,fw_3500,fh_3500,iw_3500,ih_3500/s6-0059/a/24986683_15577680/~~/bamboo-b0i-wall-clocks.jpg',
-'https://www.contemporaryheaven.co.uk/gfx/uploads/roman-big-vintage-bronze-skeleton-wall-clock-120cm-diameter-bronze-6991-zoom.jpg'].each do |url|
+['https://payload.cargocollective.com/1/1/37038/13751167/CAPA_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/MAPA_1000.JPG',
+'https://payload.cargocollective.com/1/1/37038/13751167/MAPA1_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/TRAJES_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-12_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-16_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/CORETOS_1000.jpgg',
+'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-22111_1000.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.island
   puts url
   file = URI.open(url)
@@ -133,12 +135,12 @@ end
 end
 
 # Kids decorations
-['https://my-live-01.slatic.net/p/142b400e2a423934f38d8ac43082616f.jpg',
-'https://i.etsystatic.com/14593655/r/il/041632/1439373434/il_570xN.1439373434_mxcn.jpg',
-'https://i.pinimg.com/originals/9e/e8/fd/9ee8fdf0de0c047739c060dd3f4cf056.jpg',
-'https://www.dhresource.com/0x0/f2/albu/g6/M00/15/F0/rBVaSFteik6AWWy0AAF1br9My_U696.jpg',
-'https://www.lushome.com/wp-content/uploads/2012/01/desk-lamp-ideas-for-kids-rooms.jpg',
-'https://images-na.ssl-images-amazon.com/images/I/61N%2B4r6T-OL._AC_SX522_.jpg'].each do |url|
+['https://www.vogue.pt/media/gallery/medium/so%20so%20store%20EMBLEMATICO%202.jpg',
+'https://assets.bigcartel.com/product_images/245545121/rattle-kitten.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/251911364/baby-rattle-fox-giveaway-natal2-_1_.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/245545127/rattle-wolf.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/251911517/name.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/266396459/mm_gato-preto.jpg?auto=format&fit=max&w=1200'].each do |url|
   name = Faker::DcComics.hero 
   puts url
   file = URI.open(url)
