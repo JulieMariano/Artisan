@@ -7,4 +7,12 @@ class User < ApplicationRecord
   has_many :items, through: :orders
   has_many :orders
   has_many :reviews
+
+  def payed_orders
+    orders.where(bought: true).order(created_at: :desc)
+  end
+
+  def pending_orders
+    orders.where(bought: false).order(created_at: :desc)
+  end
 end

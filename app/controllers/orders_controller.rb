@@ -16,12 +16,18 @@ class OrdersController < ApplicationController
 
   def index
     @user = current_user
+    @total = @user.pending_orders.map {|order| order.item.price}.sum
   end
 
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
 
+    redirect_to orders_path
+  end
+
+  def buy
+    current_user.pending_orders.update_all(bought: true)
     redirect_to orders_path
   end
 end
