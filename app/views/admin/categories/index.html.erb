@@ -1,4 +1,4 @@
-<div class="container">
+<%# <div class="container">
   <div class="row">
     <div class="col-6 offset-3">
       <h2 style="margin-top: 20px">List of all categories :</h2>
@@ -18,4 +18,28 @@
         </div>
     </div>
   </div>
-</div>
+</div> %>
+
+<table class="table-auto">
+  <thead>
+   <tr class="text-green font-hand2">
+    <th class="">Name</th>
+	  <th class="">Added</th>
+    <th class="">show</th>
+    <th class="">edit</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @categories.each do |cat| %>
+    <tr>
+     <td class=""><%= cat.name %></td>
+     <td class=""><%= time_ago_in_words cat.created_at %> ago</td>
+     <td class=""><%= link_to 'Details', admin_category_path(cat) %></td>
+     <td class=""><%= link_to 'Edit', edit_admin_category_path(cat) %></td>
+    </tr>
+   <% end %>
+  </tbody>
+ </table>
+ <div style="margin-bottom: 20px">
+   <%= link_to 'Create a new category',  new_admin_category_path %>
+ </div>
