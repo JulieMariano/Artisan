@@ -21,7 +21,7 @@
             <div style="margin-left: 14px; margin: 5px 14px">
               <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
               <p class="show-text"><strong>Price: </strong><%= '%.2f' % order.item.price %> €</p>
-              <p class="show-text"><strong>Not payed yet</strong></p>
+               <%= link_to "Buy", buy_one_orders_path(order), method: :post, data: {confirm: "Your order equals #{'%.2f' % order.item.price} €. Wanna pay with the saved credit card?"} %>
             </div>
           </div>
         </li>
@@ -31,7 +31,7 @@
         <p style="display: flex; margin: 0; height:30px"><strong>Total: <%= '%.2f' % @total %> €</strong></p>
 
         <div style="margin-left: 20px; height:30px">
-          <%= link_to "Buy all", buy_orders_path, method: :post, data: {confirm: "Your order equals #{'%.2f' % @total} €. Wanna pay with the saved credit card?"} %>
+          <%= link_to "Buy all", buy_all_orders_path, method: :post, data: {confirm: "Your order equals #{'%.2f' % @total} €. Wanna pay with the saved credit card?"} %>
         </div>
       </div>
     <% end %>
