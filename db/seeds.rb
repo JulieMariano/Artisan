@@ -9,7 +9,9 @@
 require "open-uri"
 require "faker"
 
-# 1. Clean DB
+# 1. Clean DB (from the more specific to the more general)
+Review.destroy_all
+Order.destroy_all
 Item.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -26,15 +28,20 @@ kids_decoration = Category.create(name: "Decoration for kids")
 # 3. Items
 
 # Carpets
-num = 375560
-8.times do
+['https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1585223058511-REPXSNHSQXJJHLTGKV2E/ke17ZwdGBToddI8pDm48kBv_UPqonc0QkjVp7lmusaZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdNiEGXG47E3xSiX-ojSoZKb8mEd0hsLap4_Sxpb3yWLeWxRHzm0xMjpe8EpHYJrIw/IMG_5867.jpg?format=500w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1473010640871-V35W2ZI1UUMEABSCYY2I/ke17ZwdGBToddI8pDm48kMXRibDYMhUiookWqwUxEZ97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0luUmcNM2NMBIHLdYyXL-Jww_XBra4mrrAHD6FMA3bNKOBm5vyMDUBjVQdcIrt03OQ/Jangada_detalhe1.jpg?format=500w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1473010718664-HPVWREL3A7C2MSX2H92P/ke17ZwdGBToddI8pDm48kMXRibDYMhUiookWqwUxEZ97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0luUmcNM2NMBIHLdYyXL-Jww_XBra4mrrAHD6FMA3bNKOBm5vyMDUBjVQdcIrt03OQ/Aqua_detalhe1.jpg?format=500w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1473010519250-ZBPN70OPVSPV7GQ4VD28/ke17ZwdGBToddI8pDm48kMXRibDYMhUiookWqwUxEZ97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0luUmcNM2NMBIHLdYyXL-Jww_XBra4mrrAHD6FMA3bNKOBm5vyMDUBjVQdcIrt03OQ/California_detalhe1.jpg?format=500w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1585223058511-REPXSNHSQXJJHLTGKV2E/ke17ZwdGBToddI8pDm48kBv_UPqonc0QkjVp7lmusaZ7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UdNiEGXG47E3xSiX-ojSoZKb8mEd0hsLap4_Sxpb3yWLeWxRHzm0xMjpe8EpHYJrIw/IMG_5867.jpg?format=500w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1535442704768-0XB05LXJE9FFEGYSLZJJ/ke17ZwdGBToddI8pDm48kGimpnGS74lOCXEVScmdKfQUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8GRo6ASst2s6pLvNAu_PZdJblJnDTNjTASBy3WMly_ic7RFeFNz6WHDDme815vyzW9AukLhYm2lpbtr2HKmuE68/Toscana.jpg?format=1000w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1473005247379-P4YY9NRQ6SBWSL2HO0CF/ke17ZwdGBToddI8pDm48kDx2fgHInw5ktiwHDQP7SnoUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2A2aQTf0W060ps_bdfkPa_Ut-EFX1gmEuO_C938t8rMakL3r1G49e-3ZnDLNRdB_t/jardim_0.jpg?format=1000w',
+'https://images.squarespace-cdn.com/content/v1/56a8ba9db20943f2881fedbc/1473004622273-MTVPAXVHL556HTWULWOB/ke17ZwdGBToddI8pDm48kGCtUSrv_iXW0PSYtcht8HNZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVFw2WlHkL4iNX4jXyJfMwAz0NBKXCGEDvaOS0pBNucM3sckFGyUjJZh3ndWWxwNSUA/thumb_IMG_6612_1024.jpg?format=1000w'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.character
-  file = URI.open("https://d25tp5yt5ghnv4.cloudfront.net/image/desk_pdp_zoom/#{num}")
+  file = URI.open(url)
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(100..300))
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   new_item.category = carpets
   new_item.save
-  num += 1
   puts "Created new carpet named #{name}."
 end
 
@@ -111,6 +118,42 @@ end
   new_item.category = accessories
   new_item.save
   puts "Created new acessory item named #{name}."
+end
+
+# Wall decorations
+['https://payload.cargocollective.com/1/1/37038/13751167/CAPA_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/MAPA_1000.JPG',
+'https://payload.cargocollective.com/1/1/37038/13751167/MAPA1_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/TRAJES_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-12_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-16_1000.jpg',
+'https://payload.cargocollective.com/1/1/37038/13751167/CORETOS_1000.jpgg',
+'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-22111_1000.jpg'].each do |url|
+  name = Faker::JapaneseMedia::OnePiece.island
+  puts url
+  file = URI.open(url)
+  new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..300))
+  new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  new_item.category = walls_decoration
+  new_item.save
+  puts "Created new wall decoration's item named #{name}."
+end
+
+# Kids decorations
+['https://www.vogue.pt/media/gallery/medium/so%20so%20store%20EMBLEMATICO%202.jpg',
+'https://assets.bigcartel.com/product_images/245545121/rattle-kitten.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/251911364/baby-rattle-fox-giveaway-natal2-_1_.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/245545127/rattle-wolf.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/251911517/name.jpg?auto=format&fit=max&w=1200',
+'https://assets.bigcartel.com/product_images/266396459/mm_gato-preto.jpg?auto=format&fit=max&w=1200'].each do |url|
+  name = Faker::DcComics.hero 
+  puts url
+  file = URI.open(url)
+  new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
+  new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  new_item.category = kids_decoration
+  new_item.save
+  puts "Created new kids decoration's item named #{name}."
 end
 
 # 4. Users

@@ -16,29 +16,13 @@
 }
 
 .details {
-  height: 80%;
+  height: 70%;
 }
 
-#button-out{
-  background-color: $nav-orange;
-  width: 50%;
-  border-radius: 10px;
-  transition: .5s all;
-
-  &:hover {
-  background-color: $nav-red;
-  color: white;
-  }
-}
-
-.button{
-  display: flex;
-  align-items: flex-end;
-}
 
 #price-tag{
   color: black;
-  font-size: 25px;
+  font-size: 1rem;
 }
 
 .show-text {
@@ -52,7 +36,7 @@ hr {
   margin-right: auto;
 }
 
-.button {
+#price-div{
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
