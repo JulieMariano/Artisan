@@ -12,7 +12,7 @@
     </div>
 
     <div>
-      <p id="price-tag" class="show-text"><b><%= '%.2f' % @item.price %>€ </b></p>
+      <p id="price-tag" class="show-text"><b><%= '%.2f' % @item.price %> € </b></p>
       <div class="button">
         <button id="button-out">Add to Cart</button>
       </div>
@@ -21,7 +21,7 @@
 </div>
 
 <div style="margin: 20px">
-  <div style="min-width: 650px; padding: 10px 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px">
+  <div style="padding: 10px 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px">
     <%= simple_form_for [@category, @item, @review] do |f| %>
       <%= f.input :rating %>
       <%= f.input :content %>
@@ -29,17 +29,16 @@
     <% end %>
   </div>
 
-  <ul style="min-width: 650px; padding: 10px 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px">
+  <ul style="padding: 10px 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px">
     <% if @item.reviews.length == 0 %>
       <p class="show-text" style="margin-left: 10px">Be the first to leave a review!</p>
     <% else %>
       <% @item.reviews.reverse[0..4].each do |review| %>
         <li style="list-style: none; align-items: center; padding: 10px 0">
-
-          <p class="show-text" style="margin-bottom: 5px"><%= review.user.name.capitalize %></p>
+          <p class="show-text" style="margin-bottom: 0"><%= review.user.name.capitalize %></p>
 
           <p class="show-text" style="font-size: 18px; margin: 0">
-            <%= "★" * review.rating %>
+            <%= ("★" * review.rating) + ("☆" * (5 - review.rating)) %>
             <span style="font-size: 12px"><%= " #{review.created_at.strftime("%Y-%m-%d")}" %></span>
           </p>
 
