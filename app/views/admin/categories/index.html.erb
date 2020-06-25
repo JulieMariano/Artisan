@@ -14,7 +14,7 @@
     <tr>
      <td class=""><%= cat.name %></td>
      <td class=""><%= time_ago_in_words cat.created_at %> ago</td>
-     <td class=""><%= link_to 'Details', admin_category_items_path(cat) %></td>
+     <td class=""><%= link_to 'Details', admin_category_path(cat) %></td>
      <td class=""><%= link_to 'Edit', edit_admin_category_path(cat) %></td>
     </tr>
    <% end %>
