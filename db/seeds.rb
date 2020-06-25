@@ -27,7 +27,7 @@ kids_decoration = Category.create(name: "Decoration for kids")
 
 # Carpets
 num = 375560
-20.times do
+8.times do
   name = Faker::JapaneseMedia::OnePiece.character
   file = URI.open("https://d25tp5yt5ghnv4.cloudfront.net/image/desk_pdp_zoom/#{num}")
   new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(100..300))
@@ -37,8 +37,6 @@ num = 375560
   num += 1
   puts "Created new carpet named #{name}."
 end
-
-
 
 # Mantas
 ['https://www.noticiasmagazine.pt/files/2015/01/nm1184_mantas02.jpg',
@@ -115,42 +113,7 @@ end
   puts "Created new acessory item named #{name}."
 end
 
-# Wall decorations
-['https://payload.cargocollective.com/1/1/37038/13751167/CAPA_1000.jpg',
-'https://payload.cargocollective.com/1/1/37038/13751167/MAPA_1000.JPG',
-'https://payload.cargocollective.com/1/1/37038/13751167/MAPA1_1000.jpg',
-'https://payload.cargocollective.com/1/1/37038/13751167/TRAJES_1000.jpg',
-'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-12_1000.jpg',
-'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-16_1000.jpg',
-'https://payload.cargocollective.com/1/1/37038/13751167/CORETOS_1000.jpgg',
-'https://payload.cargocollective.com/1/1/37038/13751167/INCM_Etnografia_Miolo_Pato-16-22111_1000.jpg'].each do |url|
-  name = Faker::JapaneseMedia::OnePiece.island
-  puts url
-  file = URI.open(url)
-  new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..300))
-  new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-  new_item.category = walls_decoration
-  new_item.save
-  puts "Created new wall decoration's item named #{name}."
-end
-
-# Kids decorations
-['https://www.vogue.pt/media/gallery/medium/so%20so%20store%20EMBLEMATICO%202.jpg',
-'https://assets.bigcartel.com/product_images/245545121/rattle-kitten.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/251911364/baby-rattle-fox-giveaway-natal2-_1_.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/245545127/rattle-wolf.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/251911517/name.jpg?auto=format&fit=max&w=1200',
-'https://assets.bigcartel.com/product_images/266396459/mm_gato-preto.jpg?auto=format&fit=max&w=1200'].each do |url|
-  name = Faker::DcComics.hero 
-  puts url
-  file = URI.open(url)
-  new_item = Item.new(name: name, description: "Give your home a vibrant, coulourful and creative touch !", price: rand(50..200))
-  new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-  new_item.category = kids_decoration
-  new_item.save
-  puts "Created new kids decoration's item named #{name}."
-end
-
 # 4. Users
 laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
 edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
+thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: 123456, is_admin: false)
