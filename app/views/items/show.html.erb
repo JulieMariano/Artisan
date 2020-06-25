@@ -41,7 +41,7 @@
 
           <p class="show-text" style="font-size: 18px; margin: 0">
             <%= ("★" * review.rating) + ("☆" * (5 - review.rating)) %>
-            <span style="font-size: 12px"><%= " #{review.created_at.strftime("%Y-%m-%d")}" %></span>
+            <span style="font-size: 12px"><%= " #{time_ago_in_words(review.created_at)}" %></span>
           </p>
 
           <p class="show-text" style="margin-left: 16px; margin-bottom: 5px"><%= review.content %></p>
