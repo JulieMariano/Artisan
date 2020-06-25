@@ -158,4 +158,4 @@ end
 laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
 edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456", is_admin: false)
 thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: "123456", is_admin: false)
-puts "users created #{User.all.count}"
+puts "Users created: #{User.all.count}."

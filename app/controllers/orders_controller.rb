@@ -26,8 +26,13 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def buy
+  def buy_all
     current_user.pending_orders.update_all(bought: true)
+    redirect_to orders_path
+  end
+
+  def buy_one
+    Order.find(params["format"]).update(bought: true)
     redirect_to orders_path
   end
 end
