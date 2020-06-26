@@ -48,6 +48,7 @@
   .h2-span {
     border-bottom:3px solid  #9D2503;
     padding-bottom:2px;
+    margin-top: 0;
   }
   
   .h2-span:hover {
@@ -61,7 +62,6 @@
     justify-content: center;
     height: 25 px;
     background-color: rgba(0, 0, 0, 0.1);
-    
     align-items: flex-end;
    
   
@@ -84,17 +84,18 @@
   }
 
   .reassurance {
+    height: 400px;
     display: flex;
     justify-content: space-around;
-    border-bottom: 2px solid #df8543;
-    
+    align-items: center;
+   
   }
 
   .reassurance-card {
     font-size: 40px;
     text-align: center;
     color: #9D2503;
-    margin-top: 25px;
+    
   }
 
   .catch {
