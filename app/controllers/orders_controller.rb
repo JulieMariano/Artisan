@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
 
     if @order.save
-      redirect_to category_item_path(@category, @item), notice: "Order for #{@item.name} was created!"
+      redirect_to category_item_path(@category, @item), notice: "🛒 #{@item.name} was added to your shopping cart!"
     else
       render 'items/show'
     end

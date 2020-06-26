@@ -21,7 +21,10 @@
         <% end %>
         
         <li class="nav-item">
-          <%= link_to "Cart", orders_path, id:"navbar-link", class: "nav-link", style: "margin: 0 5px" %>
+          <%= link_to orders_path, id:"navbar-link", class: "nav-link", style: "margin: 0 5px" do %>
+            Cart
+            <%= "(#{current_user.pending_orders.size})" unless current_user.pending_orders.size == 0 %>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to "Special Offers", "#",id:"navbar-link", class: "nav-link", style: "margin: 0 5px" %>
