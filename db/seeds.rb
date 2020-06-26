@@ -33,13 +33,19 @@ end
 # 3. Create users
 
 laure = User.create(name: "laure", email: "laure@gmail.com", password: "123456", is_admin: true)
-edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456")
 thomas = User.create(name: "thomas", email: "thomas@gmail.com", password: "123456", is_admin: false)
-julie = User.create(name: "julie", email: "julie@gmail.com", password: "123456", is_admin: false)
+edgar = User.create(name: "edgar", email: "edgar@gmail.com", password: "123456")
+julie = User.create(name: "julie", email: "julie@gmail.com", password: "123456")
 nuno = User.create(name: "nuno", email: "nuno@gmail.com", password: "123456")
 ana = User.create(name: "ana", email: "ana@gmail.com", password: "123456")
+carla = User.create(name: "carla", email: "carla@gmail.com", password: "123456")
+sofia = User.create(name: "sofia", email: "sofia@gmail.com", password: "123456")
+ruben = User.create(name: "ruben", email: "ruben@gmail.com", password: "123456")
+tiago = User.create(name: "tiago", email: "tiago@gmail.com", password: "123456")
+jonh = User.create(name: "jonh", email: "jonh@gmail.com", password: "123456")
+maria = User.create(name: "maria", email: "maria@gmail.com", password: "123456")
 
-users_arr = [laure, edgar, thomas, julie, nuno, ana]
+users_arr = [edgar, julie, nuno, ana, carla, sofia, ruben, tiago, jonh, maria]
 
 
 # 4. Categories
@@ -75,7 +81,7 @@ kids_decoration = Category.create(name: "Decoration for kids")
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
@@ -100,7 +106,7 @@ end
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
@@ -125,7 +131,7 @@ end
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
@@ -149,7 +155,7 @@ end
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
@@ -174,7 +180,7 @@ end
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
@@ -198,7 +204,7 @@ end
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
@@ -220,7 +226,7 @@ end
     review_content = reviews_arr[rand(0..20)]
     review = Review.new(rating: reviews.index(review_content), content: review_content)
     review.item = new_item
-    review.user = users_arr[rand(0..5)]
+    review.user = users_arr[rand(0..9)]
     review.save
   end
 end
