@@ -21,18 +21,23 @@
             <div style="margin-left: 14px; margin: 5px 14px">
               <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
               <p class="show-text"><strong>Price: </strong><%= '%.2f' % order.item.price %> €</p>
-               <%= link_to "Buy", buy_one_orders_path(order), method: :post, data: {confirm: "Your order equals #{'%.2f' % order.item.price} €. Wanna pay with the saved credit card?"} %>
+              <%= link_to buy_one_orders_path(order), class:"btn btn-ghost", style:"display: flex; width: 85px", method: :post, data: {confirm: "Your order equals #{'%.2f' % order.item.price} €. Wanna pay with the saved credit card?"} do %>
+                <i class="fas fa-shopping-cart" style="height: 20px; padding: 0"></i>
+                <p style="margin: 0 0 0 10px"> Buy</p>
+              <% end %>
             </div>
           </div>
         </li>
       <% end %>
 
-      <div style="display: flex; align-items: center; margin-left: 10px">
-        <p style="display: flex; margin: 0; height:30px"><strong>Total: <%= '%.2f' % @total %> €</strong></p>
+      <div style="display: flex; align-items: center; margin: 0 0 10px 10px">
+        <p style="display: flex; margin: 10px 0 0; height:30px"><strong>Total: <%= '%.2f' % @total %> €</strong></p>
 
-        <div style="margin-left: 20px; height:30px">
-          <%= link_to "Buy all", buy_all_orders_path, method: :post, data: {confirm: "Your order equals #{'%.2f' % @total} €. Wanna pay with the saved credit card?"} %>
-        </div>
+          <%= link_to buy_all_orders_path, class:"btn btn-ghost", style:"display: flex; margin-left: 20px", method: :post, data: {confirm: "Your order equals #{'%.2f' % @total} €. Wanna pay with the saved credit card?"} do %>
+            <i class="fas fa-shopping-cart" style="height: 20px; padding: 0"></i>
+            <p style="margin: 0 0 0 10px"> Buy all</p>
+          <% end %>
+
       </div>
     <% end %>
   </ul>
