@@ -1,15 +1,32 @@
-<div class="container-show">
-
-  <div style="background-image: url('<%= cl_image_path @item.picture.key, height: 400, width: 400, crop: :fill %>'); width: 400px; height: 400px">>
-  </div>
-
-  <div class="information">
-    <div class="details">
-      <h2><b><%= @item.name %></b></h2>
-      <hr>
-      <p class="show-text"><b><%= @item.category.name %></b></p>
-      <p class="show-text"><%= @item.description %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-4 mt-3">
+      <div class="product-img" style="background-image: url('<%= cl_image_path @item.picture.key, height: 400, width: 400, crop: :fill %>');">>
+      </div>
     </div>
+
+    <div class="col-12 col-md-4 mt-3">
+      <div class="information">
+        <div class="details">
+          <h2><b><%= @item.name %></b></h2>
+          <hr>
+          <p class="show-text"><b><%= @item.category.name %></b></p>
+          <p class="show-text"><%= @item.description %></p>
+        </div>
+
+        <div id="price-div">
+          <div id="price-tag" class="show-text"><b><%= '%.2f' % @item.price %> € </b></div>
+          <div>
+            <%= simple_form_for [@category, @item, @order] do |f| %>
+              <%= f.button :submit, class: "btn btn-ghost" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="col-12 col-md-4 mt-3">
+<div>
 
       <div>
         <div id="price-div">
@@ -55,4 +72,14 @@
       <% end %>
     <% end %>
   </ul>
+
+  <div class="review-form">
+    <%= simple_form_for [@category, @item, @review] do |f| %>
+      <%= f.input :rating %>
+      <%= f.input :content %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+</div>
 </div>
