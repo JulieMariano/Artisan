@@ -5,14 +5,14 @@
 
 
 .btn-ghost {
-  background-color: $nav-yellow;
-  color: black;
+  background-color: $nav-red;
+  color: white;
   font-family: $body-font;
   //border: 1px solid #4A4A4A;
   padding: 8px 24px;
   border-radius: 5px;
   font-weight: lighter;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
