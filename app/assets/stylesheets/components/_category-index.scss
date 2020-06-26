@@ -55,4 +55,28 @@
     opacity: 0.8;
     border-bottom:3px solid $nav-green;
   }
+
+  .informations {
+    display: flex;
+    justify-content: center;
+    height: 45vh;
+    background-color: #9D2503;
+    opacity: 0.7;
+  
+      h1 {
+        text-align: center;
+        color: black;
+      }
+
+      p {
+        color: white;
+      }
+  }
+
+  .info {
+    text-align: justify;
+    padding: 20px;
+    
+  }
+
   
