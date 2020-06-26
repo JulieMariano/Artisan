@@ -6,7 +6,7 @@
 
         <div class="information">
           <div class="details">
-            <h2><b><%= @item.name %></b></h2>
+            <h2 id="item-name"><b><%= @item.name %></b></h2>
             <hr>
             <p class="show-text"><b><%= @item.category.name %></b></p>
             <p class="show-text"><%= @item.description %></p>
@@ -48,7 +48,7 @@
             <% end %>
           <% end %>
 
-          
+
             <h5 style="margin: 20px 0 5px">Leave a review</h5>
             <div style="padding: 10px 5px; margin-bottom: 20px">
               <%= simple_form_for [@category, @item, @review] do |f| %>
