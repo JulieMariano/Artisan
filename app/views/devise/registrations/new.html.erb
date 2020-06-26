@@ -20,13 +20,16 @@
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
         </div>
+        <div style="display: flex; justify-content: center;">
+          <div style="margin-bottom: 20px; display: flex;" class="form-actions btn btn-flat sign-button">
+            <%= f.button :submit, "Sign up", class: "btn btn-ghost sign", id: "login" %>
+          </div>
 
-        <div style="margin-bottom: 20px" class="form-actions btn btn-flat sign-button">
-          <%= f.button :submit, "Sign up", class: "btn btn-ghost" %>
+          <div style="margin-bottom: 20px; padding: 7px; display: flex;"><%= render "devise/shared/links"%></div>
+          </div>
+          <% end %>
         </div>
-      <% end %>
 
-      <div style="margin-bottom: 20px"><%= render "devise/shared/links" %></div>
-    </div>
+
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div class="container">
     <h1 style="margin-bottom: 10px">Find the most beautiful crafts around the world!</h1>
     <% if user_signed_in? %>
-      <%= link_to "Special Offers", "#", class: "btn btn-flat" %>
+      <%= link_to "Special Offers", "#", class: "btn btn-ghost" %>
     <% else %>
       <%= link_to "Sign up", new_user_registration_path, class: "btn btn-ghost" %>
     <% end %>
