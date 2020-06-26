@@ -1,25 +1,23 @@
-
-
-<table class="table-auto">
-  <thead>
-   <tr class="text-green font-hand2">
-    <th class="">Name</th>
-	<th class="">Added</th>
-    <th class="">show</th>
-    <th class="">edit</th>
-   </tr>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Categories</th>
+      <th scope="col">Added</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+    </tr>
   </thead>
   <tbody>
-   <% @categories.each do |cat| %>
+     <% @categories.each do |cat| %>
     <tr>
-     <td class=""><%= cat.name %></td>
-     <td class=""><%= time_ago_in_words cat.created_at %> ago</td>
-     <td class=""><%= link_to 'Details', admin_category_path(cat) %></td>
-     <td class=""><%= link_to 'Edit', edit_admin_category_path(cat) %></td>
+      <th scope="row"><%= cat.name %></th>
+      <td><%= time_ago_in_words cat.created_at %> ago</td>
+      <td><%= link_to 'Details', admin_category_path(cat) %></td>
+      <td><%= link_to 'Edit', edit_admin_category_path(cat) %></td>
     </tr>
-   <% end %>
+    <% end %>
   </tbody>
- </table>
+</table>
 
 <div style="margin-bottom: 20px">
   <%= link_to 'Create a new category',  new_admin_category_path %>
