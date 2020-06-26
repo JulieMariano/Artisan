@@ -60,18 +60,14 @@
   .informations {
     display: flex;
     justify-content: center;
-    height: 25 px;
     background-color: rgba(0, 0, 0, 0.1);
-    align-items: flex-end;
-   
-  
+    
       h1 {
         text-align: center;
         color: #9D2503;
         opacity: 0.8;
         text-transform: uppercase;
       }
-
       p {
         color: black;
       }
@@ -79,12 +75,12 @@
 
   .info {
     text-align: justify;
-    padding: 20px; 
-    
+    padding: 20px;
+    height: 300px;    
   }
 
   .reassurance {
-    height: 400px;
+    height: 300px;
     display: flex;
     justify-content: space-around;
     align-items: center;
