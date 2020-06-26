@@ -1,14 +1,14 @@
 class Admin::ItemsController < ApplicationController
 
-  def index
-    @category = Category.find(params[:category_id])
-    @items = Item.where(category: @category)
-  end
+  # def index
+  #   @category = Category.find(params[:category_id])
+  #   @items = Item.where(category: @category)
+  # end
 
-  def show
-    @category = Category.find(params[:category_id])
-    @item = Item.find(params[:id])
-  end
+  # def show
+  #   @category = Category.find(params[:category_id])
+  #   @item = Item.find(params[:id])
+  # end
 
   def new
     @category = Category.find(params[:category_id])

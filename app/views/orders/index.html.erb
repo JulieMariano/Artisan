@@ -1,29 +1,66 @@
-<div style="margin: 10px">
-  <h1>My Cart</h1>
+<div>
+  <ul style="padding: 10px 20px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4); margin: 30px 20px">
+    <h1 style="margin-bottom: 20px">My Shopping Cart</h1>
 
-  <div style="margin: 10px 20px 20px">
-    <ul style="padding: 10px 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px">
-      <% if @user.orders.length == 0 %>
-        <p class="show-text" style="margin-left: 10px">Your shopping cart is empty.</p>
-      <% else %>
-        <% @user.orders.each do |order| %>
-          <li style="list-style: none; align-items: center; padding: 10px 0; display: flex; box-shadow: 0 0 2px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; padding: 10px">
-            <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>'); width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 1px 0.5px rgba(0, 0, 0, 0.3); border-radius: 2px"></div>
+    <% if @user.pending_orders.length == 0 %>
+      <p class="show-text" style="margin-left: 10px">Your shopping cart is empty.</p>
 
-            <div style="margin: 10px">
-              <div style="display: flex">
-                <%= link_to order_path(order), method: :delete, data: {confirm: "Are you sure?"} do %>
-                  <i class="fas fa-trash-alt" style="font-size: 16px; color: black"></i>
-                <% end %>
-                <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
-              </div>
-              <p class="show-text" style="margin-left: 14px; margin: 5px 14px"><strong>Description: </strong><%= order.item.description %></p>
-              <p class="show-text" style="margin-left: 14px; margin: 5px 14px"><strong>Price: </strong><%= '%.2f' % order.item.price %> €</p>
+    <% else %>
+      <% @user.pending_orders.each do |order| %>
+        <li style="list-style: none; align-items: center; display: flex; box-shadow: 0 0 2px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; padding: 10px">
+          <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>'); width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 1px 0.5px rgba(0, 0, 0, 0.3); border-radius: 2px"></div>
+
+          <div style="margin: 10px">
+            <div style="display: flex">
+              <%= link_to order_path(order), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="fas fa-trash-alt" style="font-size: 18px"></i>
+              <% end %>
+              <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
             </div>
-          </li>
-        <% end %>
+
+            <div style="margin-left: 14px; margin: 5px 14px">
+              <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
+              <p class="show-text"><strong>Price: </strong><%= '%.2f' % order.item.price %> €</p>
+               <%= link_to "Buy", buy_one_orders_path(order), method: :post, data: {confirm: "Your order equals #{'%.2f' % order.item.price} €. Wanna pay with the saved credit card?"} %>
+            </div>
+          </div>
+        </li>
       <% end %>
-      <p>Total:</p> <%= @user.orders.map {|order| order.item.price}.sum %>
-    </ul>
-  </div>
+
+      <div style="display: flex; align-items: center; margin-left: 10px">
+        <p style="display: flex; margin: 0; height:30px"><strong>Total: <%= '%.2f' % @total %> €</strong></p>
+
+        <div style="margin-left: 20px; height:30px">
+          <%= link_to "Buy all", buy_all_orders_path, method: :post, data: {confirm: "Your order equals #{'%.2f' % @total} €. Wanna pay with the saved credit card?"} %>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+
+  <ul style="padding: 10px 20px 10px 20px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4); margin: 30px 20px">
+    <h1 style="margin-bottom: 20px">Orders History</h1>
+
+    <% if @user.payed_orders.length == 0 %>
+      <p class="show-text" style="margin-left: 10px">You have not made any orders yet</p>
+
+    <% else %>
+      <% @user.payed_orders.each do |order| %>
+        <li style="list-style: none; align-items: center; display: flex; box-shadow: 0 0 2px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; padding: 10px">
+          <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>'); width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 1px 0.5px rgba(0, 0, 0, 0.3); border-radius: 2px"></div>
+
+          <div style="margin: 10px">
+            <div style="display: flex">
+              <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
+            </div>
+
+            <div style="margin-left: 14px; margin: 5px 14px">
+              <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
+              <p class="show-text"><strong>Paid: </strong><%= '%.2f' % order.item.price %> €</p>
+              <p class="show-text"><strong>Ordered: </strong><%= order.updated_at.strftime("%Y-%m-%d") %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 </div>

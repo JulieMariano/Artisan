@@ -1,30 +1,10 @@
-<%# <div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
-      <h2 style="margin-top: 20px">List of all categories :</h2>
-        <ul>
-          <% @categories.each do |category|%>
-            <li>
-            
-              <%= link_to category.name, admin_category_items_path(category)%> (<%=category.items.count %>)
-              <%= link_to 'Edit |',  edit_admin_category_path(category)%>
-              <%= link_to 'Delete',  admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}%>
-            </li>
-            
-          <%end%>
-        </ul>
-        <div style="margin-bottom: 20px">
-        <%= link_to 'Create a new category',  new_admin_category_path %>
-        </div>
-    </div>
-  </div>
-</div> %>
+
 
 <table class="table-auto">
   <thead>
    <tr class="text-green font-hand2">
     <th class="">Name</th>
-	  <th class="">Added</th>
+	<th class="">Added</th>
     <th class="">show</th>
     <th class="">edit</th>
    </tr>
@@ -40,6 +20,7 @@
    <% end %>
   </tbody>
  </table>
- <div style="margin-bottom: 20px">
-   <%= link_to 'Create a new category',  new_admin_category_path %>
- </div>
+
+<div style="margin-bottom: 20px">
+  <%= link_to 'Create a new category',  new_admin_category_path %>
+</div>

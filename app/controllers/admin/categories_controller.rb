@@ -28,7 +28,7 @@ class Admin::CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @items = @category.items
+    @items = Item.where(category: @category)
   end
 
   def destroy

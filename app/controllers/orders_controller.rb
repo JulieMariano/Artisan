@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
 
     if @order.save
-      redirect_to category_item_path(@category, @item)
+      redirect_to category_item_path(@category, @item), notice: "Order for #{@item.name} was created!"
     else
       render 'items/show'
     end
@@ -16,12 +16,23 @@ class OrdersController < ApplicationController
 
   def index
     @user = current_user
+    @total = @user.pending_orders.map {|order| order.item.price}.sum
   end
 
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
 
+    redirect_to orders_path
+  end
+
+  def buy_all
+    current_user.pending_orders.update_all(bought: true)
+    redirect_to orders_path
+  end
+
+  def buy_one
+    Order.find(params["format"]).update(bought: true)
     redirect_to orders_path
   end
 end
