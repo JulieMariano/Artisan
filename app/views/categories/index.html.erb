@@ -51,7 +51,7 @@
                         <div class="carousel-caption" style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end">
                           <h5><%= item.name %></h5>
                           <p><%= item.description %></p>
-                          <p><%= item.price.round %> €</p>
+                          <p><%= humanized_money_with_symbol(item.price) %></p>
                         </div>
                     <% end %>
                   </div>
