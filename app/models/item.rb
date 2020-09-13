@@ -8,6 +8,8 @@ class Item < ApplicationRecord
 
   has_one_attached :picture
 
+  monetize :price_cents
+
   def rating_average
     count = 0
     sum = 0
