@@ -69,3 +69,6 @@ gem 'faker'
 
 # Manipulate and handle integers as money
 gem 'money-rails'
+
+# Payment service
+gem 'stripe'
