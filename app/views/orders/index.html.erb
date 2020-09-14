@@ -21,7 +21,7 @@
             <div style="margin-left: 14px; margin: 5px 14px">
               <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
               <p class="show-text"><strong>Price: </strong><%= humanized_money_with_symbol(order.item.price) %></p>
-              <%= link_to buy_one_orders_path(order), class:"btn btn-ghost", style:"display: flex; width: 85px", method: :post, data: {confirm: "Your order equals #{humanized_money_with_symbol(order.item.price)}. Wanna pay with the saved credit card?"} do %>
+              <%= link_to new_order_payment(order), class:"btn btn-ghost", style:"display: flex; width: 85px", method: :post, data: {confirm: "Your order equals #{humanized_money_with_symbol(order.item.price)}. Wanna pay with the saved credit card?"} do %>
                 <i class="fas fa-shopping-cart" style="height: 20px; padding: 0"></i>
                 <p style="margin: 0 0 0 10px"> Buy</p>
               <% end %>
