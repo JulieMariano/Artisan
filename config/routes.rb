@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       post "buy_all", to: "orders#buy_all"
       post "buy_one", to: "orders#buy_one"
     end
+
+    resources :payments, only: :new
   end
 
   resources :categories do
