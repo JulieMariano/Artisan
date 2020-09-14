@@ -9,7 +9,7 @@
           <div class="text-holder">
             <h5><%= item.name %></h5>
             <p><%= item.description %></p>
-            <p><%= item.price.round %> €</p>
+            <p><%= humanized_money_with_symbol(item.price) %></p>
           </div>        
         </div>
       <% end %>
