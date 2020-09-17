@@ -9,10 +9,10 @@ class User < ApplicationRecord
   has_many :reviews
 
   def payed_orders
-    orders.where(bought: true).order(created_at: :desc)
+    orders.where(state: 'payed').order(created_at: :desc)
   end
 
   def pending_orders
-    orders.where(bought: false).order(created_at: :desc)
+    orders.where(state: 'pending').order(created_at: :desc)
   end
 end
