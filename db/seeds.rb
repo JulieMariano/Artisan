@@ -166,8 +166,6 @@ end
 'https://media.timeout.com/images/105517908/1024/576/image.jpg',
 'http://mjoaoarnaud.com/portfolio/wp-content/uploads/2015/11/livrofnac2@mja.jpg',
 'http://loja.publico.pt/product_images/x/735/caderno_vasco_01_400px__99741_zoom.jpg',
-'http://cutestationeries.net/wp-content/uploads/2018/11/A-stylish-cover-with-a-cover-that-shines-in-the-business-scene-20-en.jpg',
-'http://cutestationeries.net/wp-content/uploads/2018/11/A-stylish-cover-with-a-cover-that-shines-in-the-business-scene-21-en.jpg',
 'http://mjoaoarnaud.com/portfolio/wp-content/uploads/2014/01/moleskine-021.jpg'].each do |url|
   name = Faker::JapaneseMedia::OnePiece.akuma_no_mi
   file = URI.open(url)

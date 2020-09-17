@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'categories#index'
-  
+
   devise_for :users
 
   namespace :admin do
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :items 
+    resources :items
   end
 
   resources :orders, only: [:index, :destroy] do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       post "buy_one", to: "orders#buy_one"
     end
 
-    resources :payments, only: :new
+  resources :payments, only: :new
   end
 
   resources :categories do
