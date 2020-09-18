@@ -6,7 +6,28 @@
     <h1><%= @item.name %></h1>
 
     <div class="details">
-      <p class="show-text"><%= @item.description %></p>
+      <table style="width: 100%">
+        <tr>
+          <td style="width: 50px"><h5>Category</h5></td>
+          <td style="width: 15px"></td>
+          <td><h6><%= @item.category.name %></h6></td>
+        </tr>
+        <tr>
+          <td><h5>Rating</h5></td>
+          <td></td>
+          <td>
+            <h6>
+              <%= @item.rating_average %>
+              <span>
+                <%= @item.reviews.size %>
+                ratings
+              </span>
+            </h6>
+          </td>
+        </tr>
+      </table>
+
+      <p><%= @item.description %></p>
     </div>
 
     <p class="item-show-price"><%= humanized_money_with_symbol(@item.price) %></p>
