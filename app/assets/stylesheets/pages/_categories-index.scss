@@ -4,6 +4,7 @@
   text-transform: uppercase;
 
   span {
+    display: inline-block;  // In order to be remove the underline efect on hover
     color: rgba(0, 0, 0, 0.95);
     border-bottom: 3px solid #df8543;
     padding-bottom: 2px;
@@ -68,6 +69,7 @@
 
       h2 > span:hover {
         color: rgba(110, 40, 0, 1);
+        text-decoration: none;
       }
     }
 
