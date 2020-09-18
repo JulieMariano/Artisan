@@ -77,6 +77,32 @@
   }
 }
 
+.reviews-container {
+  width: 940px;
+  padding: 10px;
+  border-radius: 2px;
+  margin: 0 auto;
+
+  .stars-container {
+    padding: 0 20px 20px;
+    margin: 10px 0;
+    border: 1px solid #df8543;
+    border-radius: 2px;
+    height: fit-content;
+  }
+
+  ul {
+    margin: 10px 20px 0 10px;
+    width: 100%;
+
+    li {
+      list-style: none;
+      align-items: center;
+      padding: 20px 0;
+    }
+  }
+}
+
 .review-form{
   padding: 10px 20px;
   box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3);
