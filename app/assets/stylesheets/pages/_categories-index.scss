@@ -1,3 +1,16 @@
+.bordered-headers {
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+
+  span {
+    color: rgba(0, 0, 0, 0.95);
+    border-bottom: 3px solid #df8543;
+    padding-bottom: 2px;
+    line-height: 150%;
+  }
+}
+
 .informations {
   display: flex;
   justify-content: center;
@@ -53,23 +66,8 @@
       top: 50%;
       left: -190px;
 
-      h2 {
-        width: 175px;
-        padding: 0;
-        margin: 0;
-        text-align: right;
-        text-transform: uppercase;
-
-        span {
-          color: rgba(0, 0, 0, 0.95);
-          border-bottom: 3px solid #df8543;
-          padding-bottom: 2px;
-          line-height: 150%;
-
-          &:hover {
-            color: rgba(110, 40, 0, 1);
-          }
-        }
+      h2 > span:hover {
+        color: rgba(110, 40, 0, 1);
       }
     }
 
@@ -145,7 +143,7 @@
         
         h2 {
           margin-left: 20px;
-          width: fit-content;
+          width: fit-content !important;
         }
       }
     }

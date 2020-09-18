@@ -41,7 +41,7 @@
     <% @categories.each do |category| %>
       <div class="category-card">
         <%= link_to category_items_path(category), class: "category-card-title" do %>
-          <h2><span class="h2-span"><%= category.name %></span></h2>
+          <h2 class="bordered-headers" style="width: 175px; text-align: right"><span><%= category.name %></span></h2>
         <% end %>
 
         <div class="bd-example category-carousel" style="width: 400px; heigth: 400px">
