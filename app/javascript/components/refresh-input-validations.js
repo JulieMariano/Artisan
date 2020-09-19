@@ -49,3 +49,6 @@ function removeValidations(containerSelector, containerChildNum, inputType) {
   inputContainer.classList.remove('form-group-valid', 'form-group-invalid');
   inputField.classList.remove('is-valid', 'is-invalid');
 }
+
+export { refreshInputValidations };
+export { removeValidations };

@@ -28,11 +28,21 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { starRating } from '../components/star-rating';
+import { refreshInputValidations } from '../components/refresh-input-validations';
+import { removeValidations } from '../components/refresh-input-validations';
 import { readMore } from '../components/read-more';
 
 // Make the following JS functions accessible from the HTML files
 window.readMore = function() {
   readMore();
+}
+
+window.refreshInputValidations = function(containerSelector, containerChildNum, inputType, errorMessage) {
+  refreshInputValidations(containerSelector, containerChildNum, inputType, errorMessage);
+}
+
+window.removeValidations = function(containerSelector, containerChildNum, inputType) {
+  removeValidations(containerSelector, containerChildNum, inputType);
 }
 
 window.starRating = function() {
