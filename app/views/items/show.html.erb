@@ -17,7 +17,7 @@
           <td></td>
           <td>
             <h6>
-              <%= @item.rating_average %>
+              <%= @item.rating_average.round(1) %>
               <span>
                 <%= @item.reviews.size %>
                 ratings

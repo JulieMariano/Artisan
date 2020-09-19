@@ -11,20 +11,14 @@ class Item < ApplicationRecord
   monetize :price_cents
 
   def rating_average
-    count = 0
-    sum = 0
-    reviews.each do |review|
-      sum += review["rating"]
-      count += 1
-    end
-    sum.to_f / count
+    reviews.reduce(0) { |sum, review| sum + review.rating }
+           .fdiv(reviews.size)
   end
 
+  # Relevance points has a positive correlation with both the average rating and the number of reviews
+  # While the first variable manifests a perfect correlation, the second shows a decreasing one
   def relevance_points
-    if rating_average.nan?
-      return 0
-    else
-      (reviews.size * rating_average) / ( reviews.size ** 0.68 )
-    end
+    num_reviews = reviews.size
+    rating_average.nan? ? 0 : (num_reviews * rating_average) / (num_reviews ** 0.8)
   end
 end
