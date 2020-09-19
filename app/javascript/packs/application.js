@@ -28,6 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { starRating } from '../components/star-rating';
+import { readMore } from '../components/read-more';
 
 // Upon loading a page, load the following JS functions
 document.addEventListener('turbolinks:load', () => {
@@ -35,5 +36,6 @@ document.addEventListener('turbolinks:load', () => {
 
   if (reviewsContainer) {
     starRating();
+    readMore();
   }
 });

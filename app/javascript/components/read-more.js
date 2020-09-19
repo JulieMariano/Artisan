@@ -54,3 +54,5 @@ function readMore() {
     }
   }
 };
+
+export { readMore };
