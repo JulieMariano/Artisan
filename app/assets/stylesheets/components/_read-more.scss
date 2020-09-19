@@ -1,0 +1,27 @@
+.read-more {
+  line-height: 120%;
+  text-align: justify;
+  overflow: hidden;
+  margin: 0;
+  margin-left: 5px;
+}
+
+a.morelink {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+
+  color: #9d2503;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  padding-left: 15px;
+
+  &:hover {
+    color: #9d2503;
+  }
+
+  .elipse {
+    color: black;
+  }
+}
