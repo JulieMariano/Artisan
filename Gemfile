@@ -72,3 +72,6 @@ gem 'money-rails'
 
 # Payment service
 gem 'stripe'
+
+# To Ajaxify POST forms
+gem 'turbolinks_render'
