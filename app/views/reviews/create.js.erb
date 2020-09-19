@@ -1,4 +1,11 @@
-<% unless @review.errors.any? %>
+// If there are any errors in the submited form, then...
+<% if @review.errors.any? %>
+  // Refresh the input validations (Add error messages and change the input's container colors)
+  refreshInputValidations('.review_rating', 1, '.stars', "Rating <%= @review.errors.messages[:rating].first %>");
+  refreshInputValidations('.review_content', 1, 'textarea', "Content <%= @review.errors.messages[:content].first %>");
+
+// Otherwise, if there are no errors in the submited form...
+<% else %>
   // Refresh the Reviews list
   document.getElementById("reviews-list").innerHTML = "<%= j render partial: "reviews-list" %>";
 
@@ -11,5 +18,9 @@
     radioBox[i].checked = false;
   }
 
-  document.getElementById('review_content').value = '';         // Empty the content field
+  document.getElementById('review_content').value = '';   // Empty the content field
+
+  // If it exists, remove any Rating and Content related error messages and validation marks
+  removeValidations('.review_rating', 1, '.stars');
+  removeValidations('.review_content', 1, 'textarea');
 <% end %>

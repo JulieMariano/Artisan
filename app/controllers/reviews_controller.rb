@@ -4,13 +4,10 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @item = Item.find(params[:item_id])
     @user = User.find(current_user.id)
-    @category = Category.find(params[:category_id])
     @review.item = @item
     @review.user = @user
 
-    unless @review.save
-      render 'items/show'
-    end
+    @review.save
   end
 
   private
