@@ -37,9 +37,9 @@
 
 .stars label:hover:after,
 .stars label:hover ~ label:after {
-  color: gold !important;
+  color: rgba(255, 175, 0, 1) !important;
 }
 
 .stars input[type=radio]:checked ~ label:after {
-  color: gold;
+  color: rgba(255, 175, 0, 1)
 }

@@ -81,7 +81,7 @@ ul.reviews-container {
   width: 940px;
   padding: 10px;
   border-radius: 2px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 
   #new_review {
     display: flex;
@@ -112,8 +112,8 @@ ul.reviews-container {
 
       i {
         margin-right: 2px;
-        color: gold;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        color: rgba(255, 175, 0, 1);
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
         font-size: 15px;
       }
     }
