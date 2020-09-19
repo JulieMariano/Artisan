@@ -8,9 +8,7 @@ class ReviewsController < ApplicationController
     @review.item = @item
     @review.user = @user
 
-    if @review.save
-      redirect_to category_item_path(@category, @item)
-    else
+    unless @review.save
       render 'items/show'
     end
   end

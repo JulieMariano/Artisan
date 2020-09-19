@@ -30,12 +30,21 @@ import "bootstrap";
 import { starRating } from '../components/star-rating';
 import { readMore } from '../components/read-more';
 
+// Make the following JS functions accessible from the HTML files
+window.readMore = function() {
+  readMore();
+}
+
+window.starRating = function() {
+  starRating();
+}
+
 // Upon loading a page, load the following JS functions
 document.addEventListener('turbolinks:load', () => {
   const reviewsContainer = document.querySelector('.reviews-container');
 
   if (reviewsContainer) {
-    starRating();
     readMore();
+    starRating();
   }
 });
