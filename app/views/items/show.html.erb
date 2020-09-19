@@ -66,11 +66,11 @@
       <li>
         <p style="font-size: 18px; margin-bottom: 0"><%= review.user.name.capitalize %></p>
 
-        <p data-rating=<%= review.rating %> style="font-size: 18px; margin: 0">
-          <span style="font-size: 12px; margin-left: 2px"><%= time_ago_in_words(review.created_at) %></span>
+        <p data-rating=<%= review.rating %>>
+          <span style="font-size: 13px; margin-left: 2px"><%= time_ago_in_words(review.created_at) %></span>
         </p>
 
-        <p style="margin-left: 16px; margin-bottom: 5px"><%= review.content %></p>
+        <p class="read-more"><%= review.content %></p>
       </li>
     <% end %>
   <% end %>

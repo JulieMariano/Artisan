@@ -93,7 +93,8 @@ ul.reviews-container {
     width: 550px;
     height: fit-content;
     padding: 10px;
-    margin: 10px 0 10px;
+    padding-bottom: 0;
+    margin: 10px 0 0;
 
     .review_content {
       width: calc(100% - 180px);
@@ -109,6 +110,22 @@ ul.reviews-container {
     align-items: center;
     padding: 10px;
     margin: 0 0 5px 10px;
+
+    p[data-rating] {
+      margin: 5px;
+
+      i {
+        margin-right: 2px;
+        color: gold;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+        font-size: 15px;
+      }
+    }
+
+    .read-more {
+      margin: 0 0 15px 5px;
+      text-align: justify;
+    }
   }
 }
 
