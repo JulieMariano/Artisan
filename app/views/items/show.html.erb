@@ -33,49 +33,49 @@
     <p class="item-show-price"><%= humanized_money_with_symbol(@item.price) %></p>
 
     <%= simple_form_for [@category, @item, @order] do |f| %>
-      <%= f.button :submit, class: "btn btn-ghost", value: 'Add to Cart' %>
+      <%= f.button :submit, class: "btn btn-ghost", value: "Add to Cart" %>
     <% end %>
   </div>
 </div>
 
-<div class="reviews-container d-flex">
-  <div class="stars-container">
-    <h5 style="margin: 20px 0 5px">Review this product</h5>
+<ul class="reviews-container">
+  <h4>Costumers Reviews</h4>
 
-    <%= simple_form_for [@category, @item, @review] do |f| %>
-      <div class="stars">
-        <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-          <%= b.radio_button + b.label {''} %>
-        <% end %>
-      </div>
-
-      <%= f.input :content, label: false, placeholder: "Share your experience with us" %>
-      <%= f.button :submit, class: "btn btn-ghost" %>
-    <% end %>
-  </div>
-
-  <ul>
-    <h4>Costumers Reviews</h4>
-
-    <% if @item.reviews.length == 0 %>
-      <p style="margin-left: 10px">Be the first to leave a review!</p>
-
-    <% else %>
-      <% @item.reviews.reverse[0..4].each do |review| %>
-        <li>
-          <p style="margin-bottom: 0"><%= review.user.name.capitalize %></p>
-
-          <p style="font-size: 18px; margin: 0">
-            <%= ("★" * review.rating) + ("☆" * (5 - review.rating)) %>
-            <span style="font-size: 12px"><%= " #{time_ago_in_words(review.created_at)} ago" %></span>
-          </p>
-
-          <p style="margin-left: 16px; margin-bottom: 5px"><%= review.content %></p>
-        </li>
+  <%= simple_form_for [@category, @item, @review], html: { class: "stars-container" } do |f| %>
+    <div class="stars">
+      <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last,
+          item_wrapper_tag: false, boolean_style: :inline do |b| %>
+        <%= b.radio_button + b.label {''} %>
       <% end %>
+    </div>
+
+    <div class="d-flex" style="position: relative">
+      <%= f.input :content, label: false, placeholder: "Share your experience" %>
+
+      <div style="position: absolute; bottom: 20px; right: 10px">
+        <%= f.button :submit, class: "btn btn-ghost", value: "Leave Review" %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @item.reviews.length == 0 %>
+    <p style="margin-left: 10px">Be the first to leave a review!</p>
+
+  <% else %>
+    <% @item.reviews.reverse[0..4].each do |review| %>
+      <li>
+        <p style="font-size: 18px; margin-bottom: 0"><%= review.user.name.capitalize %></p>
+
+        <p style="font-size: 18px; margin: 0">
+          <%= ("★" * review.rating) + ("☆" * (5 - review.rating)) %>
+          <span style="font-size: 12px"><%= " #{time_ago_in_words(review.created_at)} ago" %></span>
+        </p>
+
+        <p style="margin-left: 16px; margin-bottom: 5px"><%= review.content %></p>
+      </li>
     <% end %>
-  </ul>
-</div>
+  <% end %>
+</ul>
 
 <!--
   <% if user_signed_in? && (current_user.reviews.count { |x| x.item.id == @item.id }) < (current_user.payed_orders.count { |x| x.item.id == @item.id }) %>
