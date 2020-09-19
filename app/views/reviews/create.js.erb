@@ -1,4 +1,15 @@
-document.getElementById("reviews-list").innerHTML = "<%= j render partial: "reviews-list" %>";
+<% unless @review.errors.any? %>
+  // Refresh the Reviews list
+  document.getElementById("reviews-list").innerHTML = "<%= j render partial: "reviews-list" %>";
 
-readMore();
-starRating();
+  starRating(); // Quantify each review's rating with stars
+  readMore();   // Hide the review's content if it is too long
+
+  // Clear the Rating radio boxes
+  var radioBox = document.querySelectorAll('.stars input');
+  for (let i = 1; i < 6; i++) {
+    radioBox[i].checked = false;
+  }
+
+  document.getElementById('review_content').value = '';         // Empty the content field
+<% end %>
