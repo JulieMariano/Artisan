@@ -9,20 +9,23 @@ Item.destroy_all
 Category.destroy_all
 User.destroy_all
 
-puts "DB cleaned"
+puts "DB cleaned\n\n"
 
 
 # Create Users
-def create_random_user
-  username = Faker::Name.first_name
+#   Method that generates a random user
+def random_user_generator
+  username = Faker::Name.first_name   # Generate a fake username
   User.create(name: username, email: "#{username}@gmail.com", password: "123456")
 end
 
 User.create(name: "Laure", email: "laure@gmail.com", password: "123456", is_admin: true)
 
-20.times { create_random_user }
+num_users = 20    # Number of Users to create
 
-puts "Users created: #{User.all.size}"
+num_users.times { random_user_generator }
+
+puts "Users created: #{User.all.size}\n\n"
 
 
 # Create Categories
@@ -34,7 +37,7 @@ lighting =          Category.create(name: "Lighting")
 mantas =            Category.create(name: "Mantas")
 walls_decorations = Category.create(name: "Decorations for Walls")
 
-puts "Categories created: #{Category.all.size}"
+puts "Categories created: #{Category.all.size}\n\n"
 
 
 # Items pictures url
@@ -128,21 +131,25 @@ data = [
 
 
 # Create Items
-def create_item(category, pic_url, name = nil)
+#   Method that generates a new Item based on the Category and picture_url passed as arguments
+def item_generator(category, pic_url, name = nil)
   item_name = (name.nil? ? Faker::JapaneseMedia::OnePiece.character : name)
-  
+
+  # Make sure the Item's name is unique
   unless Item.find_by(name: item_name).nil?
-    create_item(category, pic_url, Faker::JapaneseMedia::DragonBall.character)
+    item_generator(category, pic_url, Faker::JapaneseMedia::DragonBall.character)
   end
-  
+
   new_item = Item.new(name: item_name,
   description: "Give your home a vibrant, coulourful and creative touch!",
   price_cents: rand(5000..30000),
   category: category
   )
-  
+
+  # Get the stock-keeping unit
   new_item.sku = item_name.downcase.split(' ').join('_')
-  
+
+  # Get the picture
   file = URI.open(pic_url)
   new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
@@ -151,23 +158,25 @@ def create_item(category, pic_url, name = nil)
   return new_item
 end
 
-def create_random_reviews(item, num)
+#   Method that generates a certain 'num' of random reviews for a certain 'item'
+def random_reviews_generator(item, num)
   num.times { Review.create(item: item,
-    user: User.all.sample,
-    rating: Math.sqrt(rand(0..30)).floor,
-    content: Faker::Restaurant.review
-    )
-  }
+                            user: User.all.sample,
+                            rating: Math.sqrt(rand(0..30)).floor,
+                            content: Faker::Restaurant.review
+                           )
+            }
 end
 
-num_reviews = 5
+num_reviews = 5    # Number of Reviews to create by Item
 
 data.each do |category_data|
   counter = 0
 
+  # For each picture_url create a new Item with a certain number of reviews
   category_data[:pic_urls].each do |pic_url|
-    new_item = create_item(category_data[:category], pic_url)
-    create_random_reviews(new_item, num_reviews)
+    new_item = item_generator(category_data[:category], pic_url)
+    random_reviews_generator(new_item, num_reviews)
     counter += 1
 
     puts "#{category_data[:category].name}: #{new_item.name} (#{num_reviews} reviews)"
