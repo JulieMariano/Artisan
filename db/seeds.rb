@@ -142,7 +142,7 @@ def item_generator(category, pic_url, name = nil)
 
   new_item = Item.new(name: item_name,
   description: "Give your home a vibrant, coulourful and creative touch!",
-  price_cents: rand(5000..30000),
+  price_cents: rand(50..300) * 100,
   category: category
   )
 

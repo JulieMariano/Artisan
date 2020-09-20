@@ -2,7 +2,7 @@
   <p style="margin-left: 10px">Be the first to leave a review!</p>
 
 <% else %>
-  <% @item.reviews.reverse[0..4].each do |review| %>
+  <% @item.reviews.last(5).reverse.each do |review| %>
     <li>
       <p style="font-size: 18px; margin-bottom: 0"><%= review.user.name.capitalize %></p>
 
