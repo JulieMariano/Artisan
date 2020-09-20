@@ -11,25 +11,32 @@
                       required: true,
                       autofocus: true,
                       placeholder: "email",
-                      input_html: { autocomplete: "email" }%>
+                      input_html: { autocomplete: "email" } %>
+
+          <%= f.input :name,
+                      required: true,
+                      autofocus: true,
+                      placeholder: "Name",
+                      input_html: { autocomplete: "name" } %>
+
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
+
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
         </div>
+
         <div style="display: flex; justify-content: center;">
           <div style="margin-bottom: 20px; display: flex;" class="form-actions btn btn-flat sign-button">
             <%= f.button :submit, "Sign up", class: "btn btn-ghost sign", id: "login" %>
           </div>
 
           <div style="margin-bottom: 20px; padding: 7px; display: flex;"><%= render "devise/shared/links"%></div>
-          </div>
-          <% end %>
         </div>
-
-
+      <% end %>
+    </div>
   </div>
 </div>
