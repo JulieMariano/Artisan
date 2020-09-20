@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'categories#index'
 
-  devise_for :users
+  # Override the params accepted in the User Registration
+  devise_for :users, controllers: { registrations: 'user/registrations' }
 
   namespace :admin do
     resources :categories do
