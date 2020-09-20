@@ -32,7 +32,7 @@
 
     <p class="item-show-price"><%= humanized_money_with_symbol(@item.price) %></p>
 
-    <%= simple_form_for [@category, @item, @order] do |f| %>
+    <%= simple_form_for([@category, @item, @order], remote: true) do |f| %>
       <%= f.button :submit, class: "btn btn-ghost", value: "Add to Cart" %>
     <% end %>
   </div>
