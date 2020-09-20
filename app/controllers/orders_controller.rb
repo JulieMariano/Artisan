@@ -1,17 +1,17 @@
 class OrdersController < ApplicationController
   def create
-    @review = Review.new
-    @order = Order.new
     @item = Item.find(params[:item_id])
-    @category = Category.find(params[:category_id])
-    @order.item = @item
-    @order.user = current_user
+    @order = Order.new(item: @item,
+                       user: current_user,
+                       state: 'pending'
+                      )
 
     if @order.save
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
           name: @item.sku,
+          images: [@item.picture],
           amount: @item.price_cents,
           currency: 'eur',
           quantity: 1
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
       @order.update(checkout_session_id: session.id)
 
-      redirect_to category_item_path(@category, @item), notice: "🛒 #{@item.name} was added to your shopping cart!"
+      flash[:notice] = "🛒 #{@item.name} was added to your shopping cart!"
     else
       render 'items/show'
     end
