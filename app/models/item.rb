@@ -4,7 +4,6 @@ class Item < ApplicationRecord
   validates :sku, presence: true
 
   belongs_to :category
-  has_many :orders
   has_many :reviews
 
   has_one_attached :picture
