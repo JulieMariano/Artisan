@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
         payment_method_types: ['card'],
         line_items: [{
           name: @item.sku,
-          images: [@item.picture],
+          images: [Cloudinary::Utils.cloudinary_url(@item.picture.key)],
           amount: @item.price_cents,
           currency: 'eur',
           quantity: 1
@@ -21,8 +21,6 @@ class OrdersController < ApplicationController
       )
 
       @order.update(checkout_session_id: session.id)
-
-      flash[:notice] = "🛒 #{@item.name} was added to your shopping cart!"
     else
       render 'items/show'
     end
