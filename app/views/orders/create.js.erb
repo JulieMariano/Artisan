@@ -9,7 +9,7 @@ if (flash) { flash.remove() }
 // Otherwise...
 <% else %>
   // Display a notice of the order created
-  createFlash('alert-info', "🛒 <%= @item.name %> was added to your shopping cart!");
+  createFlash('alert-info', "<%= @item.name %> was added to your shopping cart");
 
   // Update the number of orders in the cart
   document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.pending_orders.size %>)";
