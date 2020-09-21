@@ -1,5 +1,13 @@
 class OrdersController < ApplicationController
-  def create
+  def add
+    @item = Item.find(params[:item_id])
+    @order = Order.create(item: @item,
+                          user: current_user,
+                          state: 'pending'
+                         )
+  end
+
+  def buy
     @item = Item.find(params[:item_id])
     @order = Order.new(item: @item,
                        user: current_user,
@@ -21,6 +29,8 @@ class OrdersController < ApplicationController
       )
 
       @order.update(checkout_session_id: session.id)
+
+      redirect_to new_order_payment_path(@order)
     end
   end
 
@@ -33,16 +43,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.destroy
 
-    redirect_to orders_path
-  end
-
-  def buy_all
-    current_user.pending_orders.update_all(bought: true)
-    redirect_to orders_path
-  end
-
-  def buy_one
-    Order.find(params["format"]).update(bought: true)
     redirect_to orders_path
   end
 end

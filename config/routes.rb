@@ -17,17 +17,13 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:index, :destroy] do
-    collection do
-      post "buy_all", to: "orders#buy_all"
-      post "buy_one", to: "orders#buy_one"
-    end
-
-  resources :payments, only: :new
+    resources :payments, only: :new
   end
 
   resources :categories do
     resources :items, only: [:index, :show] do
-      resources :orders, only: [:create]
+      post "add", to: "orders#add"
+      post "buy", to: "orders#buy"
       resources :reviews, only: [:create]
     end
   end

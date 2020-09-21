@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row py-4">
-    <div class="col-md-3"><%= image_tag @order.item.picture.key, width: '100%' %></div>
+    <div class="col-md-3"><img src="<%= cl_image_path @order.item.picture.key, width: '100%' %>"></div>
     <div class="col">
       <h1>Checkout summary</h1>
       <p>Purchase of <strong><%= @order.item.name %></strong> for <strong><%= humanized_money_with_symbol(@order.item.price) %></strong></p>

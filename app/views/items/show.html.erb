@@ -18,10 +18,7 @@
           <td>
             <h6>
               <%= @item.rating_average.round(1) %>
-              <span>
-                <%= @item.reviews.size %>
-                ratings
-              </span>
+              <span><%= @item.reviews.size %> ratings</span>
             </h6>
           </td>
         </tr>
@@ -32,8 +29,12 @@
 
     <p class="item-show-price"><%= humanized_money_with_symbol(@item.price) %></p>
 
-    <%= simple_form_for([@category, @item, @order], remote: true) do |f| %>
-      <%= f.button :submit, class: "btn btn-ghost", value: "Add to Cart" %>
+    <%= link_to category_item_add_path(@category, @item), id: "add-cart", class:"btn btn-ghost", method: :post, remote: true do %>
+      Add to Cart
+    <% end %>
+
+    <%= link_to category_item_buy_path(@category, @item), id: "buy-now", class:"btn btn-ghost", method: :post do %>
+      Buy Now
     <% end %>
   </div>
 </div>
