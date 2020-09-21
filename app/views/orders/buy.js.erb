@@ -4,35 +4,5 @@ if (flash) { flash.remove() }
 
 // If there are any erros in the creation of an order, then display a warning alert
 <% if @order.errors.any? %>
-  createFlash('alert-warning', "It seems there was an error with your order");
+  createFlashes('alert-warning', "It seems there was an error with your order");
 <% end %>
-
-// Function that creates and appends a type of alert to the body of the document
-function createFlash(alertType, text) {
-  // Create alert 'div'
-  var div = document.createElement('div');
-  div.classList = `alert ${alertType} alert-dismissible fade show m-1`;
-  div.setAttribute("role", "alert");
-
-  // Add text to the alert
-  var alert = document.createTextNode(text);
-  div.appendChild(alert);
-
-  // Create closing button
-  var button = document.createElement('button');
-  button.setAttribute("type", "button");
-  button.classList = 'close';
-  button.setAttribute("data-dismiss", "alert");
-  button.setAttribute("aria-label", "Close");
-
-  // Button 'X' symbol
-  var span = document.createElement('span');
-  span.setAttribute("aria-hidden", "true");
-  span.innerHTML = '&times;';
-
-  button.appendChild(span);
-  div.appendChild(button);
-
-  // Append 'div' to the body of the document
-  document.body.appendChild(div);
-}

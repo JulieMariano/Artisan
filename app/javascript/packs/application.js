@@ -25,14 +25,17 @@ require("channels")
 // External imports
 import "bootstrap";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { createFlashes } from '../components/create-flashes';
 import { starRating } from '../components/star-rating';
 import { refreshInputValidations } from '../components/refresh-input-validations';
 import { removeValidations } from '../components/refresh-input-validations';
 import { readMore } from '../components/read-more';
 
 // Make the following JS functions accessible from the HTML files
+window.createFlashes = function(alertType, text) {
+  createFlashes(alertType, text);
+}
+
 window.readMore = function() {
   readMore();
 }
