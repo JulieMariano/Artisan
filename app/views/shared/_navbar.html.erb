@@ -1,8 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="logo-name">
-    <%= link_to categories_path, id:"navbar-link", class: "nav-link" do %>
+    <%= link_to categories_path, class: "nav-link" do %>
       <i class="fas fa-praying-hands fa-2x"></i>
     <% end %>
+
     <h1>Artisan</h1>
   </div>
 
@@ -13,21 +14,21 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-      <% if current_user.is_admin %>
-      <li class="nav-item">
-          <%= link_to "Admin Page", admin_categories_path, id:"navbar-link", class: "nav-link", style: "margin: 0 5px" %>
-        </li>
-        
+        <% if current_user.is_admin %>
+          <li class="nav-item" style="margin-top: 4px">
+            <%= link_to "Admin Page", admin_categories_path, class: "nav-link", style: "margin: 0 5px" %>
+          </li>
         <% end %>
-        
-        <li class="nav-item">
-          <%= link_to orders_path, id:"navbar-link", class: "nav-link", style: "margin: 0 5px" do %>
+
+        <li id="cart-size" class="nav-item" style="margin-top: 4px">
+          <%= link_to orders_path, class: "nav-link", style: "margin: 0 5px" do %>
             Cart
             <%= "(#{current_user.pending_orders.size})" unless current_user.pending_orders.size == 0 %>
           <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Special Offers", "#",id:"navbar-link", class: "nav-link", style: "margin: 0 5px" %>
+
+        <li class="nav-item" style="margin-top: 4px">
+          <%= link_to "Special Offers", "#", class: "nav-link", style: "margin: 0 5px" %>
         </li>
 
         <li class="nav-item dropdown">
@@ -41,10 +42,11 @@
 
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path,id:"navbar-link", class: "nav-link", style: "margin: 0 5px" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link", style: "margin: 0 5px" %>
         </li>
+
         <li class="nav-item">
-          <%= link_to "Sign-Up", new_user_registration_path,id:"navbar-link", class: "nav-link", style: "margin: 0 5px" %>
+          <%= link_to "Sign-Up", new_user_registration_path, class: "nav-link", style: "margin: 0 5px" %>
         </li>
       <% end %>
     </ul>

@@ -20,15 +20,21 @@
   width: 60px;
 }
 
-#navbar-link {
+.nav-link {
   opacity: 1;
-  color: white;
+  color: white !important;
   text-transform: uppercase;
 }
 
-#navbar-link:hover {
+.nav-link:hover {
   opacity: 1;
-  color: #9d2503;
+  color: #9d2503 !important;
+}
+
+.nav-item.dropdown {
+  padding-left: 8px;
+  margin-left: 5px;
+  padding-right: 5px;
 }
 
 .fa-praying-hands {
