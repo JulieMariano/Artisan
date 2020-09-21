@@ -21,8 +21,6 @@ class OrdersController < ApplicationController
       )
 
       @order.update(checkout_session_id: session.id)
-    else
-      render 'items/show'
     end
   end
 

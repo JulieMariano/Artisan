@@ -1,4 +1,26 @@
-<% unless @order.errors.any? %>
+<% if @order.errors.any? %>
+  var div = document.createElement('div');
+  div.classList = "alert alert-warning alert-dismissible fade show m-1";
+  div.setAttribute("role", "alert");
+
+  var alert = document.createTextNode("It seems there was an error with your order");
+  div.appendChild(alert);
+
+  var button = document.createElement('button');
+  button.setAttribute("type", "button");
+  button.classList = 'close';
+  button.setAttribute("data-dismiss", "alert");
+  button.setAttribute("aria-label", "Close");
+
+  var span = document.createElement('span');
+  span.setAttribute("aria-hidden", "true");
+  span.innerHTML = '&times;';
+
+  button.appendChild(span);
+  div.appendChild(button);
+
+  document.body.appendChild(div);
+<% else %>
   var div = document.createElement('div');
   div.classList = "alert alert-info alert-dismissible fade show m-1";
   div.setAttribute("role", "alert");
