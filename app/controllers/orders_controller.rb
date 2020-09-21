@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
                          )
   end
 
-  def buy
+  def buy_one
     @item = Item.find(params[:item_id])
     @order = Order.new(item: @item,
                        user: current_user,
@@ -32,6 +32,29 @@ class OrdersController < ApplicationController
 
       redirect_to new_order_payment_path(@order)
     end
+  end
+
+  def buy_all
+    items_data = current_user.pending_orders.map do |order|
+      {
+        name: order.item.sku,
+        images: [Cloudinary::Utils.cloudinary_url(order.item.picture.key)],
+        amount: order.item.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }
+    end
+
+    @order = current_user.pending_orders.first
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: items_data,
+      success_url: order_url(@order),
+      cancel_url: order_url(@order)
+    )
+
+    redirect_to new_order_payment_path(@order)
   end
 
   def index

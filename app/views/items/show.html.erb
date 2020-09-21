@@ -33,7 +33,7 @@
       Add to Cart
     <% end %>
 
-    <%= link_to category_item_buy_path(@category, @item), id: "buy-now", class:"btn btn-ghost", method: :post do %>
+    <%= link_to category_item_buy_one_path(@category, @item), id: "buy-now", class:"btn btn-ghost", method: :post do %>
       Buy Now
     <% end %>
   </div>
