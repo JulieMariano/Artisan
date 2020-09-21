@@ -1,17 +1,39 @@
+// If a flash alert already exists, then remove it
+var flash = document.querySelector('.alert.alert-dismissible');
+if (flash) { flash.remove() }
+
+// If there are any erros in the creation of an order, then display a warning alert
 <% if @order.errors.any? %>
+  createFlash('alert-warning', "It seems there was an error with your order");
+
+// Otherwise...
+<% else %>
+  // Display a notice of the order created
+  createFlash('alert-info', "🛒 <%= @item.name %> was added to your shopping cart!");
+
+  // Update the number of orders in the cart
+  document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.pending_orders.size %>)";
+<% end %>
+
+// Function that creates and appends a type of alert to the body of the document
+function createFlash(alertType, text) {
+  // Create alert 'div'
   var div = document.createElement('div');
-  div.classList = "alert alert-warning alert-dismissible fade show m-1";
+  div.classList = `alert ${alertType} alert-dismissible fade show m-1`;
   div.setAttribute("role", "alert");
 
-  var alert = document.createTextNode("It seems there was an error with your order");
+  // Add text to the alert
+  var alert = document.createTextNode(text);
   div.appendChild(alert);
 
+  // Create closing button
   var button = document.createElement('button');
   button.setAttribute("type", "button");
   button.classList = 'close';
   button.setAttribute("data-dismiss", "alert");
   button.setAttribute("aria-label", "Close");
 
+  // Button 'X' symbol
   var span = document.createElement('span');
   span.setAttribute("aria-hidden", "true");
   span.innerHTML = '&times;';
@@ -19,27 +41,6 @@
   button.appendChild(span);
   div.appendChild(button);
 
+  // Append 'div' to the body of the document
   document.body.appendChild(div);
-<% else %>
-  var div = document.createElement('div');
-  div.classList = "alert alert-info alert-dismissible fade show m-1";
-  div.setAttribute("role", "alert");
-
-  var notice = document.createTextNode("🛒 <%= @item.name %> was added to your shopping cart!");
-  div.appendChild(notice);
-
-  var button = document.createElement('button');
-  button.setAttribute("type", "button");
-  button.classList = 'close';
-  button.setAttribute("data-dismiss", "alert");
-  button.setAttribute("aria-label", "Close");
-
-  var span = document.createElement('span');
-  span.setAttribute("aria-hidden", "true");
-  span.innerHTML = '&times;';
-
-  button.appendChild(span);
-  div.appendChild(button);
-
-  document.body.appendChild(div);
-<% end %>
+}
