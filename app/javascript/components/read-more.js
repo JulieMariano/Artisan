@@ -7,6 +7,14 @@ function readMore() {
   var moretext = '<span class="elipse">...</span>&nbsp;Read more';
   var lesstext = 'Read less';
 
+  var linksList = document.querySelectorAll('.more-link');    // List of 'read more/less' links
+
+  // Restore paragraph height and remove 'read more/less' link
+  for (let i = 0; i < linksList.length; i++) {
+    linksList[i].parentElement.querySelector('.read-more').style.height = 'fit-content';
+    linksList[i].remove();
+  }
+
   var reviewsList = document.getElementsByClassName('read-more');   // List of reviews content
 
   // Iterate over the list
@@ -25,7 +33,7 @@ function readMore() {
       // Create the link to change the content displayed
       let readLink = document.createElement("a");
       readLink.innerHTML = moretext;
-      readLink.classList.add('morelink');
+      readLink.classList.add('more-link');
 
       elementParent.appendChild(readLink);  // Append link to the document
 
