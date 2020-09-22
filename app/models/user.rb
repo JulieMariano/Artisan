@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20 }
 
-  has_many :items, through: :orders
   has_many :orders
   has_many :reviews
 
@@ -14,7 +13,8 @@ class User < ApplicationRecord
     orders.where(state: 'payed').order(created_at: :desc)
   end
 
-  def pending_orders
-    orders.where(state: 'pending').order(created_at: :desc)
+  # Only one pending Order is possible by User
+  def pending_order
+    orders.find_by(state: 'pending')
   end
 end
