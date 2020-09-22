@@ -5,10 +5,16 @@ class OrdersController < ApplicationController
     @order = current_user.pending_order
     @order = Order.create(user: current_user, state: 'pending') if @order.nil? 
 
-    OrdersItem.create(order: @order,
-                      item: @item,
-                      quantity: 1
-                     )
+    order_item = @order.orders_items.find_by(item: @item)
+
+    if order_item.nil?
+      OrdersItem.create(order: @order,
+                        item: @item,
+                        quantity: 1
+                       )
+    else
+      order_item.increment!(:quantity)
+    end
   end
 
   def buy_one
