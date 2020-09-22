@@ -1,77 +1,9 @@
-<ul class="orders-list">
-  <h2>SHOPPING CART</h2>
-
-  <% if current_user.cart_size.zero? %>
-    <p style="margin-left: 10px">Your shopping cart is empty</p>
-
-  <% else %>
-    <% current_user.pending_order.orders_items.order(created_at: :desc).each do |order_item| %>
-      <li class="order-card">
-        <div style="background-image: url('<%= cl_image_path order_item.item.picture.key, height: 150, width: 150, crop: :fill %>');
-             width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
-        </div>
-
-        <div style="margin: 0 10px; flex-grow: 1">
-          <h4><%= order_item.item.name %></h4>
-          <p><%= order_item.item.description %></p>
-
-          <div class="order-actions d-flex">
-            <%= simple_form_for(order_item, remote: true) do |f| %>
-              <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Qty</label>
-              <input class="numeric integer" type="number" min="1" step="1" value="<%= order_item.quantity %>"
-                name="orders_item[quantity]" id="orders_item_quantity<%= order_item.id %>">
-            <% end %>
-
-            <%= link_to orders_item_path(order_item), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="order-price">
-          <p><%= humanized_money_with_symbol(order_item.item.price) %></p>
-        </div>
-      </li>
-    <% end %>
-
-    <div class="order-checkout">
-      <p>
-        Subtotal (<%= current_user.cart_size %> items):
-        <%= humanized_money_with_symbol(current_user.pending_order_total) %>
-      </p>
-
-      <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post do %>
-        Checkout
-      <% end %>
-    </div>
-  <% end %>
+<ul class="orders-list" id="shopping-cart">
+  <%= render "orders/shopping-cart" %>
 </ul>
 
-<ul class="orders-list">
-  <h2>Orders History</h2>
-
-  <% if current_user.payed_orders.size.zero? %>
-    <p style="margin-left: 10px">You have not made any orders yet</p>
-
-  <% else %>
-    <% current_user.payed_orders.each do |order| %>
-      <li class="order-card">
-        <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>');
-             width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
-        </div>
-
-        <div style="margin: 10px">
-          <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
-
-          <div style="margin-left: 14px; margin: 5px 14px">
-            <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
-            <p class="show-text"><strong>Paid: </strong><%= humanized_money_with_symbol(order.item.price) %></p>
-            <p class="show-text"><strong>Ordered: </strong><%= order.updated_at.strftime("%Y-%m-%d") %></p>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  <% end %>
+<ul class="orders-list" id="paid-orders">
+  <%= render "orders/paid-orders" %>
 </ul>
 
 <script>
