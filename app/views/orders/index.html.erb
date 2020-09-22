@@ -5,13 +5,3 @@
 <ul class="orders-list" id="paid-orders">
   <%= render "orders/paid-orders" %>
 </ul>
-
-<script>
-  var editOrdersItemForms = document.querySelectorAll('.edit_orders_item');
-
-  for (let i = 0; i < editOrdersItemForms.length; i++) {
-    editOrdersItemForms[i].querySelector('input.numeric').addEventListener('blur', () => {
-      editOrdersItemForms[i].querySelector('[type="submit"]').click();
-    });
-  }
-</script>
