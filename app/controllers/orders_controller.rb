@@ -41,17 +41,17 @@ class OrdersController < ApplicationController
   end
 
   def buy_all
-    items_data = current_user.pending_orders.map do |order|
+    @order = current_user.pending_order
+
+    items_data = @order.orders_items.map do |order_item|
       {
-        name: order.item.sku,
-        images: [Cloudinary::Utils.cloudinary_url(order.item.picture.key)],
-        amount: order.item.price_cents,
+        name: order_item.item.sku,
+        images: [Cloudinary::Utils.cloudinary_url(order_item.item.picture.key)],
+        amount: order_item.item.price_cents,
         currency: 'eur',
-        quantity: 1
+        quantity: order_item.quantity
       }
     end
-
-    @order = current_user.pending_orders.first
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -64,8 +64,6 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @total = @user.pending_orders.map {|order| order.item.price}.sum
   end
 
   def destroy

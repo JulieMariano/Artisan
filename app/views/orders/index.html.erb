@@ -1,37 +1,40 @@
 <ul class="orders-list">
   <h2>SHOPPING CART</h2>
 
-  <% if @user.pending_orders.length == 0 %>
+  <% if current_user.cart_size.zero? %>
     <p style="margin-left: 10px">Your shopping cart is empty</p>
 
   <% else %>
-    <% @user.pending_orders.each do |order| %>
+    <% current_user.pending_order.orders_items.each do |order_item| %>
       <li class="order-card">
-        <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>');
+        <div style="background-image: url('<%= cl_image_path order_item.item.picture.key, height: 150, width: 150, crop: :fill %>');
              width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
         </div>
 
         <div style="margin: 0 10px; flex-grow: 1">
-          <h4><%= order.item.name %></h4>
-          <p><%= order.item.description %></p>
+          <h4><%= order_item.item.name %></h4>
+          <p><%= order_item.item.description %></p>
 
           <div class="order-actions d-flex">
-            <p>Qnt: 1</p>
+            <p>Qnt: <%= order_item.quantity %></p>
 
-            <%= link_to order_path(order), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
+            <%= link_to order_path(order_item.order), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
               Delete
             <% end %>
           </div>
         </div>
 
         <div class="order-price">
-          <p><%= humanized_money_with_symbol(order.item.price) %></p>
+          <p><%= humanized_money_with_symbol(order_item.item.price) %></p>
         </div>
       </li>
     <% end %>
 
     <div class="order-checkout">
-      <p>Subtotal (2 items): <%= humanized_money_with_symbol(@total) %></p>
+      <p>
+        Subtotal (<%= current_user.cart_size %> items):
+        <%= humanized_money_with_symbol(current_user.pending_order_total) %>
+      </p>
 
       <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post do %>
         Checkout
@@ -43,11 +46,11 @@
 <ul class="orders-list">
   <h2>Orders History</h2>
 
-  <% if @user.payed_orders.length == 0 %>
+  <% if current_user.payed_orders.size.zero? %>
     <p style="margin-left: 10px">You have not made any orders yet</p>
 
   <% else %>
-    <% @user.payed_orders.each do |order| %>
+    <% current_user.payed_orders.each do |order| %>
       <li class="order-card">
         <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>');
              width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
