@@ -18,7 +18,7 @@ class User < ApplicationRecord
     orders.find_by(state: 'pending')
   end
 
-  def pending_order_total
+  def cart_total
     pending_order.orders_items.inject(0) { |sum, order_item| sum += order_item.subtotal }
   end
 

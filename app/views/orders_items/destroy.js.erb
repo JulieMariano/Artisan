@@ -1,2 +1,5 @@
 // Refresh the 'shopping cart' list
 document.getElementById("shopping-cart").innerHTML = "<%= j render partial: "orders/shopping-cart" %>";
+
+// Update the number of orders in the cart
+document.querySelector('#cart-size a').innerHTML = "Cart <%= "(#{current_user.cart_size})" unless current_user.cart_size.zero? %>";
