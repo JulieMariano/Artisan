@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def pending_order_total
-    pending_order.orders_items.inject(0) { |sum, order_item| sum += (order_item.quantity * order_item.item.price) }
+    pending_order.orders_items.inject(0) { |sum, order_item| sum += order_item.subtotal }
   end
 
   # Get the number of items in the 'pending' order

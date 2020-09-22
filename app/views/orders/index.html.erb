@@ -18,8 +18,12 @@
           <div class="order-actions d-flex">
 
             <%= simple_form_for(order_item, remote: true) do |f| %>
-              <%= f.input :quantity %>
-              <%= f.button :submit, "Update" %>
+              <div class="form-item-quantity">
+                <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Qty</label>
+                <input class="numeric integer" type="number" min="1" step="1" value="<%= order_item.quantity %>"
+                  name="orders_item[quantity]" id="orders_item_quantity<%= order_item.id %>">
+                <%= f.button :submit, "Update" %>
+              </div>
             <% end %>
 
             <%= link_to orders_item_path(order_item), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
