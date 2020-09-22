@@ -10,11 +10,16 @@ class User < ApplicationRecord
   has_many :reviews
 
   def payed_orders
-    orders.where(state: 'payed').order(created_at: :desc)
+    orders.where(state: 'payed').order(updated_at: :desc)
   end
 
   # Only one pending Order is possible by User
   def pending_order
     orders.find_by(state: 'pending')
+  end
+
+  # Get the number of items in the 'pending' order
+  def cart_size
+    pending_order.orders_items.inject(0) { |sum, order_item| sum += order_item.quantity }
   end
 end

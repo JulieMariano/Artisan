@@ -23,7 +23,7 @@
         <li id="cart-size" class="nav-item" style="margin-top: 4px">
           <%= link_to orders_path, class: "nav-link", style: "margin: 0 5px" do %>
             Cart
-            <%= "(#{current_user.pending_orders.size})" unless current_user.pending_orders.size == 0 %>
+            <%= "(#{current_user.cart_size})" unless current_user.pending_order.nil? || current_user.cart_size.zero? %>
           <% end %>
         </li>
 
