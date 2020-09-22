@@ -4,5 +4,5 @@ document.getElementById("shopping-cart").innerHTML = "<%= j render partial: "ord
 // Update the number of orders in the cart
 document.querySelector('#cart-size a').innerHTML = "Cart <%= "(#{current_user.cart_size})" unless current_user.cart_size.zero? %>";
 
-// In order to submit the Orders#edit form automatically
-autoSubmitOrdersItemForm();
+// To submit the OrdersItems#update form automatically
+autoSubmitForm('.edit_orders_item', 'input.numeric');

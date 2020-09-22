@@ -25,7 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 
-import { autoSubmitOrdersItemForm } from '../components/auto-submit-order-edit-form';
+import { autoSubmitForm } from '../components/auto-submit-form';
 import { createFlashes } from '../components/create-flashes';
 import { starRating } from '../components/star-rating';
 import { refreshInputValidations } from '../components/refresh-input-validations';
@@ -33,8 +33,8 @@ import { removeValidations } from '../components/refresh-input-validations';
 import { readMore } from '../components/read-more';
 
 // Make the following JS functions accessible from the HTML files
-window.autoSubmitOrdersItemForm = function() {
-  autoSubmitOrdersItemForm();
+window.autoSubmitForm = function(selectorForm, selectorInput) {
+  autoSubmitForm(selectorForm, selectorInput);
 }
 
 window.createFlashes = function(alertType, text) {
@@ -70,6 +70,6 @@ document.addEventListener('turbolinks:load', () => {
       readMore();
     });
   } else if (shoppingCart) {
-    autoSubmitOrdersItemForm();
+    autoSubmitForm('.edit_orders_item', 'input.numeric');
   }
 });
