@@ -4,11 +4,13 @@
   <p style="margin-left: 10px">Your shopping cart is empty</p>
 
 <% else %>
-  <% current_user.pending_order.orders_items.order(created_at: :desc).each do |order_item| %>
+  <% @cart_items.each do |order_item| %>
     <li class="order-card">
-      <div style="background-image: url('<%= cl_image_path order_item.item.picture.key, height: 150, width: 150, crop: :fill %>');
-            width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
-      </div>
+      <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
+        <div style="background-image: url('<%= cl_image_path order_item.item.picture.key, height: 150, width: 150, crop: :fill %>');
+              width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
+        </div>
+      <% end %>
 
       <div style="margin: 0 10px; flex-grow: 1">
         <h4><%= order_item.item.name %></h4>

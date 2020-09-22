@@ -70,5 +70,7 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @cart_items = current_user.pending_order.orders_items.order(created_at: :desc)
+    @paid_orders = current_user.paid_orders
   end
 end

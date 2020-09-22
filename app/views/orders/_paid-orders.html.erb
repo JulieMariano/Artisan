@@ -1,10 +1,10 @@
 <h2>ORDERS HISTORY</h2>
 
-<% if current_user.payed_orders.size.zero? %>
+<% if @paid_orders.size.zero? %>
   <p style="margin-left: 10px">You have not made any orders yet</p>
 
 <% else %>
-  <% current_user.payed_orders.each do |order| %>
+  <% @paid_orders.each do |order| %>
     <li class="order-card">
       <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>');
             width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">

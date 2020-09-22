@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :reviews
 
-  def payed_orders
+  def paid_orders
     orders.where(state: 'payed').order(updated_at: :desc)
   end
 
