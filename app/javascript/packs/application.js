@@ -59,5 +59,9 @@ document.addEventListener('turbolinks:load', () => {
   if (reviewsContainer) {
     readMore();
     starRating();
+
+    window.addEventListener('resize', () => {
+      readMore();
+    });
   }
 });
