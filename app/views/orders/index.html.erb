@@ -16,7 +16,11 @@
           <p><%= order_item.item.description %></p>
 
           <div class="order-actions d-flex">
-            <p>Qnt: <%= order_item.quantity %></p>
+
+            <%= simple_form_for(order_item, remote: true) do |f| %>
+              <%= f.input :quantity %>
+              <%= f.button :submit, "Update" %>
+            <% end %>
 
             <%= link_to orders_item_path(order_item), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
               Delete
