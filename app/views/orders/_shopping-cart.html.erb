@@ -21,7 +21,7 @@
                     name="orders_item[quantity]" id="orders_item_quantity<%= order_item.id %>">
           <% end %>
 
-          <%= link_to orders_item_path(order_item), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
+          <%= link_to orders_item_path(order_item), class:"btn-delete", remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
