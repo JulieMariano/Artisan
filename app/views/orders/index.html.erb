@@ -18,7 +18,7 @@
           <div class="order-actions d-flex">
             <p>Qnt: <%= order_item.quantity %></p>
 
-            <%= link_to order_path(order_item.order), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
+            <%= link_to orders_item_path(order_item), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
               Delete
             <% end %>
           </div>
