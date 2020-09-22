@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   validates :state, presence: true
-  validates :items, presence: true
 
   belongs_to :user
 

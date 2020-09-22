@@ -1,20 +1,26 @@
 class OrdersController < ApplicationController
   def add
     @item = Item.find(params[:item_id])
-    @order = Order.create(item: @item,
-                          user: current_user,
-                          state: 'pending'
-                         )
+
+    @order = current_user.pending_order
+    @order = Order.create(user: current_user, state: 'pending') if @order.nil? 
+
+    OrdersItem.create(order: @order,
+                      item: @item,
+                      quantity: 1
+                     )
   end
 
   def buy_one
     @item = Item.find(params[:item_id])
-    @order = Order.new(item: @item,
-                       user: current_user,
-                       state: 'pending'
-                      )
+    @order = Order.new(user: current_user, state: 'paying')
 
     if @order.save
+      OrdersItem.create(order: @order,
+                        item: @item,
+                        quantity: 1
+                       )
+
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
