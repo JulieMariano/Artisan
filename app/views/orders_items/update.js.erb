@@ -1,0 +1,3 @@
+// Refresh the checkout information
+var checkoutInfo = "Subtotal (<%= current_user.cart_size %> items): <%= humanized_money_with_symbol(current_user.pending_order_total) %>"
+document.querySelector(".order-checkout p").innerHTML = checkoutInfo;

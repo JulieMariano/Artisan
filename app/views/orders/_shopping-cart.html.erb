@@ -19,6 +19,7 @@
             <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Qty</label>
             <input class="numeric integer" type="number" min="1" step="1" value="<%= order_item.quantity %>"
                     name="orders_item[quantity]" id="orders_item_quantity<%= order_item.id %>">
+            <%= f.button :submit, "Submit", style: "display: none" %>
           <% end %>
 
           <%= link_to orders_item_path(order_item), class:"btn-delete", remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
