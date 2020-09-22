@@ -17,14 +17,16 @@
     padding: 20px 5px;
 
     .order-actions {
-      p {
-        padding-right: 5px;
-        border-right: 2px solid rgba(0, 0, 0, 0.2);
-        margin-right: 5px;
+      label {
+        margin-bottom: 0;
       }
 
-      a {
-        margin-right: 5px;
+      .numeric.integer {
+        width: 70px;
+      }
+
+      .btn-delete {
+        margin: 2px 0 0 20px;
       }
     }
 
