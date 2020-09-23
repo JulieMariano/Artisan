@@ -20,7 +20,7 @@
 
   <li class="checkout-shipping">
     <p>Shipping</p>
-    <p>...</p>
+    <p><%= humanized_money_with_symbol(@order.shipping) %></p>
   </li>
 
   <% if @order_items.size > 1 %>
@@ -29,7 +29,7 @@
 
   <li class="checkout-total">
     <h5>Total</h5>
-    <p>...</p>
+    <p><%= humanized_money_with_symbol(@order.total) %></p>
   </li>
 
   <button id="pay" class="btn btn-ghost">Proceed with Payment</button>
