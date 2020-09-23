@@ -39,7 +39,7 @@
   <div class="order-checkout">
     <p>
       Subtotal (<%= current_user.cart_size == 1 ? "#{current_user.cart_size} item" : "#{current_user.cart_size} items" %>):
-      <%= humanized_money_with_symbol(current_user.cart_total) %>
+      <%= humanized_money_with_symbol(current_user.pending_order.subtotal) %>
     </p>
 
     <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post do %>

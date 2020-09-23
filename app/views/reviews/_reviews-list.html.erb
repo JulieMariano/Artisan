@@ -4,7 +4,7 @@
 <% else %>
   <% @item.reviews.last(5).reverse.each do |review| %>
     <li>
-      <p style="font-size: 18px; margin-bottom: 0"><%= review.user.name.capitalize %></p>
+      <p class="review-user"><%= review.user.name.capitalize %></p>
 
       <p data-rating=<%= review.rating %>>
         <span style="font-size: 13px; margin-left: 2px"><%= time_ago_in_words(review.created_at) %></span>

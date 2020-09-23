@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   def new
-    @order = current_user.pending_order
+    @order = Order.find(params[:order_id])
+    @order_items = @order.orders_items
   end
 end
