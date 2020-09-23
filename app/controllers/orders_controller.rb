@@ -77,4 +77,9 @@ class OrdersController < ApplicationController
     @order_items = @order.orders_items.order(created_at: :desc)
     @paid_orders = current_user.paid_orders
   end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.orders_items.order(created_at: :desc)
+  end
 end

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :orders_items, only: [:destroy, :update]
 
-  resources :orders, only: [:index, :destroy] do
+  resources :orders, only: [:index, :show, :destroy] do
     collection do
       post "buy_all", to: "orders#buy_all"
     end
