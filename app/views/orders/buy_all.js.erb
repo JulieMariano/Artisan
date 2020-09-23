@@ -1,5 +1,5 @@
-// Refresh the Order Checkout Modal content
-document.querySelector('#ModalOrderCheckout').innerHTML = "<%= j render partial: "checkout" %>";
+// Refresh the Checkout Modal content
+document.querySelector('#ModalCheckout').innerHTML = "<%= j render partial: "orders/modal-checkout" %>";
 
-// Use jQuery to open the Order Checkout Modal
-$("#ModalOrderCheckout").modal('show');
+// Use jQuery to open the Checkout Modal
+$("#ModalCheckout").modal('show');
