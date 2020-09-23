@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
 
       @order.update(checkout_session_id: session.id)
 
-      redirect_to new_order_payment_path(@order)
+      @order_items = @order.orders_items
     end
   end
 

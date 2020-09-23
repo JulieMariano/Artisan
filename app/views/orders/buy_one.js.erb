@@ -5,4 +5,10 @@ if (flash) { flash.remove() }
 // If there are any erros in the creation of an order, then display a warning alert
 <% if @order.errors.any? %>
   createFlashes('alert-warning', "It seems there was an error with your order");
+<% else %>
+  // Refresh the Order Checkout Modal content
+  document.querySelector('#ModalOrderCheckout').innerHTML = "<%= j render partial: "orders/checkout" %>";
+
+  // Use jQuery to open the Order Checkout Modal
+  $("#ModalOrderCheckout").modal('show');
 <% end %>
