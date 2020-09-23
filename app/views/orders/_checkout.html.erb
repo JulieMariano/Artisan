@@ -1,0 +1,45 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Checkout Summary</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <ul class="checkout-summary">
+        <% @order_items.each do |order_item| %>
+          <li>
+            <p><%= "#{order_item.item.name} (#{order_item.quantity})" %></p>
+
+            <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+          </li>
+        <% end %>
+
+        <% if @order_items.size > 1 %>
+          <hr>
+
+          <li class="checkout-items-total">
+            <p>Items (<%= @order.num_items %>)</p>
+            <p><%= humanized_money_with_symbol(@order.subtotal) %></p>
+          </li>
+        <% end %>
+
+        <li class="checkout-shipping">
+          <p>Shipping</p>
+          <p><%= humanized_money_with_symbol(@order.shipping) %></p>
+        </li>
+
+        <% if @order_items.size > 1 %>
+          <hr>
+        <% end %>
+
+        <li class="checkout-total">
+          <h5>Total</h5>
+          <p><%= humanized_money_with_symbol(@order.total) %></p>
+        </li>
+
+        <button id="pay" class="btn btn-ghost">Proceed with Payment</button>
+      </ul>
+    </div>
+  </div>
+</div>

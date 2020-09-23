@@ -47,9 +47,9 @@ class OrdersController < ApplicationController
   end
 
   def buy_all
-    @order = current_user.pending_order
+    order = current_user.pending_order
 
-    items_data = @order.orders_items.map do |order_item|
+    items_data = order.orders_items.map do |order_item|
       {
         name: order_item.item.sku,
         images: [Cloudinary::Utils.cloudinary_url(order_item.item.picture.key)],
@@ -62,17 +62,19 @@ class OrdersController < ApplicationController
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: items_data,
-      success_url: order_url(@order),
-      cancel_url: order_url(@order)
+      success_url: order_url(order),
+      cancel_url: order_url(order)
     )
 
-    @order.update(checkout_session_id: session.id)
+    order.update(checkout_session_id: session.id)
 
-    redirect_to new_order_payment_path(@order)
+    @order = current_user.pending_order
+    @order_items = @order.orders_items.order(created_at: :desc)
   end
 
   def index
-    @cart_items = current_user.pending_order.orders_items.order(created_at: :desc)
+    @order = current_user.pending_order
+    @order_items = @order.orders_items.order(created_at: :desc)
     @paid_orders = current_user.paid_orders
   end
 end

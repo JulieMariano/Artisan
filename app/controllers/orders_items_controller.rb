@@ -8,7 +8,8 @@ class OrdersItemsController < ApplicationController
     orders_item = OrdersItem.find(params[:id])
     orders_item.destroy
 
-    @cart_items = current_user.pending_order.orders_items.order(created_at: :desc)
+    @order = current_user.pending_order
+    @order_items = @order.orders_items.order(created_at: :desc)
   end
 
   private

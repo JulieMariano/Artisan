@@ -4,7 +4,7 @@
   <p style="margin-left: 10px">Your shopping cart is empty</p>
 
 <% else %>
-  <% @cart_items.each do |order_item| %>
+  <% @order_items.each do |order_item| %>
     <li class="order-card">
       <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
         <div style="background-image: url('<%= cl_image_path order_item.item.picture.key, height: 150, width: 150, crop: :fill %>');
@@ -42,7 +42,7 @@
       <%= humanized_money_with_symbol(current_user.pending_order.subtotal) %>
     </p>
 
-    <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post do %>
+    <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post, remote: true do %>
       Checkout
     <% end %>
   </div>

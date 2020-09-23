@@ -1,0 +1,5 @@
+// Refresh the Order Checkout Modal content
+document.querySelector('#ModalOrderCheckout').innerHTML = "<%= j render partial: "checkout" %>";
+
+// Use jQuery to open the Order Checkout Modal
+$("#ModalOrderCheckout").modal('show');
