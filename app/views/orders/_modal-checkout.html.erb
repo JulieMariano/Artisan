@@ -15,26 +15,22 @@
           </li>
         <% end %>
 
-        <% if @order_items.size > 1 %>
-          <hr>
+        <hr>
 
-          <li class="checkout-items-total">
-            <p>Items (<%= @order.num_items %>)</p>
-            <p><%= humanized_money_with_symbol(@order.subtotal) %></p>
-          </li>
-        <% end %>
+        <li class="checkout-items-total">
+          <p>Items (<%= @order.num_items %>)</p>
+          <p><%= humanized_money_with_symbol(@order.subtotal) %></p>
+        </li>
 
         <li class="checkout-shipping">
           <p>Shipping</p>
           <p><%= humanized_money_with_symbol(@order.shipping) %></p>
         </li>
 
-        <% if @order_items.size > 1 %>
-          <hr>
-        <% end %>
+        <hr>
 
         <li class="checkout-total">
-          <h5>Total</h5>
+          <p>Total</p>
           <p><%= humanized_money_with_symbol(@order.total) %></p>
         </li>
 

@@ -1,0 +1,65 @@
+#ModalCheckout {
+  .modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(90% - 3.5rem);
+
+    .modal-content {
+      background-color: rgba(245, 245, 245, 1);
+      min-width: 500px;
+      max-width: 500px;
+      border: 3px solid #df8543;
+
+      .modal-header {
+        border-bottom: 1px solid #df8543;
+
+        .modal-title {
+          font-size: 26px;
+          font-weight: bold;
+          padding-left: 20px;
+        }
+
+        button {
+          font-size: 40px;
+          margin-right: 10px;
+        }
+      }
+
+      .modal-body > .checkout-summary {
+        width: 400px;
+        padding: 10px 20px;
+        margin: 0 auto;
+
+        li {
+          list-style: none;
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+          padding: 0 10px;
+        }
+
+        hr {
+          border-top: 1px solid #df8543;
+          margin: -2px 0 12px;
+        }
+
+        .checkout-items-total, .checkout-shipping {
+          p {
+            font-weight: bold;
+          }
+        }
+
+        .checkout-total > p {
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .btn-ghost {
+          font-size: 22px;
+          width: 100%;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
