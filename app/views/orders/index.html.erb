@@ -5,7 +5,9 @@
     <p style="margin-left: 10px">Your shopping cart is empty</p>
 
   <% else %>
-    <%= render "orders_items/orders-items-list-editable" %>
+    <ul class="orders-items-list">
+      <%= render "orders_items/orders-items-list-editable" %>
+    </ul>
 
     <div class="order-checkout">
       <p>

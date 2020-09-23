@@ -3,3 +3,11 @@ document.querySelector('#ModalCheckout').innerHTML = "<%= j render partial: "ord
 
 // Use jQuery to open the Checkout Modal
 $("#ModalCheckout").modal('show');
+
+const paymentButton = document.getElementById('pay');
+paymentButton.addEventListener('click', () => {
+  const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+  stripe.redirectToCheckout({
+    sessionId: '<%= @order.checkout_session_id %>'
+  });
+});
