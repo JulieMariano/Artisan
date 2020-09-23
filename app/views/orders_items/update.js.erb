@@ -1,6 +1,6 @@
 // Refresh the checkout information
-var checkoutInfo = "Subtotal (<%= "#{current_user.cart_size} #{current_user.cart_size == 1 ? "item" : "items"}" %>): <%= humanized_money_with_symbol(current_user.pending_order.subtotal) %>"
+var checkoutInfo = "Subtotal (<%= "#{current_user.pending_order.num_items} #{current_user.pending_order.num_items == 1 ? "item" : "items"}" %>): <%= humanized_money_with_symbol(current_user.pending_order.subtotal) %>"
 document.querySelector(".order-checkout p").innerHTML = checkoutInfo;
 
 // Update the number of orders in the cart
-document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.cart_size %>)";
+document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.pending_order.num_items %>)";

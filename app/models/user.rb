@@ -17,9 +17,4 @@ class User < ApplicationRecord
   def pending_order
     orders.find_by(state: 'pending')
   end
-
-  # Get the number of items in the 'pending' order
-  def cart_size
-    pending_order.orders_items.inject(0) { |sum, order_item| sum += order_item.quantity }
-  end
 end
