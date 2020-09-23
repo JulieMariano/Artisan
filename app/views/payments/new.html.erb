@@ -1,13 +1,39 @@
-<div class="container">
-  <div class="row py-4">
-    <div class="col-md-3"><img src="<%= cl_image_path @order.item.picture.key, width: '100%' %>"></div>
-    <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @order.item.name %></strong> for <strong><%= humanized_money_with_symbol(@order.item.price) %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
-    </div>
-  </div>
-</div>
+<ul class="checkout-summary">
+  <h1>Checkout summary</h1>
+
+  <% @order_items.each do |order_item| %>
+    <li>
+      <p><%= "#{order_item.item.name} (#{order_item.quantity})" %></p>
+
+      <p><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+    </li>
+  <% end %>
+
+  <% if @order_items.size > 1 %>
+    <hr>
+
+    <li class="checkout-items-total">
+      <p>Items (<%= @order.num_items %>)</p>
+      <p><%= humanized_money_with_symbol(@order.subtotal) %></p>
+    </li>
+  <% end %>
+
+  <li class="checkout-shipping">
+    <p>Shipping</p>
+    <p>...</p>
+  </li>
+
+  <% if @order_items.size > 1 %>
+    <hr>
+  <% end %>
+
+  <li class="checkout-total">
+    <h5>Total</h5>
+    <p>...</p>
+  </li>
+
+  <button id="pay" class="btn btn-ghost">Proceed with Payment</button>
+</ul>
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
