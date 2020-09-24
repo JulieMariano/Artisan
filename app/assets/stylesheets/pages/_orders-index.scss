@@ -1,74 +1,101 @@
 .order-container {
-  width: 850px;
+  min-width: 628px;
+  max-width: 850px;
   padding: 10px;
-  margin: 40px auto;
+  margin: 20px auto 40px;
 
-  h2 {
+  h1, h2 {
     font-size: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid #df8543;
     margin-bottom: 0;
+
+    span {
+      color: rgba(157, 37, 3, 0.9);
+      font-size: 20px;
+      font-weight: normal;
+      margin-left: 5px;
+    }
   }
 
   ul.orders-items-list {
     padding: 0;
     margin: 0;
 
-    li.order-card {
+    li.orders-item-card {
       list-style: none;
       display: flex;
       border-bottom: 1px solid #df8543;
-      padding: 20px 5px;
+      padding: 20px 5px 20px 10px;
 
-      .order-actions {
-        label {
-          margin-bottom: 0;
-        }
-
-        .numeric.integer {
-          width: 70px;
-        }
-
-        .btn-delete {
-          margin: 2px 0 0 20px;
-        }
+      a > .orders-item-card-img {
+        height: 150px;
+        width: 150px;
+        min-width: 150px;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
       }
 
-      .order-price {
-        position: relative;
-        width: 100px;
+      .orders-item-card-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 5px 10px;
 
-        p {
-          position: absolute;
-          top: 8px;
-          left: 0;
-          font-weight: bold;
+        .orders-item-card-content {
+          h4 {
+            margin-bottom: 16px;
+          }
+
+          p {
+            margin-bottom: 12px;
+          }
+
+          .orders-item-card-actions {
+            label {
+              margin-right: 8px
+            }
+
+            .numeric.integer {
+              width: 70px;
+            }
+
+            .btn-delete {
+              margin: 2px 0 0 20px;
+            }
+          }
+        }
+
+        p.orders-item-card-subtotal {
           font-size: 20px;
+          font-weight: bold;
         }
       }
     }
   }
 
   .order-checkout {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     width: 100%;
-    height: 85px;
 
-    p {
-      position: absolute;
-      right: 0;
-      top: 0;
-      display: flex;
-      font-size: 18px;
-      font-weight: bold;
-      margin: 10px 0 0;
-      height: 30px;
+    table {
+      margin: 5px 15px;
+
+      tbody > tr {
+        height: 35px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .order-checkout-column-price {
+        text-align: end;
+      }
     }
 
     a {
-      position: absolute;
-      right: 0;
-      bottom: 0;
+      margin: 5px 15px;
       padding: 6px 12px;
       font-size: 18px;
     }
