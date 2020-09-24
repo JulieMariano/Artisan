@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'categories#index'
 
+  # Stripe's Webhook Event
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+
   # Override the params accepted in the User Registration
   devise_for :users, controllers: { registrations: 'user/registrations' }
 
