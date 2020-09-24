@@ -75,3 +75,6 @@ gem 'stripe'
 
 # To Ajaxify POST forms
 gem 'turbolinks_render'
+
+# Stripe Webhooks
+gem 'stripe_event'
