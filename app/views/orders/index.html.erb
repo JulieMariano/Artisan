@@ -1,28 +1,5 @@
 <div id="shopping-cart" class="order-container">
-  <h2>SHOPPING CART</h2>
-
-  <% if current_user.pending_order.num_items.zero? %>
-    <p style="margin-left: 10px">Your shopping cart is empty</p>
-
-  <% else %>
-    <ul class="orders-items-list">
-      <%= render "orders_items/orders-items-list" %>
-    </ul>
-
-    <div class="order-checkout">
-      <table>
-        <tr>
-          <td><%= @order.subtotal_num_items_string %></td>
-          <td style="width: 20px"></td>
-          <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.subtotal) %></td>
-        </tr>
-      </table>
-
-      <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post, remote: true do %>
-        Checkout
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "orders/shopping-cart" %>
 </div>
 
 <ul class="orders-list" id="paid-orders">
