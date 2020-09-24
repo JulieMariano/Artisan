@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def add
     @item = Item.find(params[:item_id])
 
-    @order = current_user.pending_order
+    @order = current_user.cart
     @order = Order.create(user: current_user, state: 'pending') if @order.nil? 
 
     order_item = @order.orders_items.find_by(item: @item)
@@ -17,10 +17,10 @@ class OrdersController < ApplicationController
   def buy_one
     @item = Item.find(params[:item_id])
     @order = Order.new(user: current_user, state: 'paying')
-    @order_items = @order.orders_items
 
     if @order.save
       OrdersItem.create(order: @order, item: @item, quantity: 1)
+      @order_items = @order.orders_items
 
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
@@ -40,8 +40,8 @@ class OrdersController < ApplicationController
   end
 
   def buy_all
-    @order = current_user.pending_order
-    @order_items = @order.orders_items.order(created_at: :desc)
+    @order = current_user.cart
+    @order_items = @order.orders_items.order(updated_at: :desc)
 
     items_data = @order_items.map do |order_item|
       {
@@ -64,16 +64,16 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @order = current_user.pending_order
+    @order = current_user.cart
     @order = Order.create(user: current_user, state: 'pending') if @order.nil?
 
-    @order_items = @order.orders_items.order(created_at: :desc)
+    @order_items = @order.orders_items.order(updated_at: :desc)
 
     @paid_orders = current_user.paid_orders
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.orders_items.order(created_at: :desc)
+    @order_items = @order.orders_items.order(updated_at: :desc)
   end
 end
