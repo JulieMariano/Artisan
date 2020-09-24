@@ -30,6 +30,7 @@ import { createFlashes } from '../components/create-flashes';
 import { starRating } from '../components/star-rating';
 import { refreshInputValidations } from '../components/refresh-input-validations';
 import { removeValidations } from '../components/refresh-input-validations';
+import { refreshOrdersIndexPage } from '../components/refresh-orders-index-page';
 import { readMore } from '../components/read-more';
 
 // Make the following JS functions accessible from the HTML files
@@ -51,6 +52,10 @@ window.refreshInputValidations = function(containerSelector, containerChildNum, 
 
 window.removeValidations = function(containerSelector, containerChildNum, inputType) {
   removeValidations(containerSelector, containerChildNum, inputType);
+}
+
+window.refreshOrdersIndexPage = function(shoppingCart, navbarCart) {
+  refreshOrdersIndexPage(shoppingCart, navbarCart);
 }
 
 window.starRating = function() {

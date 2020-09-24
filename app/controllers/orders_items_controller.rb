@@ -2,6 +2,9 @@ class OrdersItemsController < ApplicationController
   def update
     orders_item = OrdersItem.find(params[:id])
     orders_item.update(orders_item_params) if orders_item_params[:quantity].to_i.positive?
+
+    @order = current_user.pending_order
+    @order_items = @order.orders_items.order(created_at: :desc)
   end
 
   def destroy

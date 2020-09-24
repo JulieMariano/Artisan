@@ -1,6 +1,3 @@
-// Refresh the checkout information
-var checkoutInfo = "<%= @order.subtotal_num_items_string %> <%= humanized_money_with_symbol(@order.subtotal) %>"
-document.querySelector(".order-checkout p").innerHTML = checkoutInfo;
-
-// Update the number of orders in the cart
-document.querySelector('#cart-size a').innerHTML = "Cart <%= "(#{@order.num_items})" unless @order.num_items.zero? %>";
+var shoppingCart = "<%= j render partial: "orders/shopping-cart" %>";
+var navbarCart = "Cart <%= "(#{@order.num_items})" unless @order.num_items.zero? %>";
+refreshOrdersIndexPage(shoppingCart, navbarCart);

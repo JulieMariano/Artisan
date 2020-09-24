@@ -11,3 +11,5 @@ function refreshOrdersIndexPage(shoppingCart, navbarCart) {
   // To submit the OrdersItems#update form automatically
   autoSubmitForm('.edit_orders_item', 'input.numeric');
 }
+
+export { refreshOrdersIndexPage }
