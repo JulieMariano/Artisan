@@ -6,17 +6,9 @@ if (flash) { flash.remove() }
 <% if @order.errors.any? %>
   createFlashes('alert-warning', "It seems there was an error with your order");
 <% else %>
-  // Refresh the Order Checkout Modal content
-  document.querySelector('#ModalCheckout').innerHTML = "<%= j render partial: "orders/modal-checkout" %>";
+  var modalCheckout = "<%= j render partial: "orders/modal-checkout" %>";
+  var stripeKey = "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>";
+  var orderSessionId = "<%= @order.checkout_session_id %>";
 
-  // Use jQuery to open the Checkout Modal
-  $("#ModalCheckout").modal('show');
-
-  var paymentButton = document.getElementById('pay');
-  paymentButton.addEventListener('click', () => {
-    const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-    stripe.redirectToCheckout({
-      sessionId: '<%= @order.checkout_session_id %>'
-    });
-  });
+  prepareModalCheckout(modalCheckout, stripeKey, orderSessionId);
 <% end %>

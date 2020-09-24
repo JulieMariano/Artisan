@@ -13,3 +13,5 @@ function prepareModalCheckout(modalCheckout, stripeKey, orderSessionId) {
     });
   });
 }
+
+export { prepareModalCheckout };

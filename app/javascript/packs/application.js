@@ -27,11 +27,12 @@ import "bootstrap";
 
 import { autoSubmitForm } from '../components/auto-submit-form';
 import { createFlashes } from '../components/create-flashes';
-import { starRating } from '../components/star-rating';
+import { prepareModalCheckout } from '../components/prepare-modal-checkout';
+import { readMore } from '../components/read-more';
 import { refreshInputValidations } from '../components/refresh-input-validations';
 import { removeValidations } from '../components/refresh-input-validations';
 import { refreshOrdersIndexPage } from '../components/refresh-orders-index-page';
-import { readMore } from '../components/read-more';
+import { starRating } from '../components/star-rating';
 
 // Make the following JS functions accessible from the HTML files
 window.autoSubmitForm = function(selectorForm, selectorInput) {
@@ -40,6 +41,10 @@ window.autoSubmitForm = function(selectorForm, selectorInput) {
 
 window.createFlashes = function(alertType, text) {
   createFlashes(alertType, text);
+}
+
+window.prepareModalCheckout = function(modalCheckout, stripeKey, orderSessionId) {
+  prepareModalCheckout(modalCheckout, stripeKey, orderSessionId);
 }
 
 window.readMore = function() {
