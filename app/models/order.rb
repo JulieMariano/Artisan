@@ -27,10 +27,8 @@ class Order < ApplicationRecord
 
     if items_subtotal < 100
       result = [3.5, items_subtotal * 0.05].max
-
     elsif items_subtotal < 500
       result =  [5.5, items_subtotal * 0.03].max
-
     else
       result = [16, items_subtotal * 0.02].max
     end
