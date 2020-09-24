@@ -65,7 +65,10 @@ class OrdersController < ApplicationController
 
   def index
     @order = current_user.pending_order
+    @order = Order.create(user: current_user, state: 'pending') if @order.nil?
+
     @order_items = @order.orders_items.order(created_at: :desc)
+
     @paid_orders = current_user.paid_orders
   end
 

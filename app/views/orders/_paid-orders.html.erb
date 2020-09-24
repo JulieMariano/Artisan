@@ -4,21 +4,43 @@
   <p style="margin-left: 10px">You have not made any orders yet</p>
 
 <% else %>
-  <% @paid_orders.each do |order| %>
-    <li class="order-card">
-      <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>');
-            width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); border-radius: 2px">
-      </div>
+  <ul class="orders-items-list">
+    <% @paid_orders.each do |order| %>
+      <li class="orders-item-card">
+        <%= link_to order_path(order) do %>
+          <div class="orders-item-card-img" style="background-image: url('<%= cl_image_path order.orders_items.first.item.picture.key,
+              height: 150, width: 150, crop: :fill %>')">
+          </div>
+        <% end %>
 
-      <div style="margin: 10px">
-        <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
+        <div class="orders-item-card-info">
+          <div class="orders-item-card-content">
+            <h4>ORDER <%= "#" + "%08d" % @order.id %></h4>
 
-        <div style="margin-left: 14px; margin: 5px 14px">
-          <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
-          <p class="show-text"><strong>Paid: </strong><%= humanized_money_with_symbol(order.item.price) %></p>
-          <p class="show-text"><strong>Ordered: </strong><%= order.updated_at.strftime("%Y-%m-%d") %></p>
+            <p>Paid (<%= order.updated_at.strftime('%b %e, %Y') %>)</p>
+            <p>Delivered (<%= (order.updated_at + (60*60*24*3)).strftime('%b %e, %Y') %>)</p>
+          </div>
         </div>
-      </div>
-    </li>
-  <% end %>
+
+        <table>
+          <tbody>
+            <tr>
+              <td>Items (x)</td>
+              <td>Value</td>
+            </tr>
+
+            <tr>
+              <td>Shipping</td>
+              <td>Value</td>
+            </tr>
+
+            <tr>
+              <td>Total</td>
+              <td>Value</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

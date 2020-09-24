@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :reviews
 
   def paid_orders
-    orders.where(state: 'payed').order(updated_at: :desc)
+    orders.where(state: 'paid').order(updated_at: :desc)
   end
 
   # Only one pending Order is possible by User
