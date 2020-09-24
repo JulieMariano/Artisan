@@ -12,5 +12,5 @@ if (flash) { flash.remove() }
   createFlashes('alert-info', "<%= @item.name %> added to Cart");
 
   // Update the number of orders in the cart
-  document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.pending_order.num_items %>)";
+  document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.cart_size %>)";
 <% end %>
