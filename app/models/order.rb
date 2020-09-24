@@ -16,6 +16,11 @@ class Order < ApplicationRecord
     orders_items.inject(0) { |sum, order_item| sum += order_item.subtotal }
   end
 
+  # Returns the number of items of a order in a string format
+  def subtotal_num_items_string
+    "Subtotal (#{num_items} #{num_items == 1 ? "item" : "items"}):"
+  end
+
   # Returns the shipping cost of the order
   def shipping
     items_subtotal = subtotal.to_i

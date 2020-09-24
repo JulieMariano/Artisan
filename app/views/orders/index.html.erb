@@ -12,9 +12,9 @@
     <div class="order-checkout">
       <table>
         <tr>
-          <td>Subtotal (<%= current_user.pending_order.num_items == 1 ? "#{current_user.pending_order.num_items} item" : "#{current_user.pending_order.num_items} items" %>)</td>
+          <td><%= @order.subtotal_num_items_string %></td>
           <td style="width: 20px"></td>
-          <td class="order-checkout-column-price"><%= humanized_money_with_symbol(current_user.pending_order.subtotal) %></td>
+          <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.subtotal) %></td>
         </tr>
       </table>
 
