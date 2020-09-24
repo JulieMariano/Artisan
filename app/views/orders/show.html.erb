@@ -1,7 +1,7 @@
 <div class="order-container">
   <h1>
     ORDER <%= "#" + "%08d" % @order.id %>
-    <span>Paid (<%= @order.updated_at.strftime('%b %e, %Y') %>)</span>
+    <span>Paid (<%= @order.payment_date.strftime('%b %e, %Y') %>)</span>
   </h1>
 
   <ul class="orders-items-list">
@@ -29,15 +29,15 @@
   <div class="order-checkout">
     <table>
       <tr>
-        <td><%= @order.subtotal_num_items_string %></td>
+        <td>Subtotal (<%= @order.num_items_string %>):</td>
         <td style="width: 20px"></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.subtotal) %></td>
+        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
       </tr>
 
       <tr>
         <td>Shipping</td>
         <td></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.shipping) %></td>
+        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.shipping_costs) %></td>
       </tr>
 
       <tr>

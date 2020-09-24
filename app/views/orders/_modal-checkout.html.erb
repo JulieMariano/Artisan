@@ -19,19 +19,19 @@
 
         <li class="checkout-items-total">
           <p>Items (<%= @order.num_items %>)</p>
-          <p><%= humanized_money_with_symbol(@order.subtotal) %></p>
+          <p><%= humanized_money_with_symbol(@order.items_subtotal) %></p>
         </li>
 
         <li class="checkout-shipping">
           <p>Shipping</p>
-          <p><%= humanized_money_with_symbol(@order.shipping) %></p>
+          <p><%= humanized_money_with_symbol(@order.calculate_shipping_costs) %></p>
         </li>
 
         <hr>
 
         <li class="checkout-total">
           <p>Total</p>
-          <p><%= humanized_money_with_symbol(@order.total) %></p>
+          <p><%= humanized_money_with_symbol(@order.calculate_total) %></p>
         </li>
 
         <button id="pay" class="btn btn-ghost">Proceed with Payment</button>

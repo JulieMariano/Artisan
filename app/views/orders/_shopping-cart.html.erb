@@ -1,6 +1,6 @@
 <h2>SHOPPING CART</h2>
 
-<% if current_user.pending_order.num_items.zero? %>
+<% if current_user.cart_size.zero? %>
   <p style="margin-left: 10px">Your shopping cart is empty</p>
 
 <% else %>
@@ -11,9 +11,9 @@
   <div class="order-checkout">
     <table>
       <tr>
-        <td><%= @order.subtotal_num_items_string %></td>
+        <td>Subtotal (<%= @order.num_items_string %>):</td>
         <td style="width: 20px"></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.subtotal) %></td>
+        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
       </tr>
     </table>
 

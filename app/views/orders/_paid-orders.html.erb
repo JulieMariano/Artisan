@@ -8,17 +8,17 @@
     <% @paid_orders.each do |order| %>
       <li class="orders-item-card">
         <%= link_to order_path(order) do %>
-          <div class="orders-item-card-img" style="background-image: url('<%= cl_image_path order.orders_items.first.item.picture.key,
+          <div class="orders-item-card-img" style="background-image: url('<%= cl_image_path order.leading_item.picture.key,
               height: 150, width: 150, crop: :fill %>')">
           </div>
         <% end %>
 
         <div class="orders-item-card-info">
           <div class="orders-item-card-content">
-            <h4>ORDER <%= "#" + "%08d" % @order.id %></h4>
+            <h4>ORDER <%= "#" + "%08d" % order.id %></h4>
 
-            <p>Paid (<%= order.updated_at.strftime('%b %e, %Y') %>)</p>
-            <p>Delivered (<%= (order.updated_at + (60*60*24*3)).strftime('%b %e, %Y') %>)</p>
+            <p>Paid <%= order.payment_date.strftime('%b %e, %Y') %></p>
+            <p>Delivered <%= order.delivery_date ? order.delivery_date.strftime('%b %e, %Y') : 'pending' %></p>
           </div>
         </div>
 
