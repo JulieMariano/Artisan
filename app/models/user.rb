@@ -14,7 +14,11 @@ class User < ApplicationRecord
   end
 
   # Only one pending Order is possible by User
-  def pending_order
+  def cart
     orders.find_by(state: 'pending')
+  end
+
+  def cart_size
+    cart.nil? ? 0 : cart.num_items
   end
 end
