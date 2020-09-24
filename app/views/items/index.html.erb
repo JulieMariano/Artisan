@@ -1,7 +1,7 @@
 <h1 class="bordered-headers" style="font-size: 32px; margin: 15px 40px 25px"><span><%= @category.name %></span></h1>
 
 <div class="items-container">
-  <% @category.items_by_relevance.each do |item| %>
+  <% @category_items.each do |item| %>
     <%= link_to category_item_path(@category, item) do %>
       <div class="item-card" data-aos="fade-zoom-in" data-aos-duration="500">
         <div class="img-card"
