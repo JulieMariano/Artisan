@@ -2,6 +2,10 @@ class StripeCheckoutSessionService
   # Update the Order's state to 'paid'
   def call(event)
     order = Order.find_by(checkout_session_id: event.data.object.id)
-    order.update(state: 'paid')
+    order.update(
+      state: 'paid',
+      payment_date: DateTime.now,
+      shipping_costs: order.calculate_shipping_costs
+    )
   end
 end
