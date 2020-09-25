@@ -31,3 +31,32 @@
     color: #bb0000;
   }
 }
+
+.btn-accept-confirm, .btn-cancel-confirm {
+  width: 50%;
+  height: 100%;
+  font-size: 20px;
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  margin: 0;
+}
+
+.btn-accept-confirm {
+  color: white;
+  background-color: #e5493d;
+  border-bottom-right-radius: 5px;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.btn-cancel-confirm {
+  color: black;
+  background-color: lightgray;
+  border-bottom-left-radius: 5px;
+}
