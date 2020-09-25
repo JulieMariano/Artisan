@@ -1,7 +1,27 @@
 <div class="orders-list-container">
   <h1>
     ORDER <%= "#" + "%06d" % @order.id %>
-    <span>Paid (<%= @order.payment_date.strftime('%b %e, %Y') %>)</span>
+    <% if @order.state == 'pending' %>
+      <span style="color: #b72a00">
+        <i class="fas fa-exclamation-triangle"></i>
+        Pending
+      </span>
+    <% elsif @order.state == 'paying' %>
+      <span style="color: #ce0000">
+        <i class="fas fa-times-circle"></i>
+        Payment Failed
+      </span>
+    <% elsif @order.state == 'paid' %>
+      <span style="color: #008a24">
+        <i class="fas fa-check-square"></i>
+        Paid (<%= @order.payment_date.strftime('%b %e, %Y') %>)
+      </span>
+    <% elsif @order.state == 'delivered' %>
+      <span style="color: #008a24">
+        <i class="fas fa-check-square"></i>
+        Delivered (<%= @order.delivery_date.strftime('%b %e, %Y') %>)
+      </span>
+    <% end %>
   </h1>
 
   <ul class="orders-list">
