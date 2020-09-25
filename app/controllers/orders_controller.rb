@@ -30,6 +30,12 @@ class OrdersController < ApplicationController
           amount: @item.price_cents,
           currency: 'eur',
           quantity: 1
+        }, {
+          name: 'shipping_costs',
+          images: ['https://res.cloudinary.com/dvvuknsmw/image/upload/v1601052205/delivery-truck-icon-vector-21679802_kgvquc.jpg'],
+          amount: @order.calculate_shipping_costs.cents,
+          currency: 'eur',
+          quantity: 1
         }],
         success_url: order_url(@order),
         cancel_url: order_url(@order)
@@ -41,7 +47,7 @@ class OrdersController < ApplicationController
 
   def buy_all
     @order = current_user.cart
-    @order_items = @order.orders_items.order(updated_at: :desc)
+    @order_items = @order.orders_items.order(created_at: :desc)
 
     items_data = @order_items.map do |order_item|
       {
@@ -52,6 +58,16 @@ class OrdersController < ApplicationController
         quantity: order_item.quantity
       }
     end
+
+    shipping_costs = {
+      name: 'shipping_costs',
+      images: ['https://res.cloudinary.com/dvvuknsmw/image/upload/v1601052205/delivery-truck-icon-vector-21679802_kgvquc.jpg'],
+      amount: @order.calculate_shipping_costs.cents,
+      currency: 'eur',
+      quantity: 1
+    }
+
+    items_data << shipping_costs
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -67,13 +83,13 @@ class OrdersController < ApplicationController
     @order = current_user.cart
     @order = Order.create(user: current_user, state: 'pending') if @order.nil?
 
-    @order_items = @order.orders_items.order(updated_at: :desc)
+    @order_items = @order.orders_items.order(created_at: :desc)
 
     @paid_orders = current_user.paid_orders
   end
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.orders_items.order(updated_at: :desc)
+    @order_items = @order.orders_items.order(created_at: :desc)
   end
 end
