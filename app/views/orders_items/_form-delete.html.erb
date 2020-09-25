@@ -1,0 +1,16 @@
+<div class="modal fade modal-confirm" id="ModalDeleteOrdersItem<%= order_item.id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-confirm-body">
+        <h4 class="modal-title">Remove <%= order_item.item.name %></h4>
+        <p>Are you sure you want to remove the item?</p>
+
+        <div>
+          <button type="button" class="btn-cancel-confirm" data-dismiss="modal">Cancel</button>
+          <%= link_to "Remove", orders_item_path(order_item), method: :delete, remote: true,
+              class: "btn-accept-confirm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

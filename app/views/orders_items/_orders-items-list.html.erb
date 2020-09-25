@@ -19,8 +19,7 @@
             <%= f.button :submit, "Submit", style: "display: none" %>
           <% end %>
 
-          <%= link_to orders_item_path(order_item), class:"btn-delete", remote: true, method: :delete,
-              data: {confirm: "Are you sure?"} do %>
+          <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteOrdersItem#{order_item.id}" }, class:"btn-delete" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
@@ -29,4 +28,7 @@
       <p class="orders-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
     </div>
   </li>
+
+  <!-- Modal Delete OrdersItem -->
+  <%= render "orders_items/form-delete", order_item: order_item %>
 <% end %>
