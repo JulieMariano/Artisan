@@ -24,7 +24,7 @@
 
         <li class="checkout-shipping">
           <p>Shipping</p>
-          <p><%= humanized_money_with_symbol(@order.calculate_shipping_costs) %></p>
+          <p><%= humanized_money_with_symbol(@order.shipping_costs) %></p>
         </li>
 
         <hr>

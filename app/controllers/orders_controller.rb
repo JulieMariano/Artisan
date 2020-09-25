@@ -51,8 +51,7 @@ class OrdersController < ApplicationController
 
   def create_stripe_session(order, order_items)
     items_data = order_items.map do |order_item|
-      {
-        name: order_item.item.sku,
+      { name: order_item.item.sku,
         images: [Cloudinary::Utils.cloudinary_url(order_item.item.picture.key)],
         amount: order_item.item.price_cents,
         currency: 'eur',
@@ -60,15 +59,7 @@ class OrdersController < ApplicationController
       }
     end
 
-    shipping_costs = {
-      name: 'shipping_costs',
-      images: ['https://res.cloudinary.com/dvvuknsmw/image/upload/v1601052205/delivery-truck-icon-vector-21679802_kgvquc.jpg'],
-      amount: order.calculate_shipping_costs.cents,
-      currency: 'eur',
-      quantity: 1
-    }
-
-    items_data << shipping_costs
+    items_data << get_shipping(order)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -78,5 +69,16 @@ class OrdersController < ApplicationController
     )
 
     order.update(checkout_session_id: session.id)
+  end
+
+  def get_shipping(order)
+    order.update(shipping_costs: order.calculate_shipping_costs)
+
+    { name: 'shipping',
+      images: ['https://res.cloudinary.com/dvvuknsmw/image/upload/v1601052205/delivery-truck-icon-vector-21679802_kgvquc.jpg'],
+      amount: order.shipping_costs_cents,
+      currency: 'eur',
+      quantity: 1
+    }
   end
 end
