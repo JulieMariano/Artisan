@@ -3,7 +3,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Specify the NGROK URL here and at Sptripe/developers/webhooks with '/stripe-webhooks' appended
-  config.hosts << "d0dfe6544f65.ngrok.io"
+  config.hosts << "b8e01aa71b7f.ngrok.io"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

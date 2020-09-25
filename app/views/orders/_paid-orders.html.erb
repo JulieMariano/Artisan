@@ -4,42 +4,25 @@
   <p style="margin-left: 10px">You have not made any orders yet</p>
 
 <% else %>
-  <ul class="orders-items-list">
+  <ul class="orders-list">
     <% @paid_orders.each do |order| %>
-      <li class="orders-item-card">
+      <li class="orders-card">
         <%= link_to order_path(order) do %>
-          <div class="orders-item-card-img" style="background-image: url('<%= cl_image_path order.leading_item.picture.key,
+          <div class="orders-card-img" style="background-image: url('<%= cl_image_path order.leading_item.picture.key,
               height: 150, width: 150, crop: :fill %>')">
           </div>
         <% end %>
 
-        <div class="orders-item-card-info">
-          <div class="orders-item-card-content">
+        <div class="orders-card-info">
+          <div class="orders-card-content">
             <h4>ORDER <%= "#" + "%08d" % order.id %></h4>
 
             <p>Paid <%= order.payment_date.strftime('%b %e, %Y') %></p>
             <p>Delivered <%= order.delivery_date ? order.delivery_date.strftime('%b %e, %Y') : 'pending' %></p>
           </div>
+
+          <p class="orders-card-subtotal"><%= humanized_money_with_symbol(order.total) %></p>
         </div>
-
-        <table>
-          <tbody>
-            <tr>
-              <td>Items (x)</td>
-              <td>Value</td>
-            </tr>
-
-            <tr>
-              <td>Shipping</td>
-              <td>Value</td>
-            </tr>
-
-            <tr>
-              <td>Total</td>
-              <td>Value</td>
-            </tr>
-          </tbody>
-        </table>
       </li>
     <% end %>
   </ul>

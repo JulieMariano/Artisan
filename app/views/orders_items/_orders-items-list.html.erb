@@ -1,17 +1,17 @@
 <% @order_items.each do |order_item| %>
-  <li class="orders-item-card">
+  <li class="orders-card">
     <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
-      <div class="orders-item-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
+      <div class="orders-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
            height: 150, width: 150, crop: :fill %>')">
       </div>
     <% end %>
 
-    <div class="orders-item-card-info">
-      <div class="orders-item-card-content">
+    <div class="orders-card-info">
+      <div class="orders-card-content">
         <h4><%= order_item.item.name %></h4>
         <p>Unit: <%= humanized_money_with_symbol(order_item.item.price) %></p>
 
-        <div class="orders-item-card-actions d-flex">
+        <div class="orders-card-actions">
           <%= simple_form_for(order_item, remote: true) do |f| %>
             <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Qty:</label>
             <input class="numeric integer" type="number" min="1" step="1" value="<%= order_item.quantity %>"
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <p class="orders-item-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+      <p class="orders-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
     </div>
   </li>
 <% end %>

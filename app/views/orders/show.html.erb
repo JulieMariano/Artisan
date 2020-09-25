@@ -1,26 +1,27 @@
-<div class="order-container">
+<div class="orders-list-container">
   <h1>
     ORDER <%= "#" + "%08d" % @order.id %>
     <span>Paid (<%= @order.payment_date.strftime('%b %e, %Y') %>)</span>
   </h1>
 
-  <ul class="orders-items-list">
+  <ul class="orders-list">
     <% @order_items.each do |order_item| %>
-      <li class="orders-item-card">
+      <li class="orders-card">
         <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
-          <div class="orders-item-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
+          <div class="orders-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
               height: 150, width: 150, crop: :fill %>')">
           </div>
         <% end %>
 
-        <div class="orders-item-card-info">
-          <div class="orders-item-card-content">
+        <div class="orders-card-info">
+          <div class="orders-card-content">
             <h4><%= order_item.item.name %></h4>
+
             <p>Unit: <%= humanized_money_with_symbol(order_item.item.price) %></p>
             <p style="margin-top: 18px">Qty: <span style="margin-left: 9px"><%= order_item.quantity %></span></p>
           </div>
 
-          <p class="orders-item-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+          <p class="orders-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
         </div>
       </li>
     <% end %>
@@ -29,21 +30,21 @@
   <div class="order-checkout">
     <table>
       <tr>
-        <td>Subtotal (<%= @order.num_items_string %>):</td>
+        <td>Subtotal (<%= @order.num_items_string %>)</td>
         <td style="width: 20px"></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
       </tr>
 
       <tr>
         <td>Shipping</td>
         <td></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.shipping_costs) %></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.shipping_costs) %></td>
       </tr>
 
       <tr>
         <td>Total</td>
         <td></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.total) %></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.total) %></td>
       </tr>
     </table>
   </div>

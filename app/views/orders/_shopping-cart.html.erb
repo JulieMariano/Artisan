@@ -4,16 +4,16 @@
   <p style="margin-left: 10px">Your shopping cart is empty</p>
 
 <% else %>
-  <ul class="orders-items-list">
+  <ul class="orders-list">
     <%= render "orders_items/orders-items-list" %>
   </ul>
 
   <div class="order-checkout">
     <table>
       <tr>
-        <td>Subtotal (<%= @order.num_items_string %>):</td>
+        <td>Subtotal (<%= @order.num_items_string %>)</td>
         <td style="width: 20px"></td>
-        <td class="order-checkout-column-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
       </tr>
     </table>
 
