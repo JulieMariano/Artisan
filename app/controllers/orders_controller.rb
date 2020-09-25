@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
 
     @order_items = @order.orders_items.order(created_at: :desc)
 
-    @paid_orders = current_user.paid_orders
+    @paid_orders = current_user.paid_orders.paginate(page: params[:page], per_page: 5)
   end
 
   def show
