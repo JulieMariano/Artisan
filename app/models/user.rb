@@ -10,10 +10,10 @@ class User < ApplicationRecord
   has_many :reviews
 
   def paid_orders
-    orders.where(state: 'paid').order(updated_at: :desc)
+    orders.where(state: 'paid').order(updated_at: :asc)
   end
 
-  # Only one pending Order is possible by User
+  # Only one pending Order is possible per User
   def cart
     orders.find_by(state: 'pending')
   end

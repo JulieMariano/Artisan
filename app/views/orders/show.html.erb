@@ -1,6 +1,6 @@
 <div class="orders-list-container">
   <h1>
-    ORDER <%= "#" + "%08d" % @order.id %>
+    ORDER <%= "#" + "%06d" % @order.id %>
     <span>Paid (<%= @order.payment_date.strftime('%b %e, %Y') %>)</span>
   </h1>
 
@@ -17,8 +17,19 @@
           <div class="orders-card-content">
             <h4><%= order_item.item.name %></h4>
 
-            <p>Unit: <%= humanized_money_with_symbol(order_item.item.price) %></p>
-            <p style="margin-top: 18px">Qty: <span style="margin-left: 9px"><%= order_item.quantity %></span></p>
+            <table>
+              <tr>
+                <td style="text-align: end; font-weight: bold">Price</td>
+                <td style="width: 15px"></td>
+                <td><%= humanized_money_with_symbol(order_item.item.price) %></td>
+              </tr>
+
+              <tr style="height: 45px">
+                <td style="font-weight: bold">Items</td>
+                <td></td>
+                <td><%= order_item.quantity %></td>
+              </tr>
+            </table>
           </div>
 
           <p class="orders-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
@@ -31,7 +42,7 @@
     <table>
       <tr>
         <td>Subtotal (<%= @order.num_items_string %>)</td>
-        <td style="width: 20px"></td>
+        <td style="width: 10px"></td>
         <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
       </tr>
 
