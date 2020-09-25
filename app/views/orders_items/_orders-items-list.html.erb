@@ -9,11 +9,14 @@
     <div class="orders-card-info">
       <div class="orders-card-content">
         <h4><%= order_item.item.name %></h4>
-        <p>Unit: <%= humanized_money_with_symbol(order_item.item.price) %></p>
+        <p>
+          <span style="font-weight: bold">Price</span>
+          <span style="margin-left: 10px"><%= humanized_money_with_symbol(order_item.item.price) %></span>
+        </p>
 
         <div class="orders-card-actions">
           <%= simple_form_for(order_item, remote: true) do |f| %>
-            <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Qty:</label>
+            <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Items</label>
             <input class="numeric integer" type="number" min="1" step="1" value="<%= order_item.quantity %>"
                    name="orders_item[quantity]" id="orders_item_quantity<%= order_item.id %>">
             <%= f.button :submit, "Submit", style: "display: none" %>

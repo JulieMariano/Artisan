@@ -9,13 +9,7 @@
   </ul>
 
   <div class="order-checkout">
-    <table>
-      <tr>
-        <td>Subtotal (<%= @order.num_items_string %>)</td>
-        <td style="width: 20px"></td>
-        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
-      </tr>
-    </table>
+    <p>Subtotal (<%= @order.num_items_string %>): <%= humanized_money_with_symbol(@order.items_subtotal) %></p>
 
     <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post, remote: true do %>
       Checkout
