@@ -1,7 +1,10 @@
 .modal {
+  padding-right: 0 !important;  // Bootstrap adds 'padding-right: 17px' uppon oppening the Modal
+
   .modal-dialog {
     display: flex;
     align-items: center;
+    max-width: 450px !important;  // Bootstrap adds 'max-width: 500px' in the media query 'min-width: 576px'
     min-height: calc(90% - 3.5rem);
   
     .modal-content {

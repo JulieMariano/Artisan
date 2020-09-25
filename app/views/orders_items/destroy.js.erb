@@ -1,3 +1,7 @@
 var shoppingCart = "<%= j render partial: "orders/shopping-cart" %>";
 var navbarCart = "Cart <%= "(#{current_user.cart_size})" unless current_user.cart_size.zero? %>";
 refreshOrdersIndexPage(shoppingCart, navbarCart);
+
+// User jQuery to remove the Modal's background shadow
+$('body').removeClass('modal-open');
+$('.modal-backdrop').remove();
