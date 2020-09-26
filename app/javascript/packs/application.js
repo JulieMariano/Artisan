@@ -32,6 +32,7 @@ import { readMore } from '../components/read-more';
 import { refreshInputValidations } from '../components/refresh-input-validations';
 import { removeValidations } from '../components/refresh-input-validations';
 import { refreshOrdersIndexPage } from '../components/refresh-orders-index-page';
+import { smoothPagination } from '../components/smooth-pagination';
 import { starRating } from '../components/star-rating';
 
 // Make the following JS functions accessible from the HTML files
@@ -63,6 +64,10 @@ window.refreshOrdersIndexPage = function(shoppingCart, navbarCart) {
   refreshOrdersIndexPage(shoppingCart, navbarCart);
 }
 
+window.smoothPagination = function() {
+  smoothPagination();
+}
+
 window.starRating = function() {
   starRating();
 }
@@ -81,5 +86,6 @@ document.addEventListener('turbolinks:load', () => {
     });
   } else if (shoppingCart) {
     autoSubmitForm('.edit_orders_item', 'input.numeric');
+    smoothPagination();
   }
 });
