@@ -1,0 +1,16 @@
+.pagination {
+  margin-left: 10px;
+}
+
+.page-link, .page-item.disabled .page-link {
+  color: white;
+  border: 1px solid white;
+  background-color: rgba(225, 120, 65, 1);
+  margin-top: 10px;
+}
+
+.page-item.active .page-link, .page-item .page-link:hover {
+  color: white;
+  background: #b72a00;
+  border: 1px solid white;
+}
