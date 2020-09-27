@@ -160,7 +160,7 @@ end
 
 #   Method that generates a certain 'num' of random reviews for a certain 'item'
 def random_reviews_generator(item, num)
-  num.times { Review.create(item: item,
+  num.times { Review.create(item_id: item.id,   # An error was appearing if it was not declared with the ID
                             user: User.all.sample,
                             rating: Math.sqrt(rand(0..30)).floor,
                             content: Faker::Restaurant.review
