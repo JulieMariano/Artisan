@@ -1,0 +1,2 @@
+:concurrency: 2   # 2 threads per process
+:timeout: 60      # Timeout after 60 seconds
