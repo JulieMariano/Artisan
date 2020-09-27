@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   # Stripe's Webhook Event
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
+  # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   # Override the params accepted in the User Registration
   devise_for :users, controllers: { registrations: 'user/registrations' }
 
