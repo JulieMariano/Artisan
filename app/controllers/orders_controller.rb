@@ -1,28 +1,42 @@
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:add, :buy_one]
+
   def add
-    @item = Item.find(params[:item_id])
+    if current_user.nil?
+      redirect_to new_user_session_path
+      flash[:alert] = 'You need to sign in or sign up before continuing'
 
-    @order = current_user.cart
-    @order = Order.create(user: current_user, state: 'pending') if @order.nil? 
-
-    order_item = @order.orders_items.find_by(item: @item)
-
-    if order_item.nil?
-      OrdersItem.create(order: @order, item: @item, quantity: 1)
     else
-      order_item.increment!(:quantity)
+      @item = Item.find(params[:item_id])
+
+      @order = current_user.cart
+      @order = Order.create(user: current_user, state: 'pending') if @order.nil?
+
+      order_item = @order.orders_items.find_by(item: @item)
+
+      if order_item.nil?
+        OrdersItem.create(order: @order, item: @item, quantity: 1)
+      else
+        order_item.increment!(:quantity)
+      end
     end
   end
 
   def buy_one
-    item = Item.find(params[:item_id])
-    @order = Order.new(user: current_user, state: 'paying')
+    if current_user.nil?
+      redirect_to new_user_session_path
+      flash[:alert] = 'You need to sign in or sign up before continuing'
 
-    if @order.save
-      OrdersItem.create(order: @order, item: item, quantity: 1)
-      @order_items = @order.orders_items
+    else
+      item = Item.find(params[:item_id])
+      @order = Order.new(user: current_user, state: 'paying')
 
-      create_stripe_session(@order, @order_items)
+      if @order.save
+        OrdersItem.create(order: @order, item: item, quantity: 1)
+        @order_items = @order.orders_items
+
+        create_stripe_session(@order, @order_items)
+      end
     end
   end
 
