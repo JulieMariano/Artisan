@@ -11,7 +11,7 @@
   <div class="order-checkout">
     <p>Subtotal (<%= @order.num_items_string %>): <%= humanized_money_with_symbol(@order.items_subtotal) %></p>
 
-    <%= link_to buy_all_orders_path, class:"btn btn-ghost", method: :post, remote: true do %>
+    <%= link_to order_buy_all_path(@order), class:"btn btn-ghost", method: :post, remote: true do %>
       Checkout
     <% end %>
   </div>

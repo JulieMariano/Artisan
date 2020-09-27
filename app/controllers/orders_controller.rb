@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   end
 
   def buy_all
-    @order = current_user.cart
+    @order = current_user.orders.find(params[:order_id])
     @order_items = @order.orders_items.order(created_at: :desc)
 
     create_stripe_session(@order, @order_items)
