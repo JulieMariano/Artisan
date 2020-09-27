@@ -8,32 +8,32 @@ class Order < ApplicationRecord
 
   monetize :shipping_costs_cents
 
-  # Returns the number of items of the order
+  # Method that returns the number of Items of the Order
   def num_items
     orders_items.inject(0) { |sum, order_item| sum += order_item.quantity }
   end
 
-  # Returns the number of items of an order in a string format
+  # Method that returns the number of Items of the Order in string format
   def num_items_string
     "#{num_items} #{num_items == 1 ? "item" : "items"}"
   end
 
-  # Returns the cost of the items of the order
+  # Method that returns the total cost of the Order Items
   def items_subtotal
     orders_items.inject(0) { |sum, order_item| sum += order_item.subtotal }
   end
 
-  # Returns the total cost of the order
+  # Method that returns the total cost of the Order
   def total
     items_subtotal + shipping_costs
   end
 
-  # Returns the Order's Item where it was spent more money
+  # Method that returns the Order's Item where it was spent more money
   def leading_item
     orders_items.max_by(&:subtotal).item
   end
 
-  # Returns the calculated shipping costs of the order
+  # Method that calculates and returns the shipping costs of the Order in Money format
   def calculate_shipping_costs
     subtotal = items_subtotal.to_i
 
@@ -42,20 +42,19 @@ class Order < ApplicationRecord
     elsif subtotal < 500
       result =  [5.5, subtotal * 0.03].max
     else
-      result = [16, subtotal * 0.02].max
+      result = 15
     end
 
     return Money.new(result * 100)
   end
 
-  # Returns the calculated total cost of the order
+  # Method that calculates and returns the total cost of the Order
   def calculate_total
     items_subtotal + calculate_shipping_costs
   end
 
-  # Returns the expected delivery date (3 days after payment)
-  # Payment is the last update that a order can take and only after it is the order delivered
+  # Method that calculates and returns the expected delivery date of the Order (3 days after payment)
   def calculate_delivery_date
-    order.updated_at + (60*60*24*3)
+    order.updated_at + (60 * 60 * 24 *3)
   end
 end
