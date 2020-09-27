@@ -31,7 +31,7 @@
 
         <li class="checkout-total">
           <p>Total</p>
-          <p><%= humanized_money_with_symbol(@order.calculate_total) %></p>
+          <p><%= humanized_money_with_symbol(@order.total) %></p>
         </li>
 
         <button id="pay" class="btn btn-ghost">Proceed with Payment</button>

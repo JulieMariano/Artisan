@@ -47,14 +47,4 @@ class Order < ApplicationRecord
 
     return Money.new(result * 100)
   end
-
-  # Method that calculates and returns the total cost of the Order
-  def calculate_total
-    items_subtotal + calculate_shipping_costs
-  end
-
-  # Method that calculates and returns the expected delivery date of the Order (3 days after payment)
-  def calculate_delivery_date
-    order.updated_at + (60 * 60 * 24 *3)
-  end
 end
