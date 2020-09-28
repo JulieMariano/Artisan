@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :orders
   has_many :reviews
 
+  has_one_attached :avatar
+
   # Method that returns the User paid Orders list
   # Orders with the 'delivered' state where already paid for
   def paid_orders
