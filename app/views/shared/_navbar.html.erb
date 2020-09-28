@@ -17,19 +17,19 @@
       <% if user_signed_in? %>
         <% if current_user.is_admin %>
           <li class="nav-item">
-            <%= link_to "Admin", admin_categories_path, class: "nav-link", style: "margin: 2px 6px 0" %>
+            <%= link_to "Admin", admin_categories_path, class: "nav-link", style: "margin: 2px 10px 0" %>
           </li>
         <% end %>
 
         <li id="cart-size" class="nav-item">
-          <%= link_to orders_path, class: "nav-link", style: "margin: 2px 6px 0" do %>
+          <%= link_to orders_path, class: "nav-link", style: "margin: 2px 10px 0" do %>
             Cart
             <%= "(#{current_user.cart_size})" unless current_user.cart_size.zero? %>
           <% end %>
         </li>
 
         <li id="cart-size" class="nav-item">
-          <%= link_to "#", class: "nav-link", style: "margin: 2px 6px 0" do %>
+          <%= link_to "#", class: "nav-link", style: "margin: 2px 10px 0" do %>
             Special Offers
           <% end %>
         </li>
@@ -49,11 +49,11 @@
 
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link", style: "margin: 0 5px" %>
+          <%= link_to "Log In", new_user_session_path, class: "nav-link", style: "margin: 0 10px" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Sign-Up", new_user_registration_path, class: "nav-link", style: "margin: 0 5px" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link", style: "margin: 0 10px" %>
         </li>
       <% end %>
     </ul>
