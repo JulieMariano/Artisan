@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  has_many :items
+  has_many :items, dependent: :destroy
 
   # Method that returns the Category items sorted by relevance
   def items_by_relevance

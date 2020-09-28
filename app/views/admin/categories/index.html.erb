@@ -36,6 +36,9 @@
           <td><%= category.created_at.strftime("%e/%m/%Y") %></td>
         </tr>
 
+        <!-- Modal Delete Category -->
+        <%= render "admin/categories/form-delete", category: category %>
+
         <!-- Modal Edit Category -->
         <%= render "admin/categories/form", category: category %>
       <% end %>

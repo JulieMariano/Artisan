@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # Admin actions
   namespace :admin do
-    resources :categories, except: [:destroy] do
+    resources :categories do
       resources :items, except: [:show]
     end
   end
