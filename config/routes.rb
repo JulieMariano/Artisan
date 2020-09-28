@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   # Devise default routes for User
   # Override the params accepted in the User Registration
-  devise_for :users, controllers: { registrations: 'user/registrations' }
+  # Do not include the 'password' controller
+  devise_for :users, skip: 'password', controllers: { registrations: 'user/registrations' }
 
   # Admin actions
   namespace :admin do
