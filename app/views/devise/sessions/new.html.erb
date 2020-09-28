@@ -1,26 +1,24 @@
-<div class="registrations-container">
-  <div class="registrations-content">
-    <h2>Log in</h2>
+<div class="devise-container">
+  <h2>Log in</h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs" style="margin-top: 20px">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    placeholder: "email",
-                    input_html: { autocomplete: "email" } %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs" style="margin-top: 20px">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  placeholder: "email",
+                  input_html: { autocomplete: "email" } %>
 
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
 
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      </div>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-      <div class="registrations-button-container">
-        <%= f.button :submit, "Log in", class: "btn btn-ghost" %>
-        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-ghost sign" %>
-      </div>
-    <% end %>
-  </div>
+    <div class="devise-button-container">
+      <%= f.button :submit, "Log in", class: "btn btn-ghost" %>
+      <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-ghost sign" %>
+    </div>
+  <% end %>
 </div>
