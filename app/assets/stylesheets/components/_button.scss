@@ -14,22 +14,22 @@
   }
 }
 
-.sign{
-  width: 10rem;
-}
-
-#login{
-  background-color: #cfcdca;
-}
-
-.btn-delete {
+.btn-delete, .btn-edit {
   color: black;
   font-size: 20px;
   transition: 0.1s ease;
 
   &:hover {
-    color: #bb0000;
+    text-decoration: none;
   }
+}
+
+.btn-delete:hover {
+  color: #bb0000;
+}
+
+.btn-edit:hover {
+  color: #00a93c;
 }
 
 .btn-accept-confirm, .btn-cancel-confirm {
