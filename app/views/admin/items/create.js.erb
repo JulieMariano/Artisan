@@ -1,15 +1,24 @@
 // Close the Modal
 document.querySelector('#ModalItemNew button').click();
 
-// Empty the Modal input fields
-document.getElementById('item_name_new').value = "";
-document.getElementById('item_price_new').value = "";
-document.getElementById('item_description_new').value = "";
-document.getElementById('item_picture_new').value = "";
-
 // Remove the Modal's background shadow
 document.querySelector('body').classList.remove('modal-open');
 document.querySelector('.modal-backdrop').remove();
 
-// Use jQuery to append the new Item row in the Items table
-$('tbody').append("<%= j render "admin/items/item", item: @item %>");
+// If there are errors, use jQuery to update the Modal with validation errors and then open it
+<% if @item.errors.any? %>
+  $('#ModalItemNew').replaceWith("<%= j render "admin/items/form", item: @item %>");
+
+  document.querySelector("[data-target='#ModalItemNew']").click();
+
+// Otherwise...
+<% else %>
+  // Empty the Modal input fields
+  document.getElementById('item_name_new').value = "";
+  document.getElementById('item_price_new').value = "";
+  document.getElementById('item_description_new').value = "";
+  document.getElementById('item_picture_new').value = "";
+
+  // Use jQuery to append the new Item row to the list
+  $('tbody').append("<%= j render "admin/items/item", item: @item %>");
+<% end %>
