@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :price, presence: true
+  validates :description, length: { maximum: 120 }
+  validates :name, presence: true,
+                   uniqueness: { case_sensitive: false },
+                   length: { minimum: 2, maximum: 20 }
+  validates :price, presence: true,
+                    numericality: { greater_than: 0, less_than: 10000 }
   validates :sku, presence: true
 
   belongs_to :category
