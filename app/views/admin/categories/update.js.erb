@@ -1,0 +1,9 @@
+// Close the Modal
+document.querySelector('#ModalCategory<%= @category.id %> button').click();
+
+// Remove the Modal's background shadow
+document.querySelector('body').classList.remove('modal-open');
+document.querySelector('.modal-backdrop').remove();
+
+// Update the content of the edited Category row
+document.getElementById('category_row_<%= @category.id %>').innerHTML = "<%= j render "admin/categories/category", category: @category %>";

@@ -17,8 +17,6 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     @category.update(category_params)
-
-    redirect_to admin_categories_path
   end
 
   def show

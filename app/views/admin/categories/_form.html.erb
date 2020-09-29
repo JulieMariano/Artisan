@@ -7,7 +7,7 @@
       </div>
 
       <div class="modal-body">
-        <%= simple_form_for [:admin, category] do |f| %>
+        <%= simple_form_for([:admin, category], remote: true) do |f| %>
           <%= f.input :name, input_html: { id: "category_name_#{category.id || "new"}" }, placeholder: "Category" %>
           <%= f.submit "#{category.id ? "Update" : "Create"}", class: "btn btn-ghost" %>
         <% end %>
