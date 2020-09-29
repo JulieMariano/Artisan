@@ -1,29 +1,33 @@
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Items</th>
-      <th scope="col">Added</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-     <% @items.each do |item| %>
-    <tr>
-      <th scope="row"><%= item.name %></th>
-      <td><%= time_ago_in_words item.created_at %> ago</td>
-      <td><%= link_to 'Edit', edit_admin_category_item_path(item.category, item) %></td>
-      <td><%= link_to 'Delete', admin_category_item_path(item.category, item), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="admin-container">
+  <h1 style="padding: 0 0 5px 10px"><%= @category.name %></h1>
 
-<br>
-<div style="margin-bottom: 20px">
-  <%= link_to 'Create a new item', new_admin_category_item_path(@category)%> 
-</div>
-<br>
-<div style="margin-bottom: 20px">
-  <%= link_to 'Back', admin_categories_path(@category)%>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Items</th>
+        <th>Bought</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.name %>
+          </td>
+
+          <td>
+            <%= link_to category_item_path(@category, item), style: "color: black" do %>
+              <%= OrdersItem.where(item_id: item.id).size %>
+            <% end %>
+          </td>
+
+          <td><%= item.created_at.strftime("%e/%m/%Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Back', admin_categories_path(@category), class: "btn btn-ghost", style: "margin-left: 10px" %>
 </div>

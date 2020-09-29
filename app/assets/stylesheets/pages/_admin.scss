@@ -4,6 +4,13 @@
   padding: 15px 10px 30px;
   margin: 0 auto;
 
+  .table {
+    td {
+      border-top: none;
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+
   a:hover {
     text-decoration: none;
   }
