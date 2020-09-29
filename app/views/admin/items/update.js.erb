@@ -1,0 +1,9 @@
+// Close the Modal
+document.querySelector('#ModalItem<%= @item.id %> button').click();
+
+// Remove the Modal's background shadow
+document.querySelector('body').classList.remove('modal-open');
+document.querySelector('.modal-backdrop').remove();
+
+// Update the content of the edited Item row
+document.getElementById('item_row_<%= @item.id %>').innerHTML = "<%= j render "admin/items/item", item: @item %>";

@@ -18,8 +18,6 @@ class Admin::ItemsController < ApplicationController
 
     @item = Item.find(params[:id])
     @item.update(update_params)
-
-    redirect_to admin_category_path(@category)
   end
 
   def destroy
