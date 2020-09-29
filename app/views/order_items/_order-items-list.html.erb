@@ -16,13 +16,13 @@
 
         <div class="orders-card-actions">
           <%= simple_form_for(order_item, remote: true) do |f| %>
-            <label class="integer optional" for="orders_item_quantity<%= order_item.id %>">Items</label>
+            <label class="integer optional" for="order_item_quantity<%= order_item.id %>">Items</label>
             <input class="numeric integer" type="number" min="1" step="1" value="<%= order_item.quantity %>"
-                   name="orders_item[quantity]" id="orders_item_quantity<%= order_item.id %>">
+                   name="order_item[quantity]" id="order_item_quantity<%= order_item.id %>">
             <%= f.button :submit, "Submit", style: "display: none" %>
           <% end %>
 
-          <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteOrdersItem#{order_item.id}" }, class:"btn-delete" do %>
+          <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteOrderItem#{order_item.id}" }, class:"btn-delete" do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         </div>
@@ -32,6 +32,6 @@
     </div>
   </li>
 
-  <!-- Modal Delete OrdersItem -->
-  <%= render "orders_items/form-delete", order_item: order_item %>
+  <!-- Modal Delete OrderItem -->
+  <%= render "order_items/form-delete", order_item: order_item %>
 <% end %>
