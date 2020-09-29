@@ -1,0 +1,9 @@
+// Close the Modal
+document.querySelector('#ModalCategoryNew button').click();
+
+// Remove the Modal's background shadow
+document.querySelector('body').classList.remove('modal-open');
+document.querySelector('.modal-backdrop').remove();
+
+// Use jQuery to append the new Category row to the Categories table
+$('tbody').append("<%= j render "admin/categories/category", category: @category %>");
