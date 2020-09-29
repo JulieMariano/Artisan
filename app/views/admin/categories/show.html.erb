@@ -14,6 +14,16 @@
       <% @items.each do |item| %>
         <tr>
           <td>
+            <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteItem#{item.id}" }, class: "btn-delete",
+                style: "margin-right: 5px; font-size: 18px" do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+
+            <%= link_to "Edit", data: { toggle: "modal", target: "#ModalItem#{item.id}" }, class: "btn-edit",
+                style: "margin-right: 5px; font-size: 18px" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+
             <%= item.name %>
           </td>
 
@@ -25,9 +35,23 @@
 
           <td><%= item.created_at.strftime("%e/%m/%Y") %></td>
         </tr>
+
+        <!-- Modal Delete Item -->
+        <%= render "admin/items/form-delete", item: item %>
+
+        <!-- Modal Edit Item -->
+        <%= render "admin/items/form", item: item %>
       <% end %>
     </tbody>
   </table>
 
+  <%= link_to 'New Item', data: { toggle: "modal", target: "#ModalItemNew" }, class: "btn btn-ghost",
+      style: "margin-left: 10px" do %>
+    New Item
+  <% end %>
+
   <%= link_to 'Back', admin_categories_path(@category), class: "btn btn-ghost", style: "margin-left: 10px" %>
+
+  <!-- Modal New Item -->
+  <%= render "admin/items/form", item: Item.new %>
 </div>
