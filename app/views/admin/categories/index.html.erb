@@ -9,41 +9,7 @@
     </thead>
 
     <tbody>
-      <% @categories.each do |category| %>
-        <tr>
-          <td>
-            <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteCategory#{category.id}" }, class: "btn-delete",
-                style: "margin-right: 5px; font-size: 18px" do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-
-            <%= link_to "Edit", data: { toggle: "modal", target: "#ModalCategory#{category.id}" }, class: "btn-edit",
-                style: "margin-right: 5px; font-size: 18px" do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-
-            <%= link_to admin_category_path(category), style: "color: black" do %>
-              <%= category.name %>
-            <% end %>
-          </td>
-
-          <td>
-            <%= link_to admin_category_path(category), style: "color: black" do %>
-              <% num_items = category.items.size %>
-              <%= num_items.zero? ? "No" : num_items %>
-              <%= num_items == 1 ? "item" : "items" %>
-            <% end %>
-          </td>
-
-          <td><%= category.created_at.strftime("%e/%m/%Y") %></td>
-        </tr>
-
-        <!-- Modal Delete Category -->
-        <%= render "admin/categories/form-delete", category: category %>
-
-        <!-- Modal Edit Category -->
-        <%= render "admin/categories/form", category: category %>
-      <% end %>
+      <%= render partial: "admin/categories/category", collection: @categories %>
     </tbody>
   </table>
 
