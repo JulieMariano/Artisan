@@ -1,0 +1,9 @@
+// Close the Modal
+document.querySelector('#ModalDeleteItem<%= @item.id %> button').click();
+
+// Remove the Modal's background shadow
+document.querySelector('body').classList.remove('modal-open');
+document.querySelector('.modal-backdrop').remove();
+
+// Remove the Item row from the table
+document.getElementById('item_row_<%= @item.id %>').remove();

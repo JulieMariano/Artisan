@@ -7,7 +7,8 @@
 
         <div>
           <button type="button" class="btn-cancel-confirm" data-dismiss="modal">Cancel</button>
-          <%= link_to "Delete", admin_category_item_path(@category, item), method: :delete, class: "btn-accept-confirm" %>
+          <%= link_to "Delete", admin_category_item_path(@category, item), method: :delete, remote: true,
+              class: "btn-accept-confirm" %>
         </div>
       </div>
     </div>

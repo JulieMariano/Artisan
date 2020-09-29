@@ -19,8 +19,6 @@ class Admin::ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-
-    redirect_to admin_category_path(@category)
   end
 
   private
