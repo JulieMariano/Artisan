@@ -20,8 +20,6 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-
-    redirect_to admin_categories_path
   end
 
   private
