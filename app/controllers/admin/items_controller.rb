@@ -2,27 +2,31 @@ class Admin::ItemsController < ApplicationController
   before_action :set_category, only: [:create, :update, :destroy]
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
+    @item.sku = generate_sku(@item.name)
 
     if @item.save
-      redirect_to admin_category_items_path
+      redirect_to admin_category_path(@category)
     else
       render :new
     end
   end
-  
-  def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
 
-    redirect_to admin_category_items_path(@category)
+  def update
+    update_params = item_params
+    update_params["sku"] = generate_sku(item_params[:name])
+
+    @item = Item.find(params[:id])
+    @item.update(update_params)
+
+    redirect_to admin_category_path(@category)
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
 
-    redirect_to admin_category_items_path(@category)
+    redirect_to admin_category_path(@category)
   end
 
   private
@@ -33,5 +37,9 @@ class Admin::ItemsController < ApplicationController
 
   def set_category
     @category = Category.find(params[:category_id])
+  end
+
+  def generate_sku(item_name)
+    item_name.downcase.split(' ').join('_')
   end
 end
