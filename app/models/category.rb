@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: true,
-                   length: { minimum: 5, maximum: 25 }
+                   length: { minimum: 2, maximum: 25 }
 
   has_many :items, dependent: :destroy
 
