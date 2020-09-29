@@ -85,7 +85,7 @@ document.addEventListener('turbolinks:load', () => {
       readMore();
     });
   } else if (shoppingCart) {
-    autoSubmitForm('.edit_orders_item', 'input.numeric');
+    autoSubmitForm('.edit_order_item', 'input.numeric');
     smoothPagination();
   }
 });

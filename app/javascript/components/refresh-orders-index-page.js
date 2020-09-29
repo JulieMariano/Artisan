@@ -8,8 +8,8 @@ function refreshOrdersIndexPage(shoppingCart, navbarCart) {
   // Update the number of orders in the Navbar's Cart
   document.querySelector('#cart-size a').innerHTML = navbarCart;
 
-  // To submit the OrdersItems#update form automatically
-  autoSubmitForm('.edit_orders_item', 'input.numeric');
+  // To submit the OrderItems#update form automatically
+  autoSubmitForm('.edit_order_item', 'input.numeric');
 }
 
 export { refreshOrdersIndexPage }
