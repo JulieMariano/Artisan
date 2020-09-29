@@ -1,0 +1,26 @@
+<tr>
+  <td>
+    <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteItem#{item.id}" }, class: "btn-delete",
+        style: "margin-right: 5px; font-size: 18px" do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+
+    <!-- Modal Delete Item -->
+    <%= render "admin/items/form-delete", item: item %>
+
+    <%= link_to "Edit", data: { toggle: "modal", target: "#ModalItem#{item.id}" }, class: "btn-edit",
+        style: "margin-right: 5px; font-size: 18px" do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+
+    <!-- Modal Edit Item -->
+    <%= render "admin/items/form", item: item %>
+
+    <%= link_to category_item_path(@category, item), style: "color: black" do %>
+      <%= item.name %>
+    <% end %>
+  </td>
+
+  <td><%= OrderItem.where(item_id: item.id).size %></td>
+  <td><%= item.created_at.strftime("%e/%m/%Y") %></td>
+</tr>
