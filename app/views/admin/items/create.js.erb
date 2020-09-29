@@ -1,0 +1,15 @@
+// Close the Modal
+document.querySelector('#ModalItemNew button').click();
+
+// Empty the Modal input fields
+document.getElementById('item_name_new').value = "";
+document.getElementById('item_price_new').value = "";
+document.getElementById('item_description_new').value = "";
+document.getElementById('item_picture_new').value = "";
+
+// Remove the Modal's background shadow
+document.querySelector('body').classList.remove('modal-open');
+document.querySelector('.modal-backdrop').remove();
+
+// Use jQuery to append the new Item row in the Items table
+$('tbody').append("<%= j render "admin/items/item", item: @item %>");

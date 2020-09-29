@@ -13,8 +13,6 @@
           <%= f.input :price,               input_html: { id: "item_price_#{item.id || "new"}" } %>
           <%= f.input :description,         input_html: { id: "item_description_#{item.id || "new"}" } %>
           <%= f.input :picture, as: :file,  input_html: { id: "item_picture_#{item.id || "new"}" } %>
-          <%= f.association :category, selected: @category.id,
-              input_html: { id: "item_category_id_#{item.id || "new"}" } %>
 
           <%= f.submit "#{item.id ? "Update" : "Create"}", class: "btn btn-ghost" %>
         <% end %>

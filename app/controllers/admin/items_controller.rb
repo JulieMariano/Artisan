@@ -3,13 +3,9 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.category = @category
     @item.sku = generate_sku(@item.name)
-
-    if @item.save
-      redirect_to admin_category_path(@category)
-    else
-      render :new
-    end
+    @item.save
   end
 
   def update
