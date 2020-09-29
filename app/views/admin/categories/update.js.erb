@@ -5,7 +5,7 @@ document.querySelector('#ModalCategory<%= @category.id %> button').click();
 document.querySelector('body').classList.remove('modal-open');
 document.querySelector('.modal-backdrop').remove();
 
-// If there are no errors, use jQuery to update the Modal with the validation erros and then open it
+// If there are errors, use jQuery to update the Modal with validation errors and then open it
 <% if @category.errors.any? %>
   $('#ModalCategory<%= @category.id %>').replaceWith("<%= j render "admin/categories/form", category: @category %>");
 
