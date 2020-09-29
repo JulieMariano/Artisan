@@ -135,8 +135,8 @@ data = [
 def item_generator(category, pic_url, name = nil)
   item_name = (name.nil? ? Faker::JapaneseMedia::OnePiece.character : name)
 
-  # Make sure the Item's name is unique
-  unless Item.find_by(name: item_name).nil?
+  # Make sure the Item's name passes the case insensitive uniqueness and length validations
+  unless Item.find_by("LOWER(name)= ?", item_name.downcase).nil? && item_name.length.between?(2, 20)
     item_generator(category, pic_url, Faker::JapaneseMedia::DragonBall.character)
   end
 
