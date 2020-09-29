@@ -5,17 +5,15 @@ document.querySelector('#ModalCategoryNew button').click();
 document.querySelector('body').classList.remove('modal-open');
 document.querySelector('.modal-backdrop').remove();
 
-// If there are errors, use jQuery to update the Modal with validation errors and then open it
+// If there are errors update the Modal with validation errors and then open it
 <% if @category.errors.any? %>
   $('#ModalCategoryNew').replaceWith("<%= j render "admin/categories/form", category: @category %>");
 
   document.querySelector("[data-target='#ModalCategoryNew']").click();
 
-// Otherwise...
+// Otherwise clean the Modal and then append the new Category row to the list
 <% else %>
-  // Empty the Modal input field
-  document.getElementById('category_name_new').value = "";
+  $('#ModalCategoryNew').replaceWith("<%= j render "admin/categories/form", category: Category.new %>");
 
-  // Use jQuery to append the new Category row to the list
   $('tbody').append("<%= j render "admin/categories/category", category: @category %>");
 <% end %>
