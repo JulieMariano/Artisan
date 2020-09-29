@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   has_many :reviews
 
   has_one_attached :picture
+  validate :picture?
 
   monetize :price_cents
 
@@ -26,5 +27,11 @@ class Item < ApplicationRecord
   def relevance_points
     num_reviews = reviews.size
     rating_average.nan? ? 0 : (num_reviews * rating_average) / (num_reviews ** 0.8)
+  end
+
+  private
+
+  def picture?
+    errors.add(:picture, 'has to be present') unless picture.attached?
   end
 end
