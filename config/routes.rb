@@ -37,5 +37,5 @@ Rails.application.routes.draw do
     post "buy_all", to: "orders#buy_all"
   end
 
-  resources :orders_items, only: [:destroy, :update]
+  resources :order_items, only: [:destroy, :update]
 end
