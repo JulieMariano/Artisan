@@ -12,10 +12,10 @@ class OrdersController < ApplicationController
       @order = current_user.cart
       @order = Order.create(user: current_user, state: 'pending') if @order.nil?
 
-      order_item = @order.orders_items.find_by(item: @item)
+      order_item = @order.order_items.find_by(item: @item)
 
       if order_item.nil?
-        OrdersItem.create(order: @order, item: @item, quantity: 1)
+        OrderItem.create(order: @order, item: @item, quantity: 1)
       else
         order_item.increment!(:quantity)
       end
@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
       @order = Order.new(user: current_user, state: 'paying')
 
       if @order.save
-        OrdersItem.create(order: @order, item: item, quantity: 1)
-        @order_items = @order.orders_items
+        OrderItem.create(order: @order, item: item, quantity: 1)
+        @order_items = @order.order_items
 
         create_stripe_session(@order, @order_items)
       end
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
 
   def buy_all
     @order = current_user.orders.find(params[:order_id])
-    @order_items = @order.orders_items.order(created_at: :desc)
+    @order_items = @order.order_items.order(created_at: :desc)
 
     create_stripe_session(@order, @order_items)
   end
@@ -51,14 +51,14 @@ class OrdersController < ApplicationController
     @order = current_user.cart
     @order = Order.create(user: current_user, state: 'pending') if @order.nil?
 
-    @order_items = @order.orders_items.order(created_at: :desc)
+    @order_items = @order.order_items.order(created_at: :desc)
 
     @paid_orders = current_user.paid_orders.paginate(page: params[:page], per_page: 5)
   end
 
   def show
     @order = current_user.orders.find(params[:id])
-    @order_items = @order.orders_items.order(created_at: :desc)
+    @order_items = @order.order_items.order(created_at: :desc)
   end
 
   private
