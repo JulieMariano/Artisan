@@ -5,5 +5,13 @@ document.querySelector('#ModalCategory<%= @category.id %> button').click();
 document.querySelector('body').classList.remove('modal-open');
 document.querySelector('.modal-backdrop').remove();
 
-// Update the content of the edited Category row
-document.getElementById('category_row_<%= @category.id %>').innerHTML = "<%= j render "admin/categories/category", category: @category %>";
+// If there are no errors, use jQuery to update the Modal with the validation erros and then open it
+<% if @category.errors.any? %>
+  $('#ModalCategory<%= @category.id %>').replaceWith("<%= j render "admin/categories/form", category: @category %>");
+
+  document.querySelector("[data-target='#ModalCategory<%= @category.id %>']").click();
+
+// Otherwise update the content of the edited Category row
+<% else %>
+  document.getElementById('category_row_<%= @category.id %>').innerHTML = "<%= j render "admin/categories/category", category: @category %>";
+<% end %>
