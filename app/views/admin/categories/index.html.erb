@@ -22,7 +22,9 @@
               <i class="fas fa-edit"></i>
             <% end %>
 
-            <%= category.name %>
+            <%= link_to admin_category_path(category), style: "color: black" do %>
+              <%= category.name %>
+            <% end %>
           </td>
 
           <td>

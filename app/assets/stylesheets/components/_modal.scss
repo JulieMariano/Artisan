@@ -18,6 +18,16 @@
           font-weight: bold;
           padding-left: 20px;
         }
+
+        .close {
+          color: rgba(100, 100, 100, 1);
+          font-size: 40px;
+          margin-right: 10px;
+
+          &:hover {
+            color: black;
+          }
+        }
       }
     }
   }

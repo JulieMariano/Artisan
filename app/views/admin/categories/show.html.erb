@@ -24,15 +24,12 @@
               <i class="fas fa-edit"></i>
             <% end %>
 
-            <%= item.name %>
-          </td>
-
-          <td>
             <%= link_to category_item_path(@category, item), style: "color: black" do %>
-              <%= OrdersItem.where(item_id: item.id).size %>
+              <%= item.name %>
             <% end %>
           </td>
 
+          <td><%= OrderItem.where(item_id: item.id).size %></td>
           <td><%= item.created_at.strftime("%e/%m/%Y") %></td>
         </tr>
 

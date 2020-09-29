@@ -4,16 +4,6 @@
 
     .modal-header {
       border-bottom: 1px solid #df8543;
-
-      .close {
-        color: rgba(100, 100, 100, 1);
-        font-size: 40px;
-        margin-right: 10px;
-
-        &:hover {
-          color: black;
-        }
-      }
     }
 
     .modal-body > .checkout-summary {
