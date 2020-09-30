@@ -4,14 +4,14 @@
   .modal-dialog {
     display: flex;
     align-items: center;
-    max-width: 450px !important;  // Bootstrap adds 'max-width: 500px' in the media query 'min-width: 576px'
     min-height: calc(90% - 3.5rem);
-  
+    max-width: 450px !important;  // Bootstrap adds 'max-width: 500px' in the media query 'min-width: 576px'
+
     .modal-content {
       background-color: rgba(245, 245, 245, 1);
       min-width: 450px;
       max-width: 450px;
-  
+
       .modal-header {
         .modal-title {
           font-size: 26px;

@@ -4,13 +4,13 @@
 
 .page-link, .page-item.disabled .page-link {
   color: white;
-  border: 1px solid white;
   background-color: #df8543;
+  border: 1px solid white;
   margin-top: 10px;
 }
 
 .page-item.active .page-link, .page-item .page-link:hover {
   color: white;
-  background: #b72a00ed;
+  background-color: #b72a00ed;
   border: 1px solid white;
 }

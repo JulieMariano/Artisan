@@ -1,12 +1,16 @@
 .alert {
-  color: white;
-  font-weight: bold;
-  text-shadow: 0 0 1px black;;
-  border: 1px solid #df8543;
   position: fixed;
   top: 70px;
   right: 0;
   z-index: 1000;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 1px black;
+  border: 1px solid #df8543;
+
+  button.close:hover {
+    color: white;
+  }
 }
 
 .alert-info {
@@ -15,8 +19,4 @@
 
 .alert-warning, .alert-danger {
   background-color: rgba(255, 0, 0, 0.7);
-}
-
-button.close:hover {
-  color: white;
 }

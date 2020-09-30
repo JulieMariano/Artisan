@@ -1,9 +1,8 @@
 .navbar-lewagon {
-  width: 100%;
-  z-index: 100;
-
   justify-content: space-between;
   background: $nav-green;
+  z-index: 100;
+  width: 100%;
 
   .logo-name {
     display: flex;
@@ -16,8 +15,8 @@
     }
 
     .fa-praying-hands {
-      padding-left: 10px;
       color: black;
+      padding-left: 10px;
 
       &:hover {
         color: #9d2503;
@@ -29,20 +28,20 @@
     flex-grow: 0;
 
     .nav-link {
-      opacity: 1;
       color: white !important;
       text-transform: uppercase;
+      opacity: 1;
 
       &:hover {
-        opacity: 1;
         color: #9d2503 !important;
+        opacity: 1;
       }
     }
 
     .nav-item.dropdown {
+      padding-right: 5px;
       padding-left: 8px;
       margin-left: 5px;
-      padding-right: 5px;
 
       a.dropdown-toggle {
         padding: 0;

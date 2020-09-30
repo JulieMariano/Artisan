@@ -22,10 +22,10 @@
     margin: 0;
 
     li.orders-card {
-      list-style: none;
       display: flex;
-      border-bottom: 1px solid #df8543;
+      list-style: none;
       padding: 20px 5px 20px 10px;
+      border-bottom: 1px solid #df8543;
 
       a {
         &:hover {
@@ -36,8 +36,8 @@
           height: 150px;
           width: 150px;
           min-width: 150px;
-          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
           border-radius: 2px;
+          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 
           p {
             color: white;
@@ -108,18 +108,18 @@
     width: 100%;
 
     p {
-      margin: 15px;
       font-size: 18px;
       font-weight: bold;
+      margin: 15px;
     }
 
     table {
       margin: 10px 15px;
 
       tbody > tr {
-        height: 30px;
-        font-weight: bold;
         font-size: 17px;
+        font-weight: bold;
+        height: 30px;
 
         td {
           text-align: end;
@@ -132,9 +132,9 @@
     }
 
     a.btn-ghost {
-      margin: 5px 15px;
-      padding: 6px 12px;
       font-size: 18px;
+      padding: 6px 12px;
+      margin: 5px 15px;
     }
   }
 }
