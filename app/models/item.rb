@@ -31,6 +31,7 @@ class Item < ApplicationRecord
 
   private
 
+  # Method that adds a 'presence: true' validation to the picture
   def picture?
     errors.add(:picture, 'has to be present') unless picture.attached?
   end

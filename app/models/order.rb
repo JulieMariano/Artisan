@@ -8,17 +8,17 @@ class Order < ApplicationRecord
 
   monetize :shipping_costs_cents
 
-  # Method that returns the number of Items of the Order
+  # Method that returns the number of Items in the Order
   def num_items
     order_items.inject(0) { |sum, order_item| sum += order_item.quantity }
   end
 
-  # Method that returns the number of Items of the Order in string format
+  # Method that returns the number of Items in the Order in string format
   def num_items_string
     "#{num_items} #{num_items == 1 ? "item" : "items"}"
   end
 
-  # Method that returns the total cost of the Order Items
+  # Method that returns the total cost of the OrderItems
   def items_subtotal
     order_items.inject(0) { |sum, order_item| sum += order_item.subtotal }
   end
@@ -28,7 +28,7 @@ class Order < ApplicationRecord
     items_subtotal + shipping_costs
   end
 
-  # Method that returns the Order's Item where it was spent more money
+  # Method that returns the Order Item where it was spent more money
   def leading_item
     order_items.max_by(&:subtotal).item
   end

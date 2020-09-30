@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :name, presence: true,
+                   length: { minimum: 2, maximum: 20 }
 
   has_many :orders
   has_many :reviews
