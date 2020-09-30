@@ -14,4 +14,15 @@
   a:hover {
     text-decoration: none;
   }
+
+  .d-flex {
+    .item_name {
+      width: 450px;
+      margin-right: 40px;
+    }
+
+    .item_price {
+      flex-grow: 1;
+    }
+  }
 }

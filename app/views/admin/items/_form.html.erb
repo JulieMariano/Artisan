@@ -9,8 +9,11 @@
       <div class="modal-body">
         <%= simple_form_for([:admin, @category, item], remote: true) do |f| %>
           <!-- Make sure each input field has a unique ID -->
-          <%= f.input :name,                input_html: { id: "item_name_#{item.id || "new"}" } %>
-          <%= f.input :price,               input_html: { id: "item_price_#{item.id || "new"}" } %>
+          <div class="d-flex">
+            <%= f.input :name,              input_html: { id: "item_name_#{item.id || "new"}" } %>
+            <%= f.input :price,             input_html: { id: "item_price_#{item.id || "new"}" } %>
+          </div>
+
           <%= f.input :description,         input_html: { id: "item_description_#{item.id || "new"}" } %>
           <%= f.input :picture, as: :file,  input_html: { id: "item_picture_#{item.id || "new"}" } %>
 
