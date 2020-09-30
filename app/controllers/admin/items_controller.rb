@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     update_params = item_params
-    update_params["sku"] = generate_sku(item_params[:name])
+    update_params["sku"] = generate_sku(item_params[:name])   # Add the sku column to the params
 
     @item = Item.find(params[:id])
     @item.update(update_params)
@@ -24,13 +24,14 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :picture, :category_id)
+    params.require(:item).permit(:name, :price, :description, :picture)
   end
 
   def set_category
     @category = Category.find(params[:category_id])
   end
 
+  # Method that generates the Item sku based on its name
   def generate_sku(item_name)
     item_name.downcase.split(' ').join('_')
   end
