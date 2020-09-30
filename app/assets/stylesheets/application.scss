@@ -17,3 +17,9 @@ html, body {
   height: 100%;
   margin: 0px;
 }
+
+// To cancel the style configs of the 'modal-open' class
+body {
+  padding-right: 0 !important;
+  overflow: auto !important;
+}
