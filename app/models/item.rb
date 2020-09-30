@@ -15,10 +15,24 @@ class Item < ApplicationRecord
 
   monetize :price_cents
 
-  # Method that returns the Item's average review rating
+  # Method that returns the average reviews rating
   def rating_average
     reviews.reduce(0) { |sum, review| sum + review.rating }
            .fdiv(reviews.size)
+  end
+
+  # Method that returns the average reviews rating prepared to be displayed on the view
+  def rating_average_string
+    result = rating_average.round(1)
+
+    return (result.zero? ? "Not rated" : result)
+  end
+
+  # Method that returns the number of reviews prepared to be displayed on the view
+  def reviews_size_string
+    result = reviews.size
+
+    return (result.zero? ? "" : (result == 1 ? "1 rating" : "#{result} ratings"))
   end
 
   # Method that returns the Item's relevance points
