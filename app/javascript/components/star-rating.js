@@ -4,7 +4,7 @@ function starRating() {
 
   // For each review headers...
   for (let i = 0; i < listRatings.length; i++) {
-    let elementRating = parseInt(listRatings[i].getAttribute('data-rating'));   // It's rating
+    let elementRating = parseInt(listRatings[i].getAttribute('data-rating'));   // Get the respective rating
 
     // Add (rating num minus 5) empty stars
     for (let n = 0; n < (5 - elementRating); n++) {

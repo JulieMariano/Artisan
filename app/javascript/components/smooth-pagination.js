@@ -16,7 +16,7 @@ function smoothPagination() {
 
         // Use jQuery to perform a scrolling animation to the top of the Paid Orders list
         $("html, body").animate( {
-          scrollTop: $('#paid-orders').offset().top - 68  // 68 is the height of the navbar
+          scrollTop: $('#paid-orders').offset().top - 68  // 52px (height of the navbar) plus 16px of margin
         }, 250);
       });
     }

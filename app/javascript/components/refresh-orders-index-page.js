@@ -1,6 +1,8 @@
 import { autoSubmitForm } from './auto-submit-form';
 
-// Function that reloads the Orders#index page content uppon it being updated in an AJAX request
+// Function that reloads the Orders#index page content
+// Parameters: shoppingCart   content of the shopping cart section;
+//             navbarCart     content of the navbar field for the cart;
 function refreshOrdersIndexPage(shoppingCart, navbarCart) {
   // Refresh the Shopping Cart's content
   document.getElementById('shopping-cart').innerHTML = shoppingCart;

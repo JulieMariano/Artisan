@@ -29,8 +29,7 @@ import { autoSubmitForm } from '../components/auto-submit-form';
 import { createFlashes } from '../components/create-flashes';
 import { prepareModalCheckout } from '../components/prepare-modal-checkout';
 import { readMore } from '../components/read-more';
-import { refreshInputValidations } from '../components/refresh-input-validations';
-import { removeValidations } from '../components/refresh-input-validations';
+import { refreshInputValidations, removeValidations } from '../components/refresh-input-validations';
 import { refreshOrdersIndexPage } from '../components/refresh-orders-index-page';
 import { smoothPagination } from '../components/smooth-pagination';
 import { starRating } from '../components/star-rating';
@@ -77,6 +76,7 @@ document.addEventListener('turbolinks:load', () => {
   const reviewsList = document.getElementById('reviews-list');
   const shoppingCart = document.getElementById('shopping-cart');
 
+  // If the Items#show page is opened, then...
   if (reviewsList) {
     readMore();
     starRating();
@@ -84,6 +84,7 @@ document.addEventListener('turbolinks:load', () => {
     window.addEventListener('resize', () => {
       readMore();
     });
+  // If the Orders#index page is opened, then...
   } else if (shoppingCart) {
     autoSubmitForm('.edit_order_item', 'input.numeric');
     smoothPagination();

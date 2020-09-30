@@ -1,4 +1,5 @@
-// Function that creates and appends a type of alert to the body of the document
+// Function that creates and appends a type of alert (alertType) with a certain text (text) to the
+// body of the document
 function createFlashes(alertType, text) {
   // Create alert 'div'
   var div = document.createElement('div');

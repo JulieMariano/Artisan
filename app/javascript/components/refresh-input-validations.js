@@ -1,6 +1,6 @@
 // Function that refreshes the validations of a selected form's input field
 // It adds error messages and changes the input's container colors
-// Parameters: containerSelector   selector of the container of the input;
+// Parameters: containerSelector   selector of the input container;
 //             containerChildNum   number of children in that container (without error messages);
 //             inputType           type of input;
 //             errorMessage        error message of the input, or it's input denomination if there are no errors;
@@ -8,11 +8,11 @@ function refreshInputValidations(containerSelector, containerChildNum, inputType
   var inputContainer = document.querySelector(containerSelector);
   var inputField = document.querySelector(`${containerSelector} ${inputType}`);
 
-  // If it exists, remove any input related error message
+  // If it exists, remove any input related error messages
   removeValidations(containerSelector, containerChildNum, inputType)
 
-  // Get the error message that's passed when there are no erros
-  // It's the input denomination capitalized with a trailing whitespace to the right
+  // Get the error message that's passed when there are no errors
+  // This message is the input denomination capitalized with trailing whitespaces to the right
   const myRegex = /\.[a-z]*_([a-z]*)/;
   var match = myRegex.exec(containerSelector);
   var standardErrorMessage =  match[1].charAt(0).toUpperCase() + match[1].slice(1) + " ";
@@ -28,7 +28,7 @@ function refreshInputValidations(containerSelector, containerChildNum, inputType
 
     inputContainer.appendChild(Node);
 
-  // Otherwise mark the input as valid
+  // Otherwise, mark the input as valid
   } else {
     inputContainer.classList.add('form-group-valid');
     inputField.classList.add('is-valid');
@@ -36,6 +36,9 @@ function refreshInputValidations(containerSelector, containerChildNum, inputType
 }
 
 // Function that removes any input related error messages and validation marks
+// Parameters: containerSelector   selector of the input container;
+//             containerChildNum   number of children in that container (without error messages);
+//             inputType           type of input;
 function removeValidations(containerSelector, containerChildNum, inputType) {
   var inputContainer = document.querySelector(containerSelector);
   var inputField = document.querySelector(`${containerSelector} ${inputType}`);
