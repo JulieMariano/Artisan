@@ -1,11 +1,13 @@
 <% @order_items.each do |order_item| %>
   <li class="orders-card">
+    <!-- Item image -->
     <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
       <div class="orders-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
            height: 150, width: 150, crop: :fill %>')">
       </div>
     <% end %>
 
+    <!-- Item information -->
     <div class="orders-card-info">
       <div class="orders-card-content">
         <h4><%= order_item.item.name %></h4>
@@ -14,6 +16,7 @@
           <span style="margin-left: 10px"><%= humanized_money_with_symbol(order_item.item.price) %></span>
         </p>
 
+        <!-- OrderItem quantity form -->
         <div class="orders-card-actions">
           <%= simple_form_for(order_item, remote: true) do |f| %>
             <label class="integer optional" for="order_item_quantity<%= order_item.id %>">Items</label>
