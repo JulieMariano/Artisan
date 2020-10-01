@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Stripe's Webhook Event
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 
-  # Sidekiq Web UI, only for Admins
+  # Sidekiq Web UI (only for Admins)
   require "sidekiq/web"
   authenticate :user, ->(user) { user.is_admin? } do
     mount Sidekiq::Web => '/sidekiq'

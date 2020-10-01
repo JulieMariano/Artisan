@@ -2,7 +2,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # Specify the NGROK URL here and at Sptripe/developers/webhooks with '/stripe-webhooks' appended
+  # Specify the NGROK URL here
+  # Add the same URL at Stripe/developers/webhooks with '/stripe-webhooks' appended
   config.hosts << "4e3021f864b4.ngrok.io"
 
   # In the development environment your application's code is reloaded on

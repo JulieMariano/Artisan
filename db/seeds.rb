@@ -2,7 +2,7 @@ require "open-uri"
 require "faker"
 
 
-# Clean DB (from the more specific to the more general)
+# Clean the DB (from the more specific to the more general)
 Review.destroy_all
 Order.destroy_all
 Item.destroy_all
@@ -41,6 +41,7 @@ puts "Categories created: #{Category.all.size}\n\n"
 
 
 # Items pictures url
+# They may get deprecated!
 #   Acessories
 acessories_url = [
   'https://images.squarespace-cdn.com/content/v1/5c26b344fcf7fdb35ed3f946/1590006879185-1STN7FFKPEBAEOSOORNM/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/_MG_6011_web.jpg?format=1500w',
@@ -120,34 +121,33 @@ walls_decorations_url = [
 
 # Agregated pictures url data by category
 data = [
-  { category: acessories, pic_urls: acessories_url },
-  { category: carpets, pic_urls: carpets_url },
-  { category: ceramics, pic_urls: ceramics_url },
-  { category: kids_decorations, pic_urls: kids_decorations_url },
-  { category: lighting, pic_urls: lighting_url },
-  { category: mantas, pic_urls: mantas_url },
-  { category: walls_decorations, pic_urls: walls_decorations_url }
+  { category: acessories,         pic_urls: acessories_url },
+  { category: carpets,            pic_urls: carpets_url },
+  { category: ceramics,           pic_urls: ceramics_url },
+  { category: kids_decorations,   pic_urls: kids_decorations_url },
+  { category: lighting,           pic_urls: lighting_url },
+  { category: mantas,             pic_urls: mantas_url },
+  { category: walls_decorations,  pic_urls: walls_decorations_url }
 ]
 
 
 # Create Items
-#   Method that generates a new Item based on the Category and picture_url passed as arguments
+#   Method that generates and returns a new Item based on the Category and picture_url passed as arguments
 def item_generator(category, pic_url, name = nil)
   item_name = (name.nil? ? Faker::JapaneseMedia::OnePiece.character : name)
 
   # Make sure the Item's name passes the case insensitive uniqueness and length validations
+  # Otherwise, use a recursive function to try another name
   unless Item.find_by("LOWER(name)= ?", item_name.downcase).nil? && item_name.length.between?(2, 20)
     item_generator(category, pic_url, Faker::JapaneseMedia::DragonBall.character)
   end
 
   new_item = Item.new(name: item_name,
-  description: "Give your home a vibrant, coulourful and creative touch!",
-  price_cents: rand(50..300) * 100,
-  category: category
-  )
-
-  # Get the stock-keeping unit
-  new_item.sku = item_name.downcase.split(' ').join('_')
+                      category: category,
+                      description: "Give your home a vibrant, coulourful and creative touch!",
+                      price: rand(20..200),                           # Get the price
+                      sku: item_name.downcase.split(' ').join('_')    # Get the stock-keeping unit
+                     )
 
   # Get the picture
   file = URI.open(pic_url)
