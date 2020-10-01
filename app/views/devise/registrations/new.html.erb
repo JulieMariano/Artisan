@@ -13,7 +13,6 @@
 
       <%= f.input :name,
                   required: true,
-                  autofocus: true,
                   placeholder: "Name",
                   input_html: { autocomplete: "name" } %>
 
@@ -31,6 +30,7 @@
 
     <div class="devise-button-container">
       <%= f.button :submit, "Sign up", class: "btn btn-ghost" %>
+
       <%= link_to "Log in", new_session_path(resource_name), class:"btn btn-ghost" %>
     </div>
   <% end %>
