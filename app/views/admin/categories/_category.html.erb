@@ -1,4 +1,5 @@
 <tr id="category_row_<%= category.id %>">
+  <!-- Category name -->
   <td>
     <%= link_to "Delete", data: { toggle: "modal", target: "#ModalDeleteCategory#{category.id}" }, class: "btn-delete",
         style: "margin-right: 5px; font-size: 18px" do %>
@@ -21,6 +22,7 @@
     <% end %>
   </td>
 
+  <!-- Number of Items -->
   <td>
     <%= link_to admin_category_path(category), style: "color: black" do %>
       <% num_items = category.items.size %>
@@ -29,5 +31,6 @@
     <% end %>
   </td>
 
+  <!-- When was the Category created -->
   <td><%= category.created_at.strftime("%e/%m/%Y") %></td>
 </tr>

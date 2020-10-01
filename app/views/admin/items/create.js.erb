@@ -2,13 +2,13 @@
 document.querySelector('body').classList.remove('modal-open');
 document.querySelector('.modal-backdrop').remove();
 
-// If there are errors, update the Modal with the validation messages and then open it
+// If there are errors, update the Modal to display validation errors and then open it
 <% if @item.errors.any? %>
   $('#ModalItemNew').replaceWith("<%= j render "admin/items/form", item: @item %>");
 
   document.querySelector("[data-target='#ModalItemNew']").click();
 
-// Otherwise, clean the Modal and then append the new Item to the list
+// Otherwise, clean the Modal and append the new Item to the list
 <% else %>
   $('#ModalItemNew').replaceWith("<%= j render "admin/items/form", item: Item.new %>");
 
