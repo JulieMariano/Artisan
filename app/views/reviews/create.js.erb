@@ -9,6 +9,9 @@
   // Refresh the Reviews list
   document.getElementById("reviews-list").innerHTML = "<%= j render partial: "reviews-list" %>";
 
+  // Refresh the the Item rating information
+  document.querySelector('.item-rating-info h6').innerHTML = "<%= @item.rating_average_string %> <span><%= @item.reviews_size_string %></span>";
+
   starRating(); // Quantify each review's rating with stars
   readMore();   // Hide the review's content if it is too long
 
