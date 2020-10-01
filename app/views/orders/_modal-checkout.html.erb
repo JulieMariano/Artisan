@@ -7,6 +7,7 @@
 
     <div class="modal-body">
       <ul class="checkout-summary">
+        <!-- List of Items in the shopping cart -->
         <% @order_items.each do |order_item| %>
           <li>
             <p><%= "#{order_item.item.name} (#{order_item.quantity})" %></p>

@@ -1,6 +1,8 @@
 <div class="orders-list-container">
   <h1>
     ORDER <%= "#" + "%06d" % @order.id %>
+
+    <!-- Order status -->
     <% if @order.state == 'pending' %>
       <span style="color: #b72a00">
         <i class="fas fa-exclamation-triangle"></i>
@@ -24,15 +26,18 @@
     <% end %>
   </h1>
 
+  <!-- Order Items list -->
   <ul class="orders-list">
     <% @order_items.each do |order_item| %>
       <li class="orders-card">
+        <!-- Item image -->
         <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
           <div class="orders-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
               height: 150, width: 150, crop: :fill %>')">
           </div>
         <% end %>
 
+        <!-- Item information -->
         <div class="orders-card-info">
           <div class="orders-card-content">
             <h4><%= order_item.item.name %></h4>
@@ -58,6 +63,7 @@
     <% end %>
   </ul>
 
+  <!-- Order checkout information -->
   <div class="order-checkout">
     <table>
       <tr>

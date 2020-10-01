@@ -2,11 +2,11 @@
 var flash = document.querySelector('.alert.alert-dismissible');
 if (flash) { flash.remove() }
 
-// If there are any erros in the creation of an order, then display a warning alert
+// If there are any erros in the creation of an Order, then display a warning alert
 <% if @order.errors.any? %>
   createFlashes('alert-warning', "It seems there was an error with your order");
 
-// Otherwise prepare the Checkout's Modal and open it
+// Otherwise, prepare the checkout modal and open it
 <% else %>
   var modalCheckout = "<%= j render partial: "orders/modal-checkout" %>";
   var stripeKey = "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>";

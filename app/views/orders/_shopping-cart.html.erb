@@ -5,12 +5,14 @@
 
 <% else %>
   <ul class="orders-list">
+    <!-- List of Items in the shopping cart -->
     <%= render "order_items/order-items-list" %>
   </ul>
 
   <div class="order-checkout">
     <p>Subtotal (<%= @order.num_items_string %>): <%= humanized_money_with_symbol(@order.items_subtotal) %></p>
 
+    <!-- Buy the shopping cart Items -->
     <%= link_to order_buy_all_path(@order), class:"btn btn-ghost", method: :post, remote: true do %>
       Checkout
     <% end %>

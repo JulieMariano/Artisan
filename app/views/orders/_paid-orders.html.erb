@@ -7,6 +7,7 @@
   <ul class="orders-list">
     <% @paid_orders.each do |order| %>
       <li class="orders-card">
+        <!-- Item image -->
         <%= link_to order_path(order) do %>
           <div class="orders-card-img" style="background-image: url('<%= cl_image_path order.leading_item.picture.key,
               height: 150, width: 150, crop: :fill %>'); display: flex">
@@ -14,6 +15,7 @@
           </div>
         <% end %>
 
+        <!-- Item information -->
         <div class="orders-card-info">
           <div class="orders-card-content">
             <h4>ORDER <%= "#" + "%06d" % order.id %></h4>
@@ -47,6 +49,7 @@
       </li>
     <% end %>
 
+    <!-- Paginate the Orders list -->
     <%= will_paginate @paid_orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
         previous_label: "&laquo;", next_label: "&raquo;" %>
   </ul>
