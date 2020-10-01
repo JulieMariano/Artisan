@@ -137,25 +137,26 @@ def item_generator(category, pic_url, name = nil)
   item_name = (name.nil? ? Faker::JapaneseMedia::OnePiece.character : name)
 
   # Make sure the Item's name passes the case insensitive uniqueness and length validations
-  # Otherwise, use a recursive function to try another name
+  # Otherwise, try again with a different name
   unless Item.find_by("LOWER(name)= ?", item_name.downcase).nil? && item_name.length.between?(2, 20)
     item_generator(category, pic_url, Faker::JapaneseMedia::DragonBall.character)
+
+  else
+    new_item = Item.new(name: item_name,
+                        category: category,
+                        description: "Give your home a vibrant, coulourful and creative touch!",
+                        price: rand(20..200),                           # Get the price
+                        sku: item_name.downcase.split(' ').join('_')    # Get the stock-keeping unit
+                       )
+
+    # Get the picture
+    file = URI.open(pic_url)
+    new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+    new_item.save
+
+    return new_item
   end
-
-  new_item = Item.new(name: item_name,
-                      category: category,
-                      description: "Give your home a vibrant, coulourful and creative touch!",
-                      price: rand(20..200),                           # Get the price
-                      sku: item_name.downcase.split(' ').join('_')    # Get the stock-keeping unit
-                     )
-
-  # Get the picture
-  file = URI.open(pic_url)
-  new_item.picture.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-
-  new_item.save
-
-  return new_item
 end
 
 #   Method that generates a certain 'num' of random reviews for a certain 'item'

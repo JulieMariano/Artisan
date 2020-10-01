@@ -4,7 +4,7 @@ Rails.application.configure do
 
   # Specify the NGROK URL here
   # Add the same URL at Stripe/developers/webhooks with '/stripe-webhooks' appended
-  config.hosts << "4e3021f864b4.ngrok.io"
+  config.hosts << "7ac3f581caf0.ngrok.io"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
