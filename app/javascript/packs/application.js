@@ -29,7 +29,6 @@ import { autoSubmitForm } from '../components/auto-submit-form';
 import { createFlashes } from '../components/create-flashes';
 import { prepareModalCheckout } from '../components/prepare-modal-checkout';
 import { readMore } from '../components/read-more';
-import { refreshInputValidations, removeValidations } from '../components/refresh-input-validations';
 import { refreshOrdersIndexPage } from '../components/refresh-orders-index-page';
 import { smoothPagination } from '../components/smooth-pagination';
 import { starRating } from '../components/star-rating';
@@ -49,14 +48,6 @@ window.prepareModalCheckout = function(modalCheckout, stripeKey, orderSessionId)
 
 window.readMore = function() {
   readMore();
-}
-
-window.refreshInputValidations = function(containerSelector, containerChildNum, inputType, errorMessage) {
-  refreshInputValidations(containerSelector, containerChildNum, inputType, errorMessage);
-}
-
-window.removeValidations = function(containerSelector, containerChildNum, inputType) {
-  removeValidations(containerSelector, containerChildNum, inputType);
 }
 
 window.refreshOrdersIndexPage = function(shoppingCart, navbarCart) {

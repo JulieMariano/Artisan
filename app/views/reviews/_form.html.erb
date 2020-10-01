@@ -6,6 +6,11 @@
         <%= b.radio_button + b.label {''} %>
       <% end %>
     </div>
+
+    <!-- Display rating validation errors if they exist -->
+    <% unless review.errors.messages[:rating].empty? %>
+      <div class="invalid-feedback">Rating can't be blank</div>
+    <% end %>
   </div>
 
   <div class="d-flex" style="position: relative">
