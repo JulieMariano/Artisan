@@ -1,4 +1,5 @@
 <div class="home-page-intro">
+  <!-- Banner -->
   <div class="banner" style="background-image: url('<%= image_path 'banner-image.jpg' %>')">
     <div class="container">
       <h1 style="margin-bottom: 10px">Find the most beautiful crafts around the world</h1>
@@ -11,6 +12,7 @@
     </div>
   </div>
 
+  <!-- Company information -->
   <div class="informations d-flex">
     <div class="info">
       <h1>OUR MISSION</h1>
@@ -36,6 +38,7 @@
   <h3>DISCOVER YOUR NEXT CRUSH</h3>
 </div>
 
+<!-- Display all the Categories in cards with their respective best Items in a carousel -->
 <div class="row justify-content-center w-100">
   <div class="categories-container">
     <% @categories.each do |category| %>
@@ -44,6 +47,7 @@
           <h2 class="bordered-headers" style="width: 175px; text-align: right"><span><%= category.name %></span></h2>
         <% end %>
 
+        <!-- Carousel of the 3 best Items of the Category -->
         <div class="bd-example category-carousel" style="width: 400px; heigth: 400px">
           <div id="carouselExampleCaptions<%= category.id %>" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -53,14 +57,15 @@
             </ol>
 
             <div class="carousel-inner">
-              <% category.items_by_relevance[0..2].each do |item| %>
-                <div class="carousel-item <%= "active" if item == category.items_by_relevance[0] %>"
+              <% category.items_by_relevance.first(3).each_with_index do |item, index| %>
+                <div class="carousel-item <%= "active" if index.zero? %>"
                      style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
                                               url('<%= cl_image_path item.picture.key, height: 400, width: 400, crop: :fill %>')">
                   <%= link_to category_item_path(category, item) do %>
+                    <!-- Items Information -->
                     <div class="carousel-caption">
                       <h5><%= item.name %></h5>
-                      <p><%= item.description %></p>
+                      <p style="height: 34px; overflow: hidden"><%= item.description %></p>
                       <p><%= humanized_money_with_symbol(item.price) %></p>
                     </div>
                   <% end %>
@@ -86,27 +91,24 @@
   </div>
 </div>
 
+<!-- Reassurance messages -->
 <div class="reassurance">
   <div class="reassurance-card">
-    <div>
-      <i class="fas fa-truck"></i>
-    </div>
+    <div><i class="fas fa-truck"></i></div>
+
     <h3>SECURE DELIVERY</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 
   <div class="reassurance-card">
-    <div>
-      <i class="fas fa-lock"></i>
-    </div>
+    <div><i class="fas fa-lock"></i></div>
+
     <h3>SECURE PAYMENT</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 
   <div class="reassurance-card">
-    <div>
-      <i class="fas fa-hand-holding-heart"></i>
-    </div>
+    <div><i class="fas fa-hand-holding-heart"></i></div>
 
     <h3>HOMEMADE PRODUCTS</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
