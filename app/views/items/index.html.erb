@@ -1,5 +1,6 @@
 <h1 class="bordered-headers" style="font-size: 32px; margin: 15px 40px 25px"><span><%= @category.name %></span></h1>
 
+<!-- Display all the Items in cards -->
 <div class="items-container">
   <% @category_items.each do |item| %>
     <%= link_to category_item_path(@category, item) do %>
@@ -7,9 +8,11 @@
         <div class="img-card"
              style="background-image: url('<%= cl_image_path item.picture.key, height: 240, width: 240, crop: :fill %>')">
         </div>
+
+        <!-- Item information -->
         <div class="text-holder">
           <h5><%= item.name %></h5>
-          <p><%= item.description %></p>
+          <p style="height: 34px; overflow: hidden"><%= item.description %></p>
           <p><%= humanized_money_with_symbol(item.price) %></p>
         </div>
       </div>

@@ -62,7 +62,7 @@
                      style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
                                               url('<%= cl_image_path item.picture.key, height: 400, width: 400, crop: :fill %>')">
                   <%= link_to category_item_path(category, item) do %>
-                    <!-- Items Information -->
+                    <!-- Item information -->
                     <div class="carousel-caption">
                       <h5><%= item.name %></h5>
                       <p style="height: 34px; overflow: hidden"><%= item.description %></p>
