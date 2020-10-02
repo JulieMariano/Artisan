@@ -1,0 +1,5 @@
+// Close the Modal
+document.querySelector('#ModalDeleteItem<%= @item.id %> button').click();
+
+// Remove the Item from the list
+document.getElementById('item_row_<%= @item.id %>').remove();

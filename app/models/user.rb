@@ -4,15 +4,28 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items, through: :orders
+  validates :name, presence: true,
+                   length: { in: 2..20 }
+
   has_many :orders
   has_many :reviews
 
-  def payed_orders
-    orders.where(bought: true).order(created_at: :desc)
+  has_one_attached :avatar
+
+  # Method that returns the User paid Orders list
+  # Orders with the 'delivered' state where already paid for
+  def paid_orders
+    orders.where(state: ['paid', 'delivered']).order(updated_at: :asc)
   end
 
-  def pending_orders
-    orders.where(bought: false).order(created_at: :desc)
+  # Method that returns the shopping cart Order of the User
+  # Only one Order with the 'pending' state is possible per User
+  def cart
+    orders.find_by(state: 'pending')
+  end
+
+  # Method that returns the number of Items a User has in it's shopping cart
+  def cart_size
+    cart.nil? ? 0 : cart.num_items
   end
 end

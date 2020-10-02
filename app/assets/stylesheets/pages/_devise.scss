@@ -1,0 +1,17 @@
+.devise-container {
+  min-width: 480px;
+  max-width: 600px;
+  padding: 20px 25px;
+  margin: 0 auto;
+
+  .devise-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    .btn-ghost {
+      width: 10rem;
+      margin: 0 20px;
+    }
+  }
+}

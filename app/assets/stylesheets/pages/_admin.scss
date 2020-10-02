@@ -1,0 +1,28 @@
+.admin-container {
+  min-width: 628px;
+  max-width: 628px;
+  padding: 15px 10px 30px;
+  margin: 0 auto;
+
+  .table {
+    td {
+      border-top: none;
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .d-flex {
+    .item_name {
+      width: 450px;
+      margin-right: 40px;
+    }
+
+    .item_price {
+      flex-grow: 1;
+    }
+  }
+}

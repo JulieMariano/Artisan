@@ -1,48 +1,65 @@
 .navbar-lewagon {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-
   justify-content: space-between;
   background: $nav-green;
+  z-index: 100;
+  width: 100%;
 
-  h1 {
-    font-family: Karla;
+  .logo-name {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    font-family: Pangolin;
+
+    h1 {
+      font-family: Karla;
+    }
+
+    .fa-praying-hands {
+      color: black;
+      padding-left: 10px;
+
+      &:hover {
+        color: #9d2503;
+      }
+    }
   }
-}
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+  .navbar-collapse {
+    flex-grow: 0;
 
-.navbar-lewagon .navbar-brand img {
-  width: 60px;
-}
+    .nav-link {
+      color: white !important;
+      text-transform: uppercase;
+      opacity: 1;
 
-#navbar-link {
-  opacity: 1;
-  color: white;
-  text-transform: uppercase;
-}
+      &:hover {
+        color: #9d2503 !important;
+        opacity: 1;
+      }
+    }
 
-#navbar-link:hover {
-  opacity: 1;
-  color: #9d2503;
-}
+    .nav-item.dropdown {
+      padding-right: 5px;
+      padding-left: 8px;
+      margin-left: 5px;
 
-.fa-praying-hands {
-  padding-left: 10px;
-  color: black;
-}
+      a.dropdown-toggle {
+        padding: 0;
 
-.fa-praying-hands:hover {
-  color: #9d2503;
-}
+        &::after {
+          display: none;
+        }
+      }
 
-.logo-name {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  font-family: Pangolin;
+      .dropdown-menu {
+        min-width: 120px;
+        max-width: 120px;
+
+        .dropdown-item:hover {
+          color: white;
+          background-color: #7fa998;
+        }
+      }
+    }
+  }
 }

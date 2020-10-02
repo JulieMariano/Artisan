@@ -1,0 +1,5 @@
+// Close the Modal
+document.querySelector('#ModalDeleteCategory<%= @category.id %> button').click();
+
+// Remove the Category from the list
+document.getElementById('category_row_<%= @category.id %>').remove();

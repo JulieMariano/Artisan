@@ -1,0 +1,45 @@
+#ModalCheckout {
+  .modal-content {
+    border: 3px solid #df8543;
+
+    .modal-header {
+      border-bottom: 1px solid #df8543;
+    }
+
+    .modal-body > .checkout-summary {
+      width: 400px;
+      padding: 10px 20px;
+      margin: 0 auto;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        font-size: 16px;
+        padding: 0 10px;
+      }
+
+      hr {
+        border-top: 1px solid #df8543;
+        margin: -2px 0 12px;
+      }
+
+      .checkout-items-total, .checkout-shipping {
+        p {
+          font-weight: bold;
+        }
+      }
+
+      .checkout-total > p {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .btn-ghost {
+        font-size: 22px;
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
+}

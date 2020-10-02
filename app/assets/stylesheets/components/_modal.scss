@@ -1,0 +1,55 @@
+.modal {
+  padding-right: 0 !important;  // Bootstrap adds 'padding-right: 17px' uppon oppening the Modal
+
+  .modal-dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(90% - 3.5rem);
+    max-width: 450px !important;  // Bootstrap adds 'max-width: 500px' in the media query 'min-width: 576px'
+
+    .modal-content {
+      background-color: rgba(245, 245, 245, 1);
+      min-width: 450px;
+      max-width: 450px;
+
+      .modal-header {
+        .modal-title {
+          font-size: 26px;
+          font-weight: bold;
+          padding-left: 20px;
+        }
+
+        .close {
+          color: rgba(100, 100, 100, 1);
+          font-size: 40px;
+          margin-right: 10px;
+
+          &:hover {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-confirm {
+  .modal-content {
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+
+    h4, p {
+      text-align: center;
+    }
+
+    h4 {
+      font-weight: bold;
+      padding: 15px 0 10px;
+      border-bottom: 1px solid black;
+    }
+
+    p {
+      margin: 10px 0 15px;
+    }
+  }
+}

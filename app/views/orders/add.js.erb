@@ -1,0 +1,16 @@
+// If a flash alert already exists, then remove it
+var flash = document.querySelector('.alert.alert-dismissible');
+if (flash) { flash.remove() }
+
+// If there are any erros in the creation of an Order, then display a warning alert
+<% if @order.errors.any? %>
+  createFlashes('alert-warning', "It seems there was an error with your order");
+
+// Otherwise...
+<% else %>
+  // Display a notice of the Order created
+  createFlashes('alert-info', "<%= @item.name %> added to Cart");
+
+  // Update the number of Orders in the navbar cart field
+  document.querySelector('#cart-size a').innerHTML = "Cart (<%= current_user.cart_size %>)";
+<% end %>

@@ -1,0 +1,16 @@
+<div class="modal fade modal-confirm" id="ModalDeleteItem<%= item.id %>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-confirm-body">
+        <h4 class="modal-title">Delete <%= item.name %></h4>
+        <p>Are you sure you want to delete the Item?</p>
+
+        <div>
+          <button type="button" class="btn-cancel-confirm" data-dismiss="modal">Cancel</button>
+          <%= link_to "Delete", admin_category_item_path(@category, item), method: :delete, remote: true,
+              class: "btn-accept-confirm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+// Remove the Modal configs and background shadow
+document.querySelector('body').classList.remove('modal-open');
+document.querySelector('.modal-backdrop').remove();
+
+// If there are errors, update the Modal to display validation errors and then open it
+<% if @item.errors.any? %>
+  $('#ModalItem<%= @item.id %>').replaceWith("<%= j render "admin/items/form", item: @item %>");
+
+  document.querySelector("[data-target='#ModalItem<%= @item.id %>']").click();
+
+// Otherwise, update the content of the edited Item
+<% else %>
+  document.getElementById('item_row_<%= @item.id %>').innerHTML = "<%= j render "admin/items/item", item: @item %>";
+<% end %>

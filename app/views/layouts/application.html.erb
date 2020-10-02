@@ -10,7 +10,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Font Awesome Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <!-- Stripe payment service -->
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
   <body>
@@ -18,7 +25,8 @@
       <%= render 'shared/flashes' %>
       <%= render 'shared/navbar' %>
 
-      <div class="content" style="padding: 65px 0 0">
+      <!-- 135px is the Footer's height that is fixed to the bottom of the page -->
+      <div class="content" style="padding-bottom: 135px; min-width: 480px">
         <%= yield %>
       </div>
 

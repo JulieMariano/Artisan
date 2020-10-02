@@ -1,71 +1,65 @@
-  <div class="row">
-    <div class="col-12 col-md-9 mt-3" style="margin: 20px auto">
-      <div style="display: flex">
-        <div class="product-img" style="background-image: url('<%= cl_image_path @item.picture.key, height: 400, width: 400, crop: :fill %>');"></div>
+<div class="container-item-show">
+  <div class="item-show-card">
+    <!-- Item image -->
+    <div class="item-show-img"
+         style="background-image: url('<%= cl_image_path @item.picture.key, height: 500, width: 500, crop: :fill %>')">
+    </div>
 
-        <div class="information">
-          <div class="details">
-            <h2 id="item-name"><b><%= @item.name %></b></h2>
-            <hr>
-            <p class="show-text"><b><%= @item.category.name %></b></p>
-            <p class="show-text"><%= @item.description %></p>
-          </div>
+    <!-- Item information -->
+    <div class="item-show-details">
+      <h1><%= @item.name %></h1>
 
-          <div id="price-div">
-            <div id="price-tag" class="show-text"><b><%= humanized_money_with_symbol(@item.price) %></b></div>
-            <div>
-              <%= simple_form_for [@category, @item, @order] do |f| %>
-                <%= f.button :submit, class: "btn btn-ghost" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+      <div class="details">
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 50px"><h5>Category</h5></td>
+            <td style="width: 15px"></td>
+            <td><h6><%= @category.name %></h6></td>
+          </tr>
+
+          <tr>
+            <td><h5>Rating</h5></td>
+            <td></td>
+            <td class="item-rating-info">
+              <h6>
+                <%= @item.rating_average_string %>
+                <span><%= @item.reviews_size_string %></span>
+              </h6>
+            </td>
+          </tr>
+        </table>
+
+        <p><%= @item.description %></p>
       </div>
+
+      <p class="item-show-price"><%= humanized_money_with_symbol(@item.price) %></p>
+
+      <!-- Add Item to the cart -->
+      <%= link_to category_item_add_path(@category, @item),
+          id: "add-cart", class:"btn btn-ghost", method: :post, remote: true do %>
+        Add to Cart
+      <% end %>
+
+      <!-- Buy Item -->
+      <%= link_to category_item_buy_one_path(@category, @item),
+          id: "buy-now", class:"btn btn-ghost", method: :post, remote: true do %>
+        Buy Now
+      <% end %>
     </div>
   </div>
 
+  <ul class="reviews-container">
+    <h4>Costumers Reviews</h4>
 
+    <!-- New Review form -->
+    <%= render "reviews/form", category: @category, review: Review.new %>
 
-  <div class="row">
-    <div class="col-12 col-md-9 mt-3" style="margin: 20px auto">
-      <div style="width: 100%">
-        <ul style="padding: 0 20px; box-shadow: 0 0 5px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; width: 100%">
-          <% if @item.reviews.length == 0 %>
-            <p class="show-text" style="margin-left: 10px">Be the first to leave a review!</p>
-          <% else %>
-            <% @item.reviews.reverse[0..4].each do |review| %>
-              <li style="list-style: none; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.15)">
-                <p class="show-text" style="margin-bottom: 0"><%= review.user.name.capitalize %></p>
-
-                <p class="show-text" style="font-size: 18px; margin: 0">
-                  <%= ("★" * review.rating) + ("☆" * (5 - review.rating)) %>
-                  <span style="font-size: 12px"><%= " #{time_ago_in_words(review.created_at)} ago" %></span>
-                </p>
-
-                <p class="show-text" style="margin-left: 16px; margin-bottom: 5px"><%= review.content %></p>
-              </li>
-            <% end %>
-          <% end %>
-
-          <% if user_signed_in? && (current_user.reviews.count { |x| x.item.id == @item.id }) < (current_user.payed_orders.count { |x| x.item.id == @item.id }) %>
-            <h5 style="margin: 20px 0 5px">Leave a review</h5>
-            <div style="padding: 10px 5px; margin-bottom: 20px">
-              <%= simple_form_for [@category, @item, @review] do |f| %>
-                <div style="width: 300px; height: 40px;">
-                  <div class="stars">
-                    <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-                      <%= b.radio_button + b.label {''} %>
-                    <% end %>
-                  </div>
-                </div>
-                <%= f.input :content, label: false, placeholder: "Share your experience with us" %>
-                <%= f.button :submit, class: "btn btn-ghost" %>
-              <% end %>
-            </div>
-          <% end %>
-        </ul>
-
-      </div>
+    <!-- List of reviews -->
+    <div id="reviews-list">
+      <%= render "reviews/reviews-list" %>
     </div>
-  </div>
+  </ul>
+</div>
 
+<!-- Modal Order Checkout -->
+<div class="modal fade" id="ModalCheckout" role="dialog"></div>

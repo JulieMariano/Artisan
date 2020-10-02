@@ -1,56 +1,38 @@
 class Admin::ItemsController < ApplicationController
-
-  # def index
-  #   @category = Category.find(params[:category_id])
-  #   @items = Item.where(category: @category)
-  # end
-
-  # def show
-  #   @category = Category.find(params[:category_id])
-  #   @item = Item.find(params[:id])
-  # end
-
-  def new
-    @category = Category.find(params[:category_id])
-    @item = Item.new
-    @admin = current_user
-  end
+  before_action :set_category, only: [:create, :update, :destroy]
 
   def create
-    @category = Category.find(params[:category_id])
-    @item = Item.create(item_params)
-    if @item.save
-      redirect_to admin_category_items_path
-    else
-      render :new
-    end
+    @item = Item.new(item_params)
+    @item.category = @category
+    @item.sku = generate_sku(@item.name)
+    @item.save
   end
 
-
-  def edit
-    @category = Category.find(params[:category_id])
-    @item = Item.find(params[:id])
-  end
-  
   def update
-    @category = Category.find(params[:category_id])
+    update_params = item_params
+    update_params["sku"] = generate_sku(item_params[:name])   # Add the sku column to the params
+
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_category_items_path(@category)
+    @item.update(update_params)
   end
 
   def destroy
-    @category = Category.find(params[:category_id])
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to admin_category_items_path(@category)
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :picture, :category_id )
+    params.require(:item).permit(:name, :price, :description, :picture)
   end
 
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
 
+  # Method that generates the Item sku based on its name
+  def generate_sku(item_name)
+    item_name.downcase.split(' ').join('_')
+  end
 end

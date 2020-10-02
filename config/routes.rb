@@ -1,33 +1,41 @@
 Rails.application.routes.draw do
+  # Home page
   root to: 'categories#index'
-  
-  devise_for :users
 
+  # Stripe's Webhook Event
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
+
+  # Sidekiq Web UI (only for Admins)
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  # Devise default routes for User
+  # Override the params accepted in the User Registration
+  # Do not include the 'password' controller
+  devise_for :users, skip: 'password', controllers: { registrations: 'user/registrations' }
+
+  # Admin actions
   namespace :admin do
     resources :categories do
-      resources :items do
-        resources :orders
-      end
+      resources :items, except: [:show]
     end
   end
 
-  resources :users do
-    resources :items 
-  end
-
-  resources :orders, only: [:index, :destroy] do
-    collection do
-      post "buy_all", to: "orders#buy_all"
-      post "buy_one", to: "orders#buy_one"
-    end
-
-    resources :payments, only: :new
-  end
-
-  resources :categories do
+  # Standard Website layout
+  resources :categories, only: [:index] do
     resources :items, only: [:index, :show] do
-      resources :orders, only: [:create]
+      post "add", to: "orders#add"
+      post "buy_one", to: "orders#buy_one"
+
       resources :reviews, only: [:create]
     end
   end
+
+  resources :orders, only: [:index, :show] do
+    post "buy_all", to: "orders#buy_all"
+  end
+
+  resources :order_items, only: [:destroy, :update]
 end

@@ -1,71 +1,12 @@
-<div>
-  <ul style="padding: 10px 20px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4); margin: 30px 20px">
-    <h1 style="margin-bottom: 20px">My Shopping Cart</h1>
-
-    <% if @user.pending_orders.length == 0 %>
-      <p class="show-text" style="margin-left: 10px">Your shopping cart is empty.</p>
-
-    <% else %>
-      <% @user.pending_orders.each do |order| %>
-        <li style="list-style: none; align-items: center; display: flex; box-shadow: 0 0 2px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; padding: 10px">
-          <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>'); width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 1px 0.5px rgba(0, 0, 0, 0.3); border-radius: 2px"></div>
-
-          <div style="margin: 10px">
-            <div style="display: flex">
-              <%= link_to order_path(order), class:"btn-delete", method: :delete, data: {confirm: "Are you sure?"} do %>
-                <i class="fas fa-trash-alt" style="font-size: 18px"></i>
-              <% end %>
-              <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
-            </div>
-
-            <div style="margin-left: 14px; margin: 5px 14px">
-              <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
-              <p class="show-text"><strong>Price: </strong><%= humanized_money_with_symbol(order.item.price) %></p>
-              <%= link_to new_order_payment(order), class:"btn btn-ghost", style:"display: flex; width: 85px", method: :post, data: {confirm: "Your order equals #{humanized_money_with_symbol(order.item.price)}. Wanna pay with the saved credit card?"} do %>
-                <i class="fas fa-shopping-cart" style="height: 20px; padding: 0"></i>
-                <p style="margin: 0 0 0 10px"> Buy</p>
-              <% end %>
-            </div>
-          </div>
-        </li>
-      <% end %>
-
-      <div style="display: flex; align-items: center; margin: 0 0 10px 10px">
-        <p style="display: flex; margin: 10px 0 0; height:30px"><strong>Total: <%= humanized_money_with_symbol(@total) %></strong></p>
-
-          <%= link_to buy_all_orders_path, class:"btn btn-ghost", style:"display: flex; margin-left: 20px", method: :post, data: {confirm: "Your order equals #{'%.2f' % @total} €. Wanna pay with the saved credit card?"} do %>
-            <i class="fas fa-shopping-cart" style="height: 20px; padding: 0"></i>
-            <p style="margin: 0 0 0 10px"> Buy all</p>
-          <% end %>
-
-      </div>
-    <% end %>
-  </ul>
-
-  <ul style="padding: 10px 20px 10px 20px; box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4); margin: 30px 20px">
-    <h1 style="margin-bottom: 20px">Orders History</h1>
-
-    <% if @user.payed_orders.length == 0 %>
-      <p class="show-text" style="margin-left: 10px">You have not made any orders yet</p>
-
-    <% else %>
-      <% @user.payed_orders.each do |order| %>
-        <li style="list-style: none; align-items: center; display: flex; box-shadow: 0 0 2px 0.8px rgba(0, 0, 0, 0.3); margin-bottom: 20px; padding: 10px">
-          <div style="background-image: url('<%= cl_image_path order.item.picture.key, height: 150, width: 150, crop: :fill %>'); width: 150px; height: 150px; min-width: 150px; box-shadow: 0 0 1px 0.5px rgba(0, 0, 0, 0.3); border-radius: 2px"></div>
-
-          <div style="margin: 10px">
-            <div style="display: flex">
-              <h4 class="show-text" style="margin: 0 0 10px 10px"><%= order.item.name %></h4>
-            </div>
-
-            <div style="margin-left: 14px; margin: 5px 14px">
-              <p class="show-text"><strong>Description: </strong><%= order.item.description %></p>
-              <p class="show-text"><strong>Paid: </strong><%= humanized_money_with_symbol(order.item.price) %></p>
-              <p class="show-text"><strong>Ordered: </strong><%= order.updated_at.strftime("%Y-%m-%d") %></p>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
+<!-- Shopping cart -->
+<div id="shopping-cart" class="orders-list-container">
+  <%= render "orders/shopping-cart" %>
 </div>
+
+<!-- Paid Orders list -->
+<div id="paid-orders" class="orders-list-container">
+  <%= render "orders/paid-orders" %>
+</div>
+
+<!-- Modal Order checkout -->
+<div class="modal fade" id="ModalCheckout" role="dialog"></div>

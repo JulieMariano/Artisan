@@ -1,0 +1,18 @@
+// If there are any errors in the submited form, then refresh the form to display validation errors
+<% if @review.errors.any? %>
+  $('#new_review').replaceWith("<%= j render "reviews/form", category: @item.category, review: @review %>");
+
+// Otherwise...
+<% else %>
+  // Refresh the Reviews list
+  document.getElementById("reviews-list").innerHTML = "<%= j render partial: "reviews-list" %>";
+
+  starRating(); // Quantify each review rating with stars
+  readMore();   // Hide the review content if it's too long
+
+  // Clean the form
+  $('#new_review').replaceWith("<%= j render "reviews/form", category: @item.category, review: Review.new %>");
+
+  // Refresh the Item rating information
+  document.querySelector('.item-rating-info h6').innerHTML = "<%= @item.rating_average_string %> <span><%= @item.reviews_size_string %></span>";
+<% end %>

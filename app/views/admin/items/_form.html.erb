@@ -1,0 +1,25 @@
+<div class="modal fade" id="ModalItem<%= item.id || "New" %>" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><%= item.id ? "Edit" : "New" %> Item</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <%= simple_form_for([:admin, @category, item], remote: true) do |f| %>
+          <!-- Make sure each input field has a unique ID -->
+          <div class="d-flex">
+            <%= f.input :name,              input_html: { id: "item_name_#{item.id || "new"}" } %>
+            <%= f.input :price,             input_html: { id: "item_price_#{item.id || "new"}" } %>
+          </div>
+
+          <%= f.input :description,         input_html: { id: "item_description_#{item.id || "new"}" } %>
+          <%= f.input :picture, as: :file,  input_html: { id: "item_picture_#{item.id || "new"}" } %>
+
+          <%= f.submit "#{item.id ? "Update" : "Create"}", class: "btn btn-ghost" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

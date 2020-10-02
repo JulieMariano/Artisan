@@ -1,24 +1,24 @@
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Categories</th>
-      <th scope="col">Added</th>
-      <th scope="col">Show</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-     <% @categories.each do |cat| %>
-    <tr>
-      <th scope="row"><%= cat.name %></th>
-      <td><%= time_ago_in_words cat.created_at %> ago</td>
-      <td><%= link_to 'Details', admin_category_path(cat) %></td>
-      <td><%= link_to 'Edit', edit_admin_category_path(cat) %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="admin-container">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Categories</th>
+        <th>Num Items</th>
+        <th>Created</th>
+      </tr>
+    </thead>
 
-<div style="margin-bottom: 20px">
-  <%= link_to 'Create a new category',  new_admin_category_path %>
+    <tbody>
+      <!-- One row for each Category -->
+      <%= render partial: "admin/categories/category", collection: @categories %>
+    </tbody>
+  </table>
+
+  <%= link_to 'New Category', data: { toggle: "modal", target: "#ModalCategoryNew" }, class: "btn btn-ghost",
+      style: "margin-left: 10px" do %>
+    New Category
+  <% end %>
+
+  <!-- Modal New Category -->
+  <%= render "admin/categories/form", category: Category.new %>
 </div>

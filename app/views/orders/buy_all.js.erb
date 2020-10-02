@@ -1,0 +1,16 @@
+// If a flash alert already exists, then remove it
+var flash = document.querySelector('.alert.alert-dismissible');
+if (flash) { flash.remove() }
+
+// If there are any erros in the creation of an Order, then display a warning alert
+<% if @order.errors.any? %>
+  createFlashes('alert-warning', "It seems there was an error with your order");
+
+// Otherwise, prepare the checkout modal and open it
+<% else %>
+  var modalCheckout = "<%= j render partial: "orders/modal-checkout" %>";
+  var stripeKey = "<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>";
+  var orderSessionId = "<%= @order.checkout_session_id %>";
+
+  prepareModalCheckout(modalCheckout, stripeKey, orderSessionId);
+<% end %>

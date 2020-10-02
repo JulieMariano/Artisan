@@ -25,10 +25,59 @@ require("channels")
 // External imports
 import "bootstrap";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { autoSubmitForm } from '../components/auto-submit-form';
+import { createFlashes } from '../components/create-flashes';
+import { prepareModalCheckout } from '../components/prepare-modal-checkout';
+import { readMore } from '../components/read-more';
+import { refreshOrdersIndexPage } from '../components/refresh-orders-index-page';
+import { smoothPagination } from '../components/smooth-pagination';
+import { starRating } from '../components/star-rating';
 
+// Make the following JS functions accessible from the HTML files
+window.autoSubmitForm = function(selectorForm, selectorInput) {
+  autoSubmitForm(selectorForm, selectorInput);
+}
+
+window.createFlashes = function(alertType, text) {
+  createFlashes(alertType, text);
+}
+
+window.prepareModalCheckout = function(modalCheckout, stripeKey, orderSessionId) {
+  prepareModalCheckout(modalCheckout, stripeKey, orderSessionId);
+}
+
+window.readMore = function() {
+  readMore();
+}
+
+window.refreshOrdersIndexPage = function(shoppingCart, navbarCart) {
+  refreshOrdersIndexPage(shoppingCart, navbarCart);
+}
+
+window.smoothPagination = function() {
+  smoothPagination();
+}
+
+window.starRating = function() {
+  starRating();
+}
+
+// Upon loading a page, load the following JS functions
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  const reviewsList = document.getElementById('reviews-list');
+  const shoppingCart = document.getElementById('shopping-cart');
+
+  // If the Items#show page is opened, then...
+  if (reviewsList) {
+    readMore();
+    starRating();
+
+    window.addEventListener('resize', () => {
+      readMore();
+    });
+  // If the Orders#index page is opened, then...
+  } else if (shoppingCart) {
+    autoSubmitForm('.edit_order_item', 'input.numeric');
+    smoothPagination();
+  }
 });

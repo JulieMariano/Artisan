@@ -1,0 +1,16 @@
+<% if @item.reviews.length == 0 %>
+  <p style="margin-left: 10px">Be the first to leave a review!</p>
+
+<% else %>
+  <% @item.reviews.last(5).reverse.each do |review| %>
+    <li>
+      <p class="review-user"><%= review.user.name.capitalize %></p>
+
+      <p data-rating=<%= review.rating %>>
+        <span style="font-size: 13px; margin-left: 2px"><%= time_ago_in_words(review.created_at) %></span>
+      </p>
+
+      <p class="read-more"><%= review.content %></p>
+    </li>
+  <% end %>
+<% end %>

@@ -72,3 +72,17 @@ gem 'money-rails'
 
 # Payment service
 gem 'stripe'
+
+# To Ajaxify POST forms
+gem 'turbolinks_render'
+
+# Stripe Webhooks
+gem 'stripe_event'
+
+# Pagination
+gem 'will_paginate', '~> 3.3.0'
+gem 'will_paginate-bootstrap4'
+
+# Background Jobs
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'

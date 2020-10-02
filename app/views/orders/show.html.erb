@@ -1,0 +1,88 @@
+<div class="orders-list-container">
+  <h1>
+    ORDER <%= "#" + "%06d" % @order.id %>
+
+    <!-- Order status -->
+    <% if @order.state == 'pending' %>
+      <span style="color: #b72a00">
+        <i class="fas fa-exclamation-triangle"></i>
+        Pending
+      </span>
+    <% elsif @order.state == 'paying' %>
+      <span style="color: #ce0000">
+        <i class="fas fa-times-circle"></i>
+        Payment Failed
+      </span>
+    <% elsif @order.state == 'paid' %>
+      <span style="color: #008a24">
+        <i class="fas fa-check-square"></i>
+        Paid (<%= @order.payment_date.strftime('%b %e, %Y') %>)
+      </span>
+    <% elsif @order.state == 'delivered' %>
+      <span style="color: #008a24">
+        <i class="fas fa-check-square"></i>
+        Delivered (<%= @order.delivery_date.strftime('%b %e, %Y') %>)
+      </span>
+    <% end %>
+  </h1>
+
+  <!-- Order Items list -->
+  <ul class="orders-list">
+    <% @order_items.each do |order_item| %>
+      <li class="orders-card">
+        <!-- Item image -->
+        <%= link_to category_item_path(order_item.item.category, order_item.item) do %>
+          <div class="orders-card-img" style="background-image: url('<%= cl_image_path order_item.item.picture.key,
+              height: 150, width: 150, crop: :fill %>')">
+          </div>
+        <% end %>
+
+        <!-- Item information -->
+        <div class="orders-card-info">
+          <div class="orders-card-content">
+            <h4><%= order_item.item.name %></h4>
+
+            <table>
+              <tr>
+                <td style="text-align: end; font-weight: bold">Price</td>
+                <td style="width: 15px"></td>
+                <td><%= humanized_money_with_symbol(order_item.item.price) %></td>
+              </tr>
+
+              <tr style="height: 45px">
+                <td style="font-weight: bold">Items</td>
+                <td></td>
+                <td><%= order_item.quantity %></td>
+              </tr>
+            </table>
+          </div>
+
+          <p class="orders-card-subtotal"><%= humanized_money_with_symbol(order_item.subtotal) %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <!-- Order checkout information -->
+  <div class="order-checkout">
+    <table>
+      <tr>
+        <td>Subtotal (<%= @order.num_items_string %>)</td>
+        <td style="width: 10px"></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.items_subtotal) %></td>
+      </tr>
+
+      <tr>
+        <td>Shipping</td>
+        <td></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.shipping_costs) %></td>
+      </tr>
+
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td class="order-checkout-price"><%= humanized_money_with_symbol(@order.total) %></td>
+      </tr>
+    </table>
+  </div>
+</div>

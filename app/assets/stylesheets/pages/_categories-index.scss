@@ -1,0 +1,244 @@
+.bordered-headers {
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+
+  span {
+    display: inline;  // In order to be remove the underline efect on hover
+    color: rgba(0, 0, 0, 0.95);
+    line-height: 150%;
+    padding-bottom: 2px;
+    border-bottom: 3px solid #df8543;
+  }
+}
+
+.informations {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(220, 220, 220, 1);
+
+  .info {
+    text-align: justify;
+    height: 190px;
+    padding: 25px 20px 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+
+    h1 {
+      text-align: center;
+      color: #9D2503;
+      opacity: 0.8;
+    }
+
+    p {
+      color: black;
+    }
+  }
+}
+
+.catch-phrase {
+  margin: 40px auto 25px;
+
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+    width: fit-content;
+    padding: 20px;
+    border: 4px solid #df8543;
+    margin: 0 auto;
+  }
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 40px;
+
+  .category-card {
+    position: relative;
+    margin-left: 190px;
+
+    .category-card-title {
+      position: absolute;
+      top: 50%;
+      left: -190px;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      h2 > span:hover {
+        color: rgba(110, 40, 0, 1);
+        text-decoration: none;
+      }
+    }
+
+    .category-carousel {
+      background-color: white;
+      width: 420px;
+      padding: 10px;
+      border: 1px solid lightgrey;
+      border-radius: 3px;
+      box-shadow: 0 0 5px lightgrey;
+      margin-top: 25px;
+
+      .carousel-item {
+        height: 400px;
+        width: 400px;
+
+        .carousel-caption {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+.reassurance {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(220, 220, 220, 1);
+  height: 200px;
+  margin-bottom: 0;
+
+  .reassurance-card {
+    width: 220px;
+
+    div {
+      text-align: center;
+      color: #9D2503;
+      font-size: 40px;
+
+      i {
+        text-shadow: 3px 1px 1px rgba(255, 254, 254, 0.575);
+      }
+    }
+
+    h3 {
+      text-align: center;
+      color: rgba(157, 37, 3, 0.1);
+      font-size: 20px;
+      text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+@media(max-width: 1245px) {
+  .categories-container {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
+
+    .category-card {
+      margin-left: 0;
+
+      .category-card-title {
+        position: initial;
+        text-align: center;
+
+        h2 {
+          margin-left: 20px;
+          width: fit-content !important;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 890px) {
+  .catch-phrase > h3 {
+    font-size: 28px;
+  }
+
+  .categories-container {
+    grid-template-columns: 1fr;
+    grid-gap: 25px;
+  }
+}
+
+@media(max-width: 770px) {
+  .reassurance {
+    height: 130px;
+
+    .reassurance-card {
+      width: 110px;
+
+      div {
+        font-size: 35px;
+      }
+
+      h3 {
+        font-size: 14px;
+      }
+
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .banner > .container {
+    margin-left: 20px;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    .btn-ghost {
+      font-size: 18px;
+    }
+  }
+
+  .informations > .info {
+    h1 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .catch-phrase > h3 {
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 530px) {
+  .banner > .container {
+    h1 {
+      font-size: 30px;
+    }
+
+    .btn-ghost {
+      font-size: 16px;
+    }
+  }
+
+  .informations > .info {
+    h1 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .catch-phrase > h3 {
+    font-size: 22px;
+  }
+}

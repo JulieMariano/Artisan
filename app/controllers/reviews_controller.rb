@@ -1,17 +1,18 @@
 class ReviewsController < ApplicationController
-  def create
-    @order = Order.new
-    @review = Review.new(review_params)
-    @item = Item.find(params[:item_id])
-    @user = User.find(current_user.id)
-    @category = Category.find(params[:category_id])
-    @review.item = @item
-    @review.user = @user
+  skip_before_action :authenticate_user!, only: [:create]
 
-    if @review.save
-      redirect_to category_item_path(@category, @item)
+  def create
+    if current_user.nil?
+      redirect_to new_user_session_path
+      flash[:alert] = 'You need to sign in or sign up before continuing'
+
     else
-      render 'items/show'
+      @review = Review.new(review_params)
+      @item = Item.find(params[:item_id])
+      @review.item = @item
+      @review.user = current_user
+
+      @review.save
     end
   end
 
