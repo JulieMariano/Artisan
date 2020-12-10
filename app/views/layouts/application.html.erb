@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Artisan</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <title>Artisan</title>
+
+    <meta name="author" content="Edgar Marques, Julie Mariano, Laure Olivier, Thomas Gibson">
+    <meta name="description" content="Online marketplace for craftwork">
+    <meta name="keywords" content="online marketplace for craftwork, craftwork, craftsmanship, artisanal products">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Turbolinks -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Font Awesome Bootstrap -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <!-- Stripe payment service -->
