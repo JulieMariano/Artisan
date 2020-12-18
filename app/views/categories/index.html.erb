@@ -5,7 +5,7 @@
       <h1>Find beautiful crafts from around the world</h1>
 
       <% if user_signed_in? %>
-        <%= link_to "Special Offers", "#", class: "btn btn-ghost" %>
+        <%= link_to "Special Offers", root_path, class: "btn btn-ghost" %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-ghost" %>
       <% end %>
