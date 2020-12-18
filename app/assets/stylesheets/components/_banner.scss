@@ -8,14 +8,21 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
 
   .container {
-    margin: 0 0 30px 30px;
+    margin: 0 0 30px 3.5%;
 
     h1 {
       color:  rgba(0, 0, 0, 0.9);
-      font-size: 42px;
+      font-size: 48px;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
-      margin: 0;
+      text-shadow: 0 0 2px rgba(200, 200, 200, 0.9);
+      margin: 0 0 20px;
+    }
+
+    .btn-ghost {
+      font-size: 24px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin-left: 10px;
     }
   }
 }
